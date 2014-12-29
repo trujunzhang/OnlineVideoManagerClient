@@ -24,13 +24,17 @@
 
    // Insert code here to initialize your application
 
-   expertise = [[NSMutableDictionary alloc] init];
-   [expertise setObject:[NSArray arrayWithObjects:@"Expert", @"Moderate", @"Novice", nil] forKey:@"John"];
-   [expertise setObject:[NSArray arrayWithObjects:@"Moderate", @"Expert", @"Expert", nil] forKey:@"Micheal"];
-   [expertise setObject:[NSArray arrayWithObjects:@"Expert", @"Novice", @"Expert", nil] forKey:@"Gerald"];
+//   expertise = [[NSMutableDictionary alloc] init];
+//   [expertise setObject:[NSArray arrayWithObjects:@"Expert", @"Moderate", @"Novice", nil] forKey:@"John"];
+//   [expertise setObject:[NSArray arrayWithObjects:@"Moderate", @"Expert", @"Expert", nil] forKey:@"Micheal"];
+//   [expertise setObject:[NSArray arrayWithObjects:@"Expert", @"Novice", @"Expert", nil] forKey:@"Gerald"];
 
    self.videoTableView.dataSource = self;
    self.videoTableView.delegate = self;
+}
+
+
+- (void)onButtonClicked:(id)onButtonClicked {
 
    NSString * onlinePath = self.videoPath.stringValue;
    OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:onlinePath];
@@ -38,15 +42,6 @@
    self.projectsDictionary = onlineVideoStatisticsHelper.projectsDictionary;
 
    [[MobileDB dbInstance:onlinePath] saveForProjectTypeDictionary:self.projectsDictionary];
-
-   [[MobileDB dbInstance:onlinePath] readDictionaryForProjectType];
-
-
-}
-
-
-- (void)onButtonClicked:(id)onButtonClicked {
-
 }
 
 
