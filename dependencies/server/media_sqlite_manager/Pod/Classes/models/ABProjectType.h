@@ -24,5 +24,6 @@
 - (instancetype)initWithProjectTypeID:(int)projectTypeID projectTypeName:(NSString *)projectTypeName;
 
 
++ (NSMutableDictionary *)getAllProjectNames:(NSMutableDictionary *)projectTypesDictionary;
 - (void)appendProjectName:(id)projectName;
 @end

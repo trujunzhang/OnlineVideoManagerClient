@@ -17,7 +17,7 @@
    self = [super init];
    if (self) {
       self.onlinePath = onlinePath;
-      self.projectsDictionary = [[NSMutableDictionary alloc] init];
+      self.projectTypesDictionary = [[NSMutableDictionary alloc] init];
 
       [self analysisPath:onlinePath withDictionaryKey:@""];
    }
@@ -40,7 +40,7 @@
             switch (type) {
                case TFOLD_CATELOGY: {
                   ABProjectType * projectType = [[ABProjectType alloc] initWithProjectType:aPath];
-                  [self.projectsDictionary setObject:projectType forKey:aPath];
+                  [self.projectTypesDictionary setObject:projectType forKey:aPath];
                   [self analysisProjectNameListInProjectType:fullPath to:projectType];
                };
                   break;

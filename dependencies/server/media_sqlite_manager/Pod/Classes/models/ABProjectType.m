@@ -73,4 +73,18 @@
    [self.ProjectNameArray addObject:projectName];
 }
 
+
++ (NSMutableDictionary *)getAllProjectNames:(NSMutableDictionary *)projectTypesDictionary {
+   NSMutableDictionary * projectNamesDictionary = [[NSMutableDictionary alloc] init];
+   for (ABProjectType * projectType in projectNamesDictionary) {
+      NSString * projectTypeName = projectType.projectTypeName;
+      for (ABProjectName * abProjectName in projectType.ProjectNameArray) {
+         NSString * projectName = abProjectName.projectName;
+         [projectNamesDictionary setObject:projectName forKey:projectTypeName];
+      }
+   }
+
+   return projectNamesDictionary;
+}
+
 @end

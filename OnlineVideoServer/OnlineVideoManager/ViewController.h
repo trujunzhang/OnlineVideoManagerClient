@@ -19,6 +19,6 @@
 
 @property(strong) IBOutlet CustomTable * videoTableView;
 
-@property(nonatomic, strong) NSMutableDictionary * projectsDictionary;
+@property(nonatomic, strong) NSMutableDictionary * projectTypesDictionary;
 @end
 

@@ -11,7 +11,7 @@
 
 @property(nonatomic, strong) NSString * onlinePath;
 
-@property(nonatomic, strong) NSMutableDictionary * projectsDictionary;
+@property(nonatomic, strong) NSMutableDictionary * projectTypesDictionary;
 
 - (instancetype)initWithOnlinePath:(NSString *)onlinePath;
 

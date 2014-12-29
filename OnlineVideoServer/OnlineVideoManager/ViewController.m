@@ -10,6 +10,7 @@
 #import "CustomTable.h"
 #import "OnlineVideoStatisticsHelper.h"
 #import "MobileDB.h"
+#import "ABProjectType.h"
 
 
 @implementation ViewController
@@ -24,8 +25,8 @@
 
    // Insert code here to initialize your application
 
-//   expertise = [[NSMutableDictionary alloc] init];
-//   [expertise setObject:[NSArray arrayWithObjects:@"Expert", @"Moderate", @"Novice", nil] forKey:@"John"];
+   expertise = [[NSMutableDictionary alloc] init];
+   [expertise setObject:[NSArray arrayWithObjects:@"Expert", @"Moderate", @"Novice", nil] forKey:@"John123"];
 //   [expertise setObject:[NSArray arrayWithObjects:@"Moderate", @"Expert", @"Expert", nil] forKey:@"Micheal"];
 //   [expertise setObject:[NSArray arrayWithObjects:@"Expert", @"Novice", @"Expert", nil] forKey:@"Gerald"];
 
@@ -39,9 +40,18 @@
    NSString * onlinePath = self.videoPath.stringValue;
    OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:onlinePath];
 
-   self.projectsDictionary = onlineVideoStatisticsHelper.projectsDictionary;
+   self.projectTypesDictionary = onlineVideoStatisticsHelper.projectTypesDictionary;
 
-   [[MobileDB dbInstance:onlinePath] saveForProjectTypeDictionary:self.projectsDictionary];
+   [[MobileDB dbInstance:onlinePath] saveForProjectTypeDictionary:self.projectTypesDictionary];
+
+   [self refreshTableView];
+}
+
+
+- (void)refreshTableView {
+//   self.projectTypesDictionary;
+   expertise = [ABProjectType getAllProjectNames:self.projectTypesDictionary];
+   [self.videoTableView reloadData];
 }
 
 
@@ -63,6 +73,7 @@
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
    NSString * key = [[expertise allKeys] objectAtIndex:row];
+   NSLog(@"row = %li", row);
    NSInteger column = [[tableColumn identifier] intValue];
    if (column == 0)
       return key;
