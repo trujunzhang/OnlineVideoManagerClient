@@ -18,6 +18,7 @@
 #import "DebugUtils.h"
 #import "CollectionConstant.h"
 #import "SqliteManager.h"
+#import "GYoutubeHelper.h"
 
 
 @interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate> {
@@ -55,6 +56,8 @@
    [DebugUtils listAppHomeInfo];
 
    [YTCacheImplement removeAllCacheDiskObjects];
+
+   [[GYoutubeHelper getInstance] fetchSqliteRemoteFile];
 
    //1
    UITabBarController * tabBarController = (UITabBarController *) self.window.rootViewController;
