@@ -18,7 +18,7 @@
    if (!(self = [super init]))
       return nil;
 
-   self.backgroundColor = [UIColor redColor];
+   self.backgroundColor = [UIColor clearColor];
 
    return self;
 }
@@ -34,7 +34,7 @@
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
-   return CGSizeMake(constrainedSize.width, 100.0f);
+   return CGSizeMake(constrainedSize.width, 1.0f);
 }
 
 
