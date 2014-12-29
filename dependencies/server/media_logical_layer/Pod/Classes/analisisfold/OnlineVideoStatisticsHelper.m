@@ -9,6 +9,7 @@
 #import "OnlineVideoProjectStatisticsHelper.h"
 #import "OnlineVideoConstant.h"
 
+
 @implementation OnlineVideoStatisticsHelper {
 
 }
@@ -91,10 +92,11 @@
 
 
 - (TFOLD_TYPE)checkDirType:(NSString *)path {
-   if ([[path substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"@@"]) {
+   NSUInteger length = [path length];
+   if (length >= 2 && [[path substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"@@"]) {
       return TFOLD_PROJECT;
    }
-   else if ([[path substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"@"]) {
+   else if (length >= 1 && [[path substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"@"]) {
       return TFOLD_CATELOGY;
    }
 

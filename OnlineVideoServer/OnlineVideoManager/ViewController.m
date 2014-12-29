@@ -21,7 +21,9 @@
    [self.refreshButton setTarget:self];
    [self.refreshButton setAction:@selector(onButtonClicked:)];
 
-   self.videoPath.stringValue = @"/Volumes/macshare/MacPE/Lynda.com";
+   self.videoPath.stringValue =
+    @"/Volumes/XBMC/ShareAFP/Online Tutorial/Video Training/Lynda.com";
+    //@"/Volumes/macshare/MacPE/Lynda.com";
 
    // Insert code here to initialize your application
 
