@@ -23,10 +23,6 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/uikit-Category/*.{h,m}'
   end
 
-  s.subspec 'video-thumbnail' do |sub|
-    sub.source_files = 'Pod/Classes/video-thumbnail/*.{h,m}'
-  end
-
 
 
 end
