@@ -23,7 +23,7 @@
 
    self.videoPath.stringValue =
     @"/Volumes/XBMC/ShareAFP/Online Tutorial/Video Training/Lynda.com";
-    //@"/Volumes/macshare/MacPE/Lynda.com";
+   //@"/Volumes/macshare/MacPE/Lynda.com";
 
    // Insert code here to initialize your application
 
@@ -39,7 +39,7 @@
 
 - (void)onButtonClicked:(id)onButtonClicked {
 
-   NSString * onlinePath = self.videoPath.stringValue;
+   NSString * onlinePath = [NSString stringWithFormat:@"%@/%@", self.videoPath.stringValue, @".cache"];
    OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:onlinePath];
 
    self.projectTypesDictionary = onlineVideoStatisticsHelper.projectTypesDictionary;

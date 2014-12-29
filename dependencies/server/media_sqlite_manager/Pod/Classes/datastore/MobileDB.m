@@ -11,7 +11,6 @@
 #import "ABSQLiteDB.h"
 #import "ABProjectFileInfo.h"
 #import "ABProjectType.h"
-#import "GYoutubeHelper.h"
 
 static NSString * const dataBaseName = @"VideoTrainingDB.db";
 
@@ -73,13 +72,9 @@ static MobileDB * _dbInstance;
 }
 
 
-///Volumes/Home/djzhang/Library/Developer/CoreSimulator/Devices/F1B2461C-89B4-48A5-93D7-64546C39189E/data/Containers/Data/Application/61363AE3-C679-4CF3-B53D-BA83BA7A40F5/Library/Caches
 + (MobileDB *)dbInstance {
    NSArray * searchPaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
    NSString * path = searchPaths[0];
-
-//   NSString * dbFilePath = [path stringByAppendingPathComponent:dataBaseName];
-//   BOOL isExist = [self checkSqliteFileExist:dbFilePath];
 
    return [MobileDB dbInstance:path];
 }

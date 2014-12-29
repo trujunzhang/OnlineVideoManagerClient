@@ -88,14 +88,6 @@
 				5E1321401A4CF5BF001A6694 /* Products */,
 				014F06E4AA3D403E60168014 /* Pods */,
 				46637F5B0E172480A4CDF3F7 /* Frameworks */,
-				65B8CE94ECCC55A1D76AF7C5,
-				65B8CF7F176DA331DA8F367D,
-				65B8C239522ADE61306BD0E5,
-				65B8C394A1633DFCDFBB5428,
-				65B8C3876EA8F1F37534B6AC,
-				65B8C3CFAA380B4DCF186BAA,
-				65B8CDC2EB7518C33E9C10ED /* DatabaseConstant.m */,
-				65B8CF8E5801ED04CC159DB6 /* DatabaseConstant.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -217,8 +209,6 @@
 			mainGroup = 5E1321361A4CF5BF001A6694;
 			productRefGroup = 5E1321401A4CF5BF001A6694 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				5E13213E1A4CF5BF001A6694 /* OnlineVideoManager */,
@@ -404,6 +394,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = OnlineVideoManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -416,6 +407,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = OnlineVideoManager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -475,6 +467,7 @@
 				5E1321611A4CF5BF001A6694 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5E1321621A4CF5BF001A6694 /* Build configuration list for PBXNativeTarget "OnlineVideoManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +476,7 @@
 				5E1321641A4CF5BF001A6694 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
