@@ -57,4 +57,7 @@ static GYoutubeHelper * instance = nil;
 }
 
 
+- (NSString *)getRemoteSqliteDatabase {
+   return [NSString stringWithFormat:@"%@/%@/%@", self.domainUrl, @".cache", @"VideoTrainingDB.db"];
+}
 @end

@@ -11,6 +11,7 @@
 #import "ABSQLiteDB.h"
 #import "ABProjectFileInfo.h"
 #import "ABProjectType.h"
+#import "GYoutubeHelper.h"
 
 static MobileDB * _dbInstance;
 
@@ -39,14 +40,11 @@ static MobileDB * _dbInstance;
    _dbInstance = self;
 
    BOOL myPathIsDir;
-   BOOL fileExists = [[NSFileManager defaultManager]
-    fileExistsAtPath:filePathName
-         isDirectory:&myPathIsDir];
+   BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePathName isDirectory:&myPathIsDir];
 
    // backupDbPath allows for a pre-made database to be in the app. Good for testing
-   NSString * backupDbPath = [[NSBundle mainBundle]
-    pathForResource:@"Mobile"
-             ofType:@"db"];
+   NSString * backupDbPath = [[NSBundle mainBundle] pathForResource:@"Mobile" ofType:@"db"];
+
    BOOL copiedBackupDb = NO;
    if (backupDbPath != nil) {
       copiedBackupDb = [[NSFileManager defaultManager]
@@ -88,6 +86,7 @@ static MobileDB * _dbInstance;
       dbFilePath = [documentFolderPath stringByAppendingPathComponent:@"VideoTrainingDB.db"];
 
 //      BOOL isExist = [self checkSqliteFileExist:dbFilePath];
+      dbFilePath = [[GYoutubeHelper getInstance] getRemoteSqliteDatabase];
 
       //"/Volumes/Home/djzhang/Library/Developer/CoreSimulator/Devices/F1B2461C-89B4-48A5-93D7-64546C39189E/data/Containers/Data/Application/A555AF8D-2B06-4422-BA4F-5999156D3ADB/Library/Caches/VideoTrainingDB.db"
       MobileDB * mobileDB = [[MobileDB alloc] initWithFile:dbFilePath];

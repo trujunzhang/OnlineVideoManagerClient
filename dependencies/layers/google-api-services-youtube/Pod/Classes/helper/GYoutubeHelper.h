@@ -45,4 +45,5 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 - (void)fetchPlaylistItemsListWithRequestInfo:(GYoutubeRequestInfo *)info completion:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)handler;
 
 
+- (NSString *)getRemoteSqliteDatabase;
 @end
