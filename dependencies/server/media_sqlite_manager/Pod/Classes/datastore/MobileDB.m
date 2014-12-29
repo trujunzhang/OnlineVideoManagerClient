@@ -87,8 +87,8 @@ static MobileDB * _dbInstance;
 
 + (MobileDB *)dbInstance:(NSString *)path {
    if (!_dbInstance) {
-      NSString * dbFilePath = [path stringByAppendingPathComponent:dataBaseName];
-      MobileDB * mobileDB = [[MobileDB alloc] initWithFile:dbFilePath];
+//      NSString * dbFilePath = [path stringByAppendingPathComponent:dataBaseName];
+//      MobileDB * mobileDB = [[MobileDB alloc] initWithFile:dbFilePath];
 
 //      if (isExist) {
 //      } 
