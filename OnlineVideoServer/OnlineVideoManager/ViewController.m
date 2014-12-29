@@ -44,7 +44,7 @@
 
    [[MobileDB dbInstance:onlinePath] saveForProjectTypeDictionary:self.projectTypesDictionary];
 
-   [self refreshTableView];
+//   [self refreshTableView];
 }
 
 
