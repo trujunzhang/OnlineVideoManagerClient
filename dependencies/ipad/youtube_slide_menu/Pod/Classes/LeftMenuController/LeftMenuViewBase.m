@@ -112,6 +112,7 @@
 
 
 - (void)refreshChannelInfo {
+   [self defaultRefreshForSubscriptionList];
 }
 
 

@@ -78,8 +78,8 @@ static MobileDB * _dbInstance;
    NSArray * searchPaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
    NSString * path = searchPaths[0];
 
-   NSString * dbFilePath = [path stringByAppendingPathComponent:dataBaseName];
-   BOOL isExist = [self checkSqliteFileExist:dbFilePath];
+//   NSString * dbFilePath = [path stringByAppendingPathComponent:dataBaseName];
+//   BOOL isExist = [self checkSqliteFileExist:dbFilePath];
 
    return [MobileDB dbInstance:path];
 }
@@ -87,11 +87,8 @@ static MobileDB * _dbInstance;
 
 + (MobileDB *)dbInstance:(NSString *)path {
    if (!_dbInstance) {
-//      NSString * dbFilePath = [path stringByAppendingPathComponent:dataBaseName];
-//      MobileDB * mobileDB = [[MobileDB alloc] initWithFile:dbFilePath];
-
-//      if (isExist) {
-//      } 
+      NSString * dbFilePath = [path stringByAppendingPathComponent:dataBaseName];
+      MobileDB * mobileDB = [[MobileDB alloc] initWithFile:dbFilePath];
    }
 
    return _dbInstance;

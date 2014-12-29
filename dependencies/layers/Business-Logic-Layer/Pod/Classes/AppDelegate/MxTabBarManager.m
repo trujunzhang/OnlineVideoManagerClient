@@ -96,11 +96,6 @@
 #pragma mark GYoutubeHelperDelegate
 
 
-- (void)callbackAfterFetchingAuthorSubscriptionListCompletion:(NSArray *)subscriptionList {
-   [_leftViewController insertSubscriptionRowsAfterFetching:subscriptionList];
-}
-
-
 - (void)callbackUpdateYoutubeChannelCompletion {
    [_leftViewController refreshChannelInfo];
 }

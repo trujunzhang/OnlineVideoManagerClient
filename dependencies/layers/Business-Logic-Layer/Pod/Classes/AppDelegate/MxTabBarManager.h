@@ -14,4 +14,6 @@
 - (void)pushAndResetControllers:(NSArray *)controllers;
 - (void)pushForYouTubePlayList:(id)playList withPlayListTitle:(NSString *)title;
 - (void)pushWithVideo:(id)video;
+
+- (void)callbackUpdateYoutubeChannelCompletion;
 @end
