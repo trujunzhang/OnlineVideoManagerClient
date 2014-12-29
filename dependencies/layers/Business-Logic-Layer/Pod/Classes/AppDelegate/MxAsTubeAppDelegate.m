@@ -57,7 +57,9 @@
 
    [YTCacheImplement removeAllCacheDiskObjects];
 
-   [[GYoutubeHelper getInstance] fetchSqliteRemoteFile];
+   [[GYoutubeHelper getInstance] fetchSqliteRemoteFile:^(NSURLResponse * response, NSURL * url, NSError * error) {
+
+   }];
 
    //1
    UITabBarController * tabBarController = (UITabBarController *) self.window.rootViewController;
@@ -66,19 +68,12 @@
    tabBarController.tabBar.tintColor = [UIColor redColor];
    tabBarController.selectedIndex = 0;// default is Subscription View Controller.
 
-   if (!hasShowLeftMenu) {
-      tabBarController.selectedIndex = 1; //test
-   }
 
    //2. the first right tab bar item
    NSArray * controllers = tabBarController.viewControllers;
    for (UINavigationController * controller in controllers) {
       controller.view.backgroundColor = [UIColor clearColor];
    }
-
-//   _subscriptionsViewController = ((UINavigationController *) tabBarController.viewControllers[0]).viewControllers[0];
-
-//   NSString * debug = @"debug";
 
    //3
    YTLeftMenuViewController * leftViewController = [[YTLeftMenuViewController alloc] init];

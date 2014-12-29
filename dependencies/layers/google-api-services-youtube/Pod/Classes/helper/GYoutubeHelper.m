@@ -43,10 +43,8 @@ static GYoutubeHelper * instance = nil;
 }
 
 
-- (void)fetchSqliteRemoteFile {
-   void (^downloadCompletionBlock)(NSURLResponse *, NSURL *, NSError *) = ^(NSURLResponse * response, NSURL * url, NSError * error) {
-       NSString * debug = @"debug";
-   };
+- (void)fetchSqliteRemoteFile:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
+
    [Online_Request downloadSqliteFile:[self getRemoteSqliteDatabase] downloadCompletionBlock:downloadCompletionBlock];
 }
 
