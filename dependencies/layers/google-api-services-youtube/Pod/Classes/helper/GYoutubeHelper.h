@@ -46,4 +46,5 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 
 
 - (NSString *)getRemoteSqliteDatabase;
+- (void)fetchSqliteRemoteFile;
 @end

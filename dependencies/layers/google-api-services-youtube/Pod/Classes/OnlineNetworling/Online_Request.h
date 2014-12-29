@@ -9,6 +9,5 @@
 
 @interface Online_Request : AFHTTPSessionManager
 //+ (Online_Request *)sharedInstance;
-+ (void)downloadSqliteFile;
-
++ (void)downloadSqliteFile:(NSString *)remoteSqliteUrl downloadCompletionBlock:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock;
 @end

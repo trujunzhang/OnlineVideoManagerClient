@@ -8,6 +8,7 @@
 
 
 #import "GYoutubeHelper.h"
+#import "Online_Request.h"
 
 
 static GYoutubeHelper * instance = nil;
@@ -36,9 +37,19 @@ static GYoutubeHelper * instance = nil;
          instance = [[self alloc] init];
 //         instance.domainUrl = @"http://192.168.1.200:8040";
          instance.domainUrl = @"http://192.168.1.103:8040";
+
+         [instance fetchSqliteRemoteFile];
       }
    }
    return (instance);
+}
+
+
+- (void)fetchSqliteRemoteFile {
+   void (^downloadCompletionBlock)(NSURLResponse *, NSURL *, NSError *) = ^(NSURLResponse * response, NSURL * url, NSError * error) {
+
+   };
+   [Online_Request downloadSqliteFile:[self getRemoteSqliteDatabase] downloadCompletionBlock:downloadCompletionBlock];
 }
 
 
