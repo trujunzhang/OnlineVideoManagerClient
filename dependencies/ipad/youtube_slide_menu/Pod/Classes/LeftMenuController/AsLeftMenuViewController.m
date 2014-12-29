@@ -120,7 +120,7 @@
 
 - (void)viewDidLoad {
    [self setCurrentTableView:self.tableView];
-   [self defaultRefreshForSubscriptionList];
+//   [self defaultRefreshForSubscriptionList];
 
    [super viewDidLoad];
 }
