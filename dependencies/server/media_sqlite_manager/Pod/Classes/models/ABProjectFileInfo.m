@@ -74,7 +74,7 @@
 }
 
 
-- (NSString *)getFileInfoThumbnail {
+- (NSString *)getCacheFileInfoThumbnail {
    return [NSString stringWithFormat:@"%@%@.jpg", @"/.cache/thumbnail/", [self encodeAbstractFilePath]];
 }
 @end

@@ -20,5 +20,5 @@
 - (NSString *)JSONValue;
 
 - (NSString *)encodeAbstractFilePath;
-- (NSString *)getFileInfoThumbnail;
+- (NSString *)getCacheFileInfoThumbnail;
 @end

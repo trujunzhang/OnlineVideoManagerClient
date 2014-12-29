@@ -86,7 +86,7 @@ static MobileDB * _dbInstance;
       dbFilePath = [documentFolderPath stringByAppendingPathComponent:@"VideoTrainingDB.db"];
 
 //      BOOL isExist = [self checkSqliteFileExist:dbFilePath];
-      dbFilePath = [[GYoutubeHelper getInstance] getRemoteSqliteDatabase];
+//      dbFilePath = [[GYoutubeHelper getInstance] getRemoteSqliteDatabase];
 
       //"/Volumes/Home/djzhang/Library/Developer/CoreSimulator/Devices/F1B2461C-89B4-48A5-93D7-64546C39189E/data/Containers/Data/Application/A555AF8D-2B06-4422-BA4F-5999156D3ADB/Library/Caches/VideoTrainingDB.db"
       MobileDB * mobileDB = [[MobileDB alloc] initWithFile:dbFilePath];

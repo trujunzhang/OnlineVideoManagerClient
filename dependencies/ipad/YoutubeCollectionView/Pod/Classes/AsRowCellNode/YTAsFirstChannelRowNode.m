@@ -10,8 +10,7 @@
 
 
 @interface YTAsFirstChannelRowNode () {
-   ASImageNode * _videoCoverThumbnailsNode;
-   YKDirectVideo * _directVideo;
+   ASNetworkImageNode * _videoCoverThumbnailsNode;
 }
 
 @property(nonatomic) CGFloat durationLabelWidth;
@@ -25,13 +24,13 @@
 
 
 - (void)makeRowNode {
-   _videoCoverThumbnailsNode = [[ASImageNode alloc] init];
+   _videoCoverThumbnailsNode = [[ASNetworkImageNode alloc] init];
+   _videoCoverThumbnailsNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor();
+
    NSString * playListThumbnails = [YoutubeParser getPlayListThumbnailsGeneratedFromVideo:self.nodeInfo];
 
-   _directVideo = [[YKDirectVideo alloc] initWithContent:[NSURL URLWithString:playListThumbnails]];
-   [_directVideo thumbImage:YKQualityLow completion:^(UIImage * thumbImage, NSError * error) {
-       _videoCoverThumbnailsNode.image = thumbImage;
-   }];
+   _videoCoverThumbnailsNode.URL = [NSURL URLWithString:playListThumbnails];
+
    _videoCoverThumbnailsNode.contentMode = UIViewContentModeScaleToFill;
 
    [self addSubnode:_videoCoverThumbnailsNode];

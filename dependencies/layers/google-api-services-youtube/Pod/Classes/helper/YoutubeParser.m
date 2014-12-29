@@ -85,9 +85,9 @@
 
 + (NSString *)getPlayListThumbnailsGeneratedFromVideo:(YTYouTubePlayList *)playList {
    NSString * playListThumbnail = [playList getPlayListThumbnailGeneratedFromVideo];
+
    NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
-   NSString * stringWithFormat = [NSString stringWithFormat:@"%@%@", domain, playListThumbnail];
-   return stringWithFormat;
+   return [NSString stringWithFormat:@"%@%@", domain, playListThumbnail];
 }
 
 
