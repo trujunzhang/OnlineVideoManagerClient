@@ -65,8 +65,8 @@ traverse()
 #(cd $1; traverse 0)
 
 
-dir='/Volumes/macshare/MacPE/Lynda.com'
 #dir='/Volumes/macshare/MacPE/Lynda.com'
+dir='/Volumes/XBMC/ShareAFP/Online Tutorial/Video Training/Lynda.com'
 
 
 cacheDir="$dir/.cache"
