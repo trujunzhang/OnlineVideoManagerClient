@@ -11,8 +11,7 @@
 
 
 @interface YTAsFirstVideoRowNode () {
-   ASImageNode * _videoCoverThumbnailsNode;
-   YKDirectVideo * _directVideo;
+   ASNetworkImageNode * _videoCoverThumbnailsNode;
 }
 
 @property(nonatomic) CGFloat durationLabelWidth;
@@ -26,14 +25,14 @@
 
 
 - (void)makeRowNode {
-   _videoCoverThumbnailsNode = [[ASImageNode alloc] init];
-   _videoCoverThumbnailsNode.contentMode = UIViewContentModeScaleToFill;
+   _videoCoverThumbnailsNode = [[ASNetworkImageNode alloc] init];
+   _videoCoverThumbnailsNode.backgroundColor = ASDisplayNodeDefaultPlaceholderColor();
 
-   NSString * videoThumbnails = [YoutubeParser getVideoThumbnailsGeneratedFromVideo:self.nodeInfo];
-   _directVideo = [[YKDirectVideo alloc] initWithContent:[NSURL URLWithString:videoThumbnails]];
-   [_directVideo thumbImage:YKQualityLow completion:^(UIImage * thumbImage, NSError * error) {
-       _videoCoverThumbnailsNode.image = thumbImage;
-   }];
+   NSString * playListThumbnails = [YoutubeParser getVideoThumbnailsGeneratedFromVideo:self.nodeInfo];
+
+   _videoCoverThumbnailsNode.URL = [NSURL URLWithString:playListThumbnails];
+
+   _videoCoverThumbnailsNode.contentMode = UIViewContentModeScaleToFill;
 
    [self addSubnode:_videoCoverThumbnailsNode];
 
@@ -68,8 +67,9 @@
 
 //YTYouTubePlayList
 - (void)buttonTapped:(id)buttonTapped {
+   NSString * videoThumbnails = [YoutubeParser getVideoThumbnailsGeneratedFromVideo:self.nodeInfo];
+   YKDirectVideo * _directVideo = [[YKDirectVideo alloc] initWithContent:[NSURL URLWithString:videoThumbnails]];
    [_directVideo play:YKQualityLow];
-//   [[MxTabBarManager sharedTabBarManager] pushWithVideo:self.nodeInfo];
 }
 
 @end

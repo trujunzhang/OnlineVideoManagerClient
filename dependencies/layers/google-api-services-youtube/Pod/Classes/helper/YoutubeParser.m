@@ -67,10 +67,10 @@
 
 
 + (NSString *)getVideoThumbnailsGeneratedFromVideo:(YTYouTubeVideoCache *)fileInfo {
-   NSString * playListThumbnail = [fileInfo encodeAbstractFilePath];
+   NSString * playListThumbnail = [fileInfo getCacheFileInfoThumbnail];
+
    NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
-   NSString * stringWithFormat = [NSString stringWithFormat:@"%@%@", domain, playListThumbnail];
-   return stringWithFormat;
+   return [NSString stringWithFormat:@"%@%@", domain, playListThumbnail];
 }
 
 
