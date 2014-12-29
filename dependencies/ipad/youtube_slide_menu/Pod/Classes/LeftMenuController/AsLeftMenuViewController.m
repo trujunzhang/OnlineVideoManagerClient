@@ -138,8 +138,7 @@
 
 
 - (void)leftMenuReloadTable {
-
-
+   [_tableView reloadData];
 }
 
 
