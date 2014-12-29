@@ -73,7 +73,6 @@
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
    NSString * key = [[expertise allKeys] objectAtIndex:row];
-   NSLog(@"row = %li", row);
    NSInteger column = [[tableColumn identifier] intValue];
    if (column == 0)
       return key;
