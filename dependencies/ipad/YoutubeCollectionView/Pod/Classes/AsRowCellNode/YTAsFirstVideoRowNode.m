@@ -68,7 +68,9 @@
 //YTYouTubePlayList
 - (void)buttonTapped:(id)buttonTapped {
    NSString * videoThumbnails = [YoutubeParser getVideoOnlineUrl:self.nodeInfo];
+
    YKDirectVideo * _directVideo = [[YKDirectVideo alloc] initWithContent:[NSURL URLWithString:videoThumbnails]];
+
    [_directVideo play:YKQualityLow];
 }
 
