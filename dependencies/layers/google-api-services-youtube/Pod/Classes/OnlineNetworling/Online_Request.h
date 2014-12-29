@@ -8,5 +8,7 @@
 
 
 @interface Online_Request : AFHTTPSessionManager
-+ (Online_Request *)sharedInstance;
+//+ (Online_Request *)sharedInstance;
++ (void)downloadSqliteFile;
+
 @end

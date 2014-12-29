@@ -11,28 +11,53 @@
 }
 
 
-+ (Online_Request *)sharedInstance {
-   static Online_Request * _sharedClient = nil;
-   static dispatch_once_t onceToken;
-   dispatch_once(&onceToken, ^{
-       NSURL * baseURL = [NSURL URLWithString:@"http://192.168.1.103:8040/"];
+//+ (Online_Request *)sharedInstance {
+//   static Online_Request * _sharedClient = nil;
+//   static dispatch_once_t onceToken;
+//   dispatch_once(&onceToken, ^{
+//       NSURL * baseURL = [NSURL URLWithString:@"http://192.168.1.103:8040/"];
+//
+//       NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
+//       [config setHTTPAdditionalHeaders:@{ @"User-Agent" : @"APIs-Google" }];
+//
+//       NSURLCache * cache = [[NSURLCache alloc] initWithMemoryCapacity:10 * 1024 * 1024
+//                                                          diskCapacity:50 * 1024 * 1024
+//                                                              diskPath:nil];
+//
+//       [config setURLCache:cache];
+//
+//       _sharedClient = [[Online_Request alloc] initWithBaseURL:baseURL
+//                                          sessionConfiguration:config];
+//       _sharedClient.responseSerializer = [AFHTTPResponseSerializer serializer];
+//
+//       [_sharedClient downloadSqliteFile];
+//
+//   });
+//
+//   return _sharedClient;
+//}
 
-       NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
-       [config setHTTPAdditionalHeaders:@{ @"User-Agent" : @"APIs-Google" }];
 
-       NSURLCache * cache = [[NSURLCache alloc] initWithMemoryCapacity:10 * 1024 * 1024
-                                                          diskCapacity:50 * 1024 * 1024
-                                                              diskPath:nil];
++ (void)downloadSqliteFile:(NSString *)remoteSqliteUrl downloadCompletionBlock:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
+   NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+   AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
 
-       [config setURLCache:cache];
+   NSURL * URL = [NSURL URLWithString:remoteSqliteUrl];
+   NSURLRequest * request = [NSURLRequest requestWithURL:URL];
 
-       _sharedClient = [[Online_Request alloc] initWithBaseURL:baseURL
-                                          sessionConfiguration:config];
-       _sharedClient.responseSerializer = [AFHTTPResponseSerializer serializer];
-
-   });
-
-   return _sharedClient;
+   NSURLSessionDownloadTask * downloadTask =
+    [manager downloadTaskWithRequest:request
+                            progress:nil
+                         destination:^NSURL *(NSURL * targetPath, NSURLResponse * response) {
+                             NSURL * documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory
+                                                                                                    inDomain:NSUserDomainMask
+                                                                                           appropriateForURL:nil
+                                                                                                      create:NO
+                                                                                                       error:nil];
+                             return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+                         }
+                   completionHandler:downloadCompletionBlock];
+   [downloadTask resume];
 }
 
 @end
