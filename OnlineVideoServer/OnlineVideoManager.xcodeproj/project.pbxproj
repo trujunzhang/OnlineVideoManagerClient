@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E1321461A4CF5BF001A6694 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1321451A4CF5BF001A6694 /* AppDelegate.m */; };
+		5E1321481A4CF5BF001A6694 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1321471A4CF5BF001A6694 /* main.m */; };
+		5E13214B1A4CF5BF001A6694 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E13214A1A4CF5BF001A6694 /* ViewController.m */; };
+		5E13214D1A4CF5BF001A6694 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E13214C1A4CF5BF001A6694 /* Images.xcassets */; };
+		5E1321501A4CF5BF001A6694 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E13214E1A4CF5BF001A6694 /* Main.storyboard */; };
+		5E13215C1A4CF5BF001A6694 /* OnlineVideoManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E13215B1A4CF5BF001A6694 /* OnlineVideoManagerTests.m */; };
+		6A7C64380D4CB5ACE2335D1D /* libPods-OnlineVideoManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 329A6D1F37A77FBE001F2633 /* libPods-OnlineVideoManager.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5E1321561A4CF5BF001A6694 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E1321371A4CF5BF001A6694 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E13213E1A4CF5BF001A6694;
+			remoteInfo = OnlineVideoManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0EE417D8C1E2D09B454E3308 /* Pods-OnlineVideoManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineVideoManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnlineVideoManager/Pods-OnlineVideoManager.release.xcconfig"; sourceTree = "<group>"; };
+		28554156E062AA8448540B56 /* Pods-OnlineVideoManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnlineVideoManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnlineVideoManager/Pods-OnlineVideoManager.debug.xcconfig"; sourceTree = "<group>"; };
+		329A6D1F37A77FBE001F2633 /* libPods-OnlineVideoManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OnlineVideoManager.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E13213F1A4CF5BF001A6694 /* OnlineVideoManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlineVideoManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E1321431A4CF5BF001A6694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E1321441A4CF5BF001A6694 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5E1321451A4CF5BF001A6694 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5E1321471A4CF5BF001A6694 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5E1321491A4CF5BF001A6694 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5E13214A1A4CF5BF001A6694 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5E13214C1A4CF5BF001A6694 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5E13214F1A4CF5BF001A6694 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5E1321551A4CF5BF001A6694 /* OnlineVideoManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlineVideoManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E13215A1A4CF5BF001A6694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E13215B1A4CF5BF001A6694 /* OnlineVideoManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlineVideoManagerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5E13213C1A4CF5BF001A6694 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A7C64380D4CB5ACE2335D1D /* libPods-OnlineVideoManager.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E1321521A4CF5BF001A6694 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		014F06E4AA3D403E60168014 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				28554156E062AA8448540B56 /* Pods-OnlineVideoManager.debug.xcconfig */,
+				0EE417D8C1E2D09B454E3308 /* Pods-OnlineVideoManager.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		46637F5B0E172480A4CDF3F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				329A6D1F37A77FBE001F2633 /* libPods-OnlineVideoManager.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E1321361A4CF5BF001A6694 = {
+			isa = PBXGroup;
+			children = (
+				5E1321411A4CF5BF001A6694 /* OnlineVideoManager */,
+				5E1321581A4CF5BF001A6694 /* OnlineVideoManagerTests */,
+				5E1321401A4CF5BF001A6694 /* Products */,
+				014F06E4AA3D403E60168014 /* Pods */,
+				46637F5B0E172480A4CDF3F7 /* Frameworks */,
+				65B8CE94ECCC55A1D76AF7C5,
+				65B8CF7F176DA331DA8F367D,
+				65B8C239522ADE61306BD0E5,
+				65B8C394A1633DFCDFBB5428,
+				65B8C3876EA8F1F37534B6AC,
+				65B8C3CFAA380B4DCF186BAA,
+				65B8CDC2EB7518C33E9C10ED /* DatabaseConstant.m */,
+				65B8CF8E5801ED04CC159DB6 /* DatabaseConstant.h */,
+			);
+			sourceTree = "<group>";
+		};
+		5E1321401A4CF5BF001A6694 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E13213F1A4CF5BF001A6694 /* OnlineVideoManager.app */,
+				5E1321551A4CF5BF001A6694 /* OnlineVideoManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E1321411A4CF5BF001A6694 /* OnlineVideoManager */ = {
+			isa = PBXGroup;
+			children = (
+				5E1321441A4CF5BF001A6694 /* AppDelegate.h */,
+				5E1321451A4CF5BF001A6694 /* AppDelegate.m */,
+				5E1321491A4CF5BF001A6694 /* ViewController.h */,
+				5E13214A1A4CF5BF001A6694 /* ViewController.m */,
+				5E13214C1A4CF5BF001A6694 /* Images.xcassets */,
+				5E13214E1A4CF5BF001A6694 /* Main.storyboard */,
+				5E1321421A4CF5BF001A6694 /* Supporting Files */,
+			);
+			path = OnlineVideoManager;
+			sourceTree = "<group>";
+		};
+		5E1321421A4CF5BF001A6694 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5E1321431A4CF5BF001A6694 /* Info.plist */,
+				5E1321471A4CF5BF001A6694 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5E1321581A4CF5BF001A6694 /* OnlineVideoManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				5E13215B1A4CF5BF001A6694 /* OnlineVideoManagerTests.m */,
+				5E1321591A4CF5BF001A6694 /* Supporting Files */,
+			);
+			path = OnlineVideoManagerTests;
+			sourceTree = "<group>";
+		};
+		5E1321591A4CF5BF001A6694 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5E13215A1A4CF5BF001A6694 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E13213E1A4CF5BF001A6694 /* OnlineVideoManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E13215F1A4CF5BF001A6694 /* Build configuration list for PBXNativeTarget "OnlineVideoManager" */;
+			buildPhases = (
+				1BCE3FBA7F515C3323B41FF8 /* Check Pods Manifest.lock */,
+				5E13213B1A4CF5BF001A6694 /* Sources */,
+				5E13213C1A4CF5BF001A6694 /* Frameworks */,
+				5E13213D1A4CF5BF001A6694 /* Resources */,
+				26B60664DFEA1FB8D56104DE /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OnlineVideoManager;
+			productName = OnlineVideoManager;
+			productReference = 5E13213F1A4CF5BF001A6694 /* OnlineVideoManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5E1321541A4CF5BF001A6694 /* OnlineVideoManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E1321621A4CF5BF001A6694 /* Build configuration list for PBXNativeTarget "OnlineVideoManagerTests" */;
+			buildPhases = (
+				5E1321511A4CF5BF001A6694 /* Sources */,
+				5E1321521A4CF5BF001A6694 /* Frameworks */,
+				5E1321531A4CF5BF001A6694 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E1321571A4CF5BF001A6694 /* PBXTargetDependency */,
+			);
+			name = OnlineVideoManagerTests;
+			productName = OnlineVideoManagerTests;
+			productReference = 5E1321551A4CF5BF001A6694 /* OnlineVideoManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E1321371A4CF5BF001A6694 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = djzhang;
+				TargetAttributes = {
+					5E13213E1A4CF5BF001A6694 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					5E1321541A4CF5BF001A6694 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 5E13213E1A4CF5BF001A6694;
+					};
+				};
+			};
+			buildConfigurationList = 5E13213A1A4CF5BF001A6694 /* Build configuration list for PBXProject "OnlineVideoManager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5E1321361A4CF5BF001A6694;
+			productRefGroup = 5E1321401A4CF5BF001A6694 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+			);
+			projectRoot = "";
+			targets = (
+				5E13213E1A4CF5BF001A6694 /* OnlineVideoManager */,
+				5E1321541A4CF5BF001A6694 /* OnlineVideoManagerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5E13213D1A4CF5BF001A6694 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E13214D1A4CF5BF001A6694 /* Images.xcassets in Resources */,
+				5E1321501A4CF5BF001A6694 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E1321531A4CF5BF001A6694 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BCE3FBA7F515C3323B41FF8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		26B60664DFEA1FB8D56104DE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OnlineVideoManager/Pods-OnlineVideoManager-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E13213B1A4CF5BF001A6694 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E13214B1A4CF5BF001A6694 /* ViewController.m in Sources */,
+				5E1321481A4CF5BF001A6694 /* main.m in Sources */,
+				5E1321461A4CF5BF001A6694 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E1321511A4CF5BF001A6694 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E13215C1A4CF5BF001A6694 /* OnlineVideoManagerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5E1321571A4CF5BF001A6694 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E13213E1A4CF5BF001A6694 /* OnlineVideoManager */;
+			targetProxy = 5E1321561A4CF5BF001A6694 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5E13214E1A4CF5BF001A6694 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E13214F1A4CF5BF001A6694 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5E13215D1A4CF5BF001A6694 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5E13215E1A4CF5BF001A6694 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5E1321601A4CF5BF001A6694 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28554156E062AA8448540B56 /* Pods-OnlineVideoManager.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = OnlineVideoManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5E1321611A4CF5BF001A6694 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EE417D8C1E2D09B454E3308 /* Pods-OnlineVideoManager.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = OnlineVideoManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5E1321631A4CF5BF001A6694 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = OnlineVideoManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OnlineVideoManager.app/Contents/MacOS/OnlineVideoManager";
+			};
+			name = Debug;
+		};
+		5E1321641A4CF5BF001A6694 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = OnlineVideoManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OnlineVideoManager.app/Contents/MacOS/OnlineVideoManager";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E13213A1A4CF5BF001A6694 /* Build configuration list for PBXProject "OnlineVideoManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E13215D1A4CF5BF001A6694 /* Debug */,
+				5E13215E1A4CF5BF001A6694 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E13215F1A4CF5BF001A6694 /* Build configuration list for PBXNativeTarget "OnlineVideoManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E1321601A4CF5BF001A6694 /* Debug */,
+				5E1321611A4CF5BF001A6694 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5E1321621A4CF5BF001A6694 /* Build configuration list for PBXNativeTarget "OnlineVideoManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E1321631A4CF5BF001A6694 /* Debug */,
+				5E1321641A4CF5BF001A6694 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E1321371A4CF5BF001A6694 /* Project object */;
+}
