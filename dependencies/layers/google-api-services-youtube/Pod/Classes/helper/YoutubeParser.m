@@ -66,6 +66,14 @@
 }
 
 
++ (NSString *)getVideoOnlineUrl:(YTYouTubeVideoCache *)fileInfo {
+   NSString * playListThumbnail = [fileInfo encodeAbstractFilePath];
+
+   NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
+   return [NSString stringWithFormat:@"%@%@", domain, playListThumbnail];
+}
+
+
 + (NSString *)getVideoThumbnailsGeneratedFromVideo:(YTYouTubeVideoCache *)fileInfo {
    NSString * playListThumbnail = [fileInfo getCacheFileInfoThumbnail];
 
