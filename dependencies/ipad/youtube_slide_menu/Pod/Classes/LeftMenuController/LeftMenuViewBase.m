@@ -52,7 +52,7 @@
 - (void)viewDidAppear:(BOOL)animated {
    [super viewDidAppear:animated];
 
-   [self togglePageViewController:0 rowIndex:0];   // test
+//   [self togglePageViewController:0 rowIndex:0];   // test
 }
 
 
