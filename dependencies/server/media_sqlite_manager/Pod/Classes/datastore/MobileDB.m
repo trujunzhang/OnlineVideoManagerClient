@@ -85,13 +85,11 @@ static MobileDB * _dbInstance;
       NSString * documentFolderPath = path;//searchPaths[0];
       dbFilePath = [documentFolderPath stringByAppendingPathComponent:@"VideoTrainingDB.db"];
 
-//      BOOL isExist = [self checkSqliteFileExist:dbFilePath];
-//      dbFilePath = [[GYoutubeHelper getInstance] getRemoteSqliteDatabase];
+      BOOL isExist = [self checkSqliteFileExist:dbFilePath];
+      if (isExist) {
+         MobileDB * mobileDB = [[MobileDB alloc] initWithFile:dbFilePath];
+      } else {
 
-      //"/Volumes/Home/djzhang/Library/Developer/CoreSimulator/Devices/F1B2461C-89B4-48A5-93D7-64546C39189E/data/Containers/Data/Application/A555AF8D-2B06-4422-BA4F-5999156D3ADB/Library/Caches/VideoTrainingDB.db"
-      MobileDB * mobileDB = [[MobileDB alloc] initWithFile:dbFilePath];
-      if (!mobileDB) {
-         NSString * debug = @"debug";
       }
    }
 
@@ -100,14 +98,11 @@ static MobileDB * _dbInstance;
 
 
 + (BOOL)checkSqliteFileExist:(NSString *)path {
-   NSFileManager * fileManager = [NSFileManager defaultManager];
+//"/Volumes/Home/djzhang/Library/Developer/CoreSimulator/Devices/F1B2461C-89B4-48A5-93D7-64546C39189E/data/Containers/Data/Application/9B95F76F-B072-4F20-B5EC-8E82B913289C/Library/Caches/VideoTrainingDB.db"
+   BOOL myPathIsDir;
+   BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&myPathIsDir];
 
-   BOOL isDir = FALSE;
-   BOOL isDirExist = [fileManager fileExistsAtPath:path isDirectory:&isDir];
-   if (!(isDirExist && isDir)) {
-
-   }
-   return NO;
+   return fileExists;
 }
 
 
