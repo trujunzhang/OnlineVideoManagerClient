@@ -24,6 +24,9 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/model/*.{h,m}'
   end
 
+  s.subspec 'OnlineNetworling' do |sub|
+    sub.source_files = 'Pod/Classes/OnlineNetworling/*.{h,m}'
+  end
 
 
 end
