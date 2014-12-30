@@ -10,5 +10,5 @@
 + (void)saveSqliteVersion:(NSString *)version;
 + (NSString *)readSqliteVersion;
 
-+ (BOOL)checkLocalCacheSqliteExist:(NSString *)filePathName;
++ (BOOL)checkLocalCacheSqliteExist;
 @end

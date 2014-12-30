@@ -11,6 +11,7 @@
 #import "Online_Request.h"
 #import "OnlineServerInfo.h"
 #import "ParseHelper.h"
+#import "ParseLocalStore.h"
 
 
 static GYoutubeHelper * instance = nil;
@@ -60,6 +61,13 @@ static GYoutubeHelper * instance = nil;
 
 
 - (BOOL)checkValidateLocalSqlite:(NSString *)version {
+   NSString * lastVersion = [ParseLocalStore readSqliteVersion];
+   [ParseLocalStore saveSqliteVersion:version];
+   if ([ParseLocalStore checkLocalCacheSqliteExist] == YES) {// exist
+      if ([lastVersion isEqualToString:version] == YES) { // the same
+         return YES;
+      }
+   }
 
 
    return NO;

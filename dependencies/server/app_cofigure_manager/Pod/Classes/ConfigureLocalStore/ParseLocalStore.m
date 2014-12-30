@@ -20,14 +20,22 @@
 + (NSString *)readSqliteVersion {
    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
    if ([defaults objectForKey:@"sqlite_version"]) {
-      return [NSKeyedUnarchiver unarchiveObjectWithData:[defaults objectForKey:@"sqlite_version"]];
+      return [defaults objectForKey:@"sqlite_version"];
    }
 
    return @"";
 }
 
 
-+ (BOOL)checkLocalCacheSqliteExist:(NSString *)filePathName {
++ (BOOL)checkLocalCacheSqliteExist {
+   NSURL * documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory
+                                                                          inDomain:NSUserDomainMask
+                                                                 appropriateForURL:nil
+                                                                            create:NO
+                                                                             error:nil];
+   NSURL * sqlitePathUrl = [documentsDirectoryURL URLByAppendingPathComponent:@"VideoTrainingDB.db"];
+   NSString * filePathName = [sqlitePathUrl path];
+
    BOOL myPathIsDir;
    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePathName isDirectory:&myPathIsDir];
 

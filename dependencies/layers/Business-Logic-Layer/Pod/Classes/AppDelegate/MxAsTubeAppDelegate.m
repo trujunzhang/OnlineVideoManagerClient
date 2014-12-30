@@ -19,6 +19,7 @@
 #import "CollectionConstant.h"
 #import "SqliteManager.h"
 #import "GYoutubeHelper.h"
+#import "ParseLocalStore.h"
 #import <Parse/Parse.h>
 
 
@@ -58,6 +59,7 @@
    [DebugUtils listAppHomeInfo];
 
    [YTCacheImplement removeAllCacheDiskObjects];
+
 
    [[GYoutubeHelper getInstance] initOnlineClient:^(NSURLResponse * response, NSURL * url, NSError * error) {
        if (error) {
