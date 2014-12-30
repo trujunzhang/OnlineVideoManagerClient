@@ -7,15 +7,14 @@ target 'OnlineVideoClient', :exclusive => true do
 
   pod 'AsyncDisplayKit', :git => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AsyncDisplayKit'
 
-  pod 'Reveal-iOS-SDK'
-  pod 'pop', '~> 1.0.7'
-  pod 'SDWebImage', '~> 100.7.1'
+  pod 'Reveal-iOS-SDK', '~> 111.1.1'
+  pod 'pop', '~> 111.1.1'
+  pod 'SDWebImage', '~> 111.1.1'
+  pod 'parse', '~> 111.1.1'
 
   #pod 'NSLogger', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/NSLogger'
 
   pod 'Regexer', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/Regexer'
-
-  #pod 'MagicalRecord', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/MagicalRecord'
 
   # ________________open projects___________________
   pod "GGTabBar", :path => "../dependencies/lib/GGTabBar"
@@ -50,6 +49,7 @@ target 'OnlineVideoClient', :exclusive => true do
 
   pod 'ABSQLite', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/ABSQLite'
   pod 'media_sqlite_manager', :path => '../dependencies/server/media_sqlite_manager'
+  pod 'app_cofigure_manager', :path => '../dependencies/server/app_cofigure_manager'
 
 
 end
