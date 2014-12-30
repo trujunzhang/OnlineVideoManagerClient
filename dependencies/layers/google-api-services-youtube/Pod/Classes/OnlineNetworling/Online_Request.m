@@ -44,8 +44,6 @@
 
    //"http://192.168.1.103:8040/XBMC/ShareAFP/Online Tutorial/Video Training/Lynda.com/.cache/VideoTrainingDB.db"
    NSURL * URL = [NSURL URLWithString:remoteSqliteUrl];
-   NSURL * URL2 = [NSURL URLWithString:@"http://www.baidu.com"];
-   NSURL * URL1 = [NSURL URLWithString:@"http://www.baidu.com/Online Tutorial"];
 
    NSURLRequest * request = [NSURLRequest requestWithURL:URL];
 

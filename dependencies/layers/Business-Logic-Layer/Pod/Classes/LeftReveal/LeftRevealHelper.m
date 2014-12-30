@@ -42,8 +42,8 @@ LeftRevealHelper * instance;
 
    // 2
    if (hasShowLeftMenu) {
-      self.isRearOpen = YES; // used
-      [self openLeftMenu];   // used
+//      self.isRearOpen = YES; // used
+//      [self openLeftMenu];   // used
    }
 }
 
