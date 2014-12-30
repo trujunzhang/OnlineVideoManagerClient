@@ -15,4 +15,5 @@
 
 + (OnlineServerInfo *)standardServerInfo;
 - (NSString *)getCurrentDomainUrl;
+- (NSString *)getRemoteSqliteDatabase;
 @end

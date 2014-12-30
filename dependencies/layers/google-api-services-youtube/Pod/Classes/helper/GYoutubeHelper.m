@@ -58,7 +58,7 @@ static GYoutubeHelper * instance = nil;
 
 
 - (void)fetchSqliteRemoteFile:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
-   [Online_Request downloadSqliteFile:[self getRemoteSqliteDatabase] downloadCompletionBlock:downloadCompletionBlock];
+   [Online_Request downloadSqliteFile:[self.onlineServerInfo getRemoteSqliteDatabase] downloadCompletionBlock:downloadCompletionBlock];
 }
 
 
@@ -77,10 +77,7 @@ static GYoutubeHelper * instance = nil;
 }
 
 
-- (NSString *)getRemoteSqliteDatabase {
-   return [NSString stringWithFormat:@"%@/%@/%@",
-                                     [self.onlineServerInfo getCurrentDomainUrl],
-                                     [self.onlineServerInfo cacheThumbmail],
-                                     @"VideoTrainingDB.db"];
-}
+
+
+
 @end

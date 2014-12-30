@@ -61,7 +61,7 @@
 
    [[GYoutubeHelper getInstance] initOnlineClient:^(NSURLResponse * response, NSURL * url, NSError * error) {
        if (error) {
-          NSString * debug = @"debug";
+//          NSString * debug = @"debug";
        } else {
           [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
        }

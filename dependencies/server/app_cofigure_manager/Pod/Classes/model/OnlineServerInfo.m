@@ -4,6 +4,7 @@
 //
 
 #import "OnlineServerInfo.h"
+#import "NSString+PJR.h"
 
 
 @interface OnlineServerInfo () {
@@ -30,7 +31,19 @@
 
 
 - (NSString *)getCurrentDomainUrl {
-   return [NSString stringWithFormat:@"%@:%@", self.domainHost, self.domainPort];
+   NSString * string = [NSString stringWithFormat:@"%@:%@", self.domainHost, self.domainPort];
+   [string replaceCharcter:@"\n" withCharcter:@""];
+   return string;
 }
 
+
+- (NSString *)getRemoteSqliteDatabase {
+   NSString * string = [NSString stringWithFormat:@"%@/%@/%@",
+                                                  [self getCurrentDomainUrl],
+                                                  [self cacheThumbmail],
+                                                  @"VideoTrainingDB.db"];
+   string = [string replaceCharcter:@"\n" withCharcter:@""];
+   string = [string replaceCharcter:@" " withCharcter:@"%20"];
+   return string;
+}
 @end
