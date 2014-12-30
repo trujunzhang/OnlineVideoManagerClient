@@ -12,7 +12,18 @@
 
 }
 
-+ (void)saveOnlineVideoInfo:(OnlineServerInfo *)serverInfo {
+- (ParseHelper *)sharedTabBarManager {
+   static ParseHelper * cache;
+   static dispatch_once_t onceToken;
+   dispatch_once(&onceToken, ^{
+       cache = [[ParseHelper alloc] init];
+   });
+
+   return cache;
+}
+
+
+- (void)saveOnlineVideoInfo:(OnlineServerInfo *)serverInfo {
    PFObject * gameScore = [PFObject objectWithClassName:@"OnlineServerInfo"];
 
    gameScore[@"domainHost"] = serverInfo.domainHost;//@"http://192.168.1.103";
@@ -23,17 +34,17 @@
 }
 
 
-+ (void)readOnlineVideoInfo:(ParseHelperResultBlock)parseHelperResultBlock {
+- (void)readOnlineVideoInfo:(ParseHelperResultBlock)parseHelperResultBlock {
    PFQuery * query = [PFQuery queryWithClassName:@"GameScore"];
    [query getObjectInBackgroundWithId:@"xWMyZ4YEGZ" block:^(PFObject * gameScore, NSError * error) {
        // Do something with the returned PFObject in the gameScore variable.
-       OnlineServerInfo * onlineServerInfo = [ParseHelper parseInfo:gameScore];
+       OnlineServerInfo * onlineServerInfo = [self parseInfo:gameScore];
        parseHelperResultBlock(onlineServerInfo, error);
    }];
 }
 
 
-+ (OnlineServerInfo *)parseInfo:(PFObject *)gameScore {
+- (OnlineServerInfo *)parseInfo:(PFObject *)gameScore {
    OnlineServerInfo * serverInfo = [[OnlineServerInfo alloc] init];
 
    serverInfo.domainHost = gameScore[@"domainHost"];

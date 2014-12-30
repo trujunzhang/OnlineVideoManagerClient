@@ -11,5 +11,7 @@ typedef void (^ParseHelperResultBlock)(OnlineServerInfo * object, NSError * erro
 
 @interface ParseHelper : NSObject
 
-+ (OnlineServerInfo *)parseInfo:(PFObject *)object;
+- (void)saveOnlineVideoInfo:(OnlineServerInfo *)serverInfo;
+- (void)readOnlineVideoInfo:(ParseHelperResultBlock)parseHelperResultBlock;
+
 @end
