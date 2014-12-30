@@ -9,6 +9,7 @@
 
 #import "GYoutubeHelper.h"
 #import "Online_Request.h"
+#import "OnlineServerInfo.h"
 
 
 static GYoutubeHelper * instance = nil;
@@ -17,7 +18,7 @@ static GYoutubeHelper * instance = nil;
 @interface GYoutubeHelper () {
 
 }
-@property(nonatomic, strong) NSString * domainUrl;
+
 @end
 
 
@@ -36,7 +37,7 @@ static GYoutubeHelper * instance = nil;
       if (instance == nil) {
          instance = [[self alloc] init];
 //         instance.domainUrl = @"http://192.168.1.200:8040";
-         instance.domainUrl = @"http://192.168.1.103:8040";
+//         instance.domainUrl = @"http://192.168.1.103:8040";
       }
    }
    return (instance);
@@ -50,7 +51,7 @@ static GYoutubeHelper * instance = nil;
 
 
 - (NSString *)getCurrentDomainUrl {
-   return self.domainUrl;
+   return self.onlineServerInfo.;
 }
 
 
@@ -65,6 +66,9 @@ static GYoutubeHelper * instance = nil;
 
 
 - (NSString *)getRemoteSqliteDatabase {
-   return [NSString stringWithFormat:@"%@/%@/%@", self.domainUrl, @".cache", @"VideoTrainingDB.db"];
+   return [NSString stringWithFormat:@"%@/%@/%@",
+                                     [self.onlineServerInfo getCurrentDomainUrl],
+                                     @".cache",
+                                     @"VideoTrainingDB.db"];
 }
 @end

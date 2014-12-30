@@ -6,7 +6,21 @@
 #import "OnlineServerInfo.h"
 
 
+@interface OnlineServerInfo () {
+
+}
+
+@property(nonatomic, strong) NSString * domainUrl;
+@end
+
+
 @implementation OnlineServerInfo {
 
 }
+
+
+- (NSString *)getCurrentDomainUrl {
+   return [NSString stringWithFormat:@"%@:%@", self.domainHost, self.domainPort];
+}
+
 @end

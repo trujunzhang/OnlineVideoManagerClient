@@ -44,7 +44,7 @@
 
 
 - (void)readOnlineVideoInfo:(ParseHelperResultBlock)parseHelperResultBlock {
-   PFQuery * query = [PFQuery queryWithClassName:@"GameScore"];
+   PFQuery * query = [PFQuery queryWithClassName:@"OnlineServerInfo"];
    [query getObjectInBackgroundWithId:@"xWMyZ4YEGZ" block:^(PFObject * gameScore, NSError * error) {
        // Do something with the returned PFObject in the gameScore variable.
        OnlineServerInfo * onlineServerInfo = [self parseInfo:gameScore];

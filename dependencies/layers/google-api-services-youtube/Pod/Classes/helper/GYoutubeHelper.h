@@ -14,6 +14,7 @@
 
 
 @class GYoutubeRequestInfo;
+@class OnlineServerInfo;
 
 typedef void (^YoutubeResponseBlock)(NSArray * array, NSObject * respObject);
 typedef void (^ErrorResponseBlock)(NSError * error);
@@ -33,8 +34,9 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 // Accessor for the app's single instance of the service object.
 @property(nonatomic) BOOL isSignedIn;
 
-
 + (GYoutubeHelper *)getInstance;
+
+@property(nonatomic, strong) OnlineServerInfo * onlineServerInfo;
 
 
 - (NSString *)getCurrentDomainUrl;

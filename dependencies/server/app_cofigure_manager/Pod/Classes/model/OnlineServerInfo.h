@@ -13,4 +13,5 @@
 @property(nonatomic, strong) NSString * domainPort;
 @property(nonatomic, strong) NSString * cacheThumbmail;
 
+- (NSString *)getCurrentDomainUrl;
 @end
