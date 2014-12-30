@@ -20,5 +20,9 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/parse-config/*.{h,m}'
   end
 
+  s.subspec 'ConfigureLocalStore' do |sub|
+    sub.source_files = 'Pod/Classes/ConfigureLocalStore/*.{h,m}'
+  end
+
 end
 
