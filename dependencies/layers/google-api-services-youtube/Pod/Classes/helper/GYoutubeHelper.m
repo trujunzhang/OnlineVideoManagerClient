@@ -45,13 +45,12 @@ static GYoutubeHelper * instance = nil;
        if (error) {
           downloadCompletionBlock(nil, nil, error);
        } else {
-          // 2
-          [self fetchSqliteRemoteFile:^(NSURLResponse * response, NSURL * url, NSError * error) {
-
-          }];
+          // 2.
+          self.onlineServerInfo = object;
+          [self fetchSqliteRemoteFile:downloadCompletionBlock];
        }
    };
-   // 1
+   // 1.
    [[ParseHelper sharedParseHelper] readOnlineVideoInfo:parseHelperResultBlock];
 
 //   [[ParseHelper sharedParseHelper] saveOnlineVideoInfo:[OnlineServerInfo standardServerInfo]];// test

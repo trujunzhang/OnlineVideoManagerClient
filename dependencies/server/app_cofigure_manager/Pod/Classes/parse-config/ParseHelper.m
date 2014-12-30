@@ -9,7 +9,7 @@
 #import <Bolts/BFTask.h>
 
 
-static NSString * const parseClassID = @"9RQwiYQhBS123";
+static NSString * const parseClassID = @"9RQwiYQhBS";
 
 
 @implementation ParseHelper {
