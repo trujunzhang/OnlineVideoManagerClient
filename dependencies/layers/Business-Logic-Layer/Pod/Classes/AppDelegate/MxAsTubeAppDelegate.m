@@ -19,6 +19,7 @@
 #import "CollectionConstant.h"
 #import "SqliteManager.h"
 #import "GYoutubeHelper.h"
+#import <Parse/Parse.h>
 
 
 @interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate> {
@@ -53,12 +54,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+   [self setupParse:launchOptions];
    [DebugUtils listAppHomeInfo];
 
    [YTCacheImplement removeAllCacheDiskObjects];
 
    [[GYoutubeHelper getInstance] initOnlineClient:^(NSURLResponse * response, NSURL * url, NSError * error) {
-       [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
+       if (error) {
+
+       } else {
+          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
+       }
    }];
 
    //1
@@ -96,6 +102,22 @@
    [self.window makeKeyAndVisible];
 
    return YES;
+}
+
+
+- (void)setupParse:(NSDictionary *)launchOptions {
+   // [Optional] Power your app with Local Datastore. For more info, go to
+   // https://parse.com/docs/ios_guide#localdatastore/iOS
+   [Parse enableLocalDatastore];
+
+   // Initialize Parse.
+   [Parse setApplicationId:@"8Id3t8ZCSPCD0iEtULgTk6Sq4W34rUcddIQa1UWo"
+                 clientKey:@"BSOzdsLvkNpDugGQWBksKSKVLxyxJGsI5Y3Tp9gk"];
+
+   // [Optional] Track statistics around application opens.
+   [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+
 }
 
 

@@ -9,6 +9,9 @@
 #import <Bolts/BFTask.h>
 
 
+static NSString * const parseClassID = @"9RQwiYQhBS123";
+
+
 @implementation ParseHelper {
 
 }
@@ -45,10 +48,23 @@
 
 - (void)readOnlineVideoInfo:(ParseHelperResultBlock)parseHelperResultBlock {
    PFQuery * query = [PFQuery queryWithClassName:@"OnlineServerInfo"];
-   [query getObjectInBackgroundWithId:@"xWMyZ4YEGZ" block:^(PFObject * gameScore, NSError * error) {
-       // Do something with the returned PFObject in the gameScore variable.
-       OnlineServerInfo * onlineServerInfo = [self parseInfo:gameScore];
-       parseHelperResultBlock(onlineServerInfo, error);
+   [query getObjectInBackgroundWithId:parseClassID block:^(PFObject * gameScore, NSError * error) {
+
+       if (error) {
+          // 1. Fetching local cache Objects
+//          ParseHelperResultBlock localResultBlock = ^(OnlineServerInfo * object, NSError * error) {
+//              parseHelperResultBlock(object, error);
+//          };
+//          [self readLocalVideoInfo:localResultBlock];
+          parseHelperResultBlock(nil, error);
+       } else {
+          // 1. Fetching Objects to parse Server
+          OnlineServerInfo * onlineServerInfo = [self parseInfo:gameScore];
+          parseHelperResultBlock(onlineServerInfo, error);
+
+          // 2. Save Objects to local to cache it
+          [self saveLocalVideoInfo:onlineServerInfo];
+       }
    }];
 }
 
@@ -83,11 +99,25 @@
 #pragma mark Retrieving Objects from the Local Datastore
 
 
-- (void)readLocalVideoInfo:(ParseHelperResultBlock)parseHelperResultBlock {
+- (void)readLocalVideoInfo:(ParseHelperResultBlock)pFunction {
+   PFObject * object = [PFObject objectWithoutDataWithClassName:@"OnlineServerInfo" objectId:@"9RQwiYQhBS"];
+   [[object fetchFromLocalDatastoreInBackground] continueWithBlock:^id(BFTask * task) {
+       if (task.error) {
+          // something went wrong
+          return task;
+       }
+
+       // task.result will be your game score
+       return task;
+   }];
+}
+
+
+- (void)readLocalVideoInfo123:(ParseHelperResultBlock)parseHelperResultBlock {
    PFQuery * query = [PFQuery queryWithClassName:@"OnlineServerInfo"];
    [query fromLocalDatastore];
 
-   BFTask * bfTask = [query getObjectInBackgroundWithId:@"xWMyZ4YEGZ"];
+   BFTask * bfTask = [query getObjectInBackgroundWithId:@"9RQwiYQhBS"];
 
    BFContinuationBlock continueWithBlock = ^id(BFTask * task) {
        if (task.error) {

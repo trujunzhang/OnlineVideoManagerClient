@@ -42,9 +42,19 @@ static GYoutubeHelper * instance = nil;
 
 - (void)initOnlineClient:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
    ParseHelperResultBlock parseHelperResultBlock = ^(OnlineServerInfo * object, NSError * error) {
+       if (error) {
+          downloadCompletionBlock(nil, nil, error);
+       } else {
+          // 2
+          [self fetchSqliteRemoteFile:^(NSURLResponse * response, NSURL * url, NSError * error) {
 
+          }];
+       }
    };
+   // 1
    [[ParseHelper sharedParseHelper] readOnlineVideoInfo:parseHelperResultBlock];
+
+//   [[ParseHelper sharedParseHelper] saveOnlineVideoInfo:[OnlineServerInfo standardServerInfo]];// test
 }
 
 
@@ -54,7 +64,7 @@ static GYoutubeHelper * instance = nil;
 
 
 - (NSString *)getCurrentDomainUrl {
-   return self.onlineServerInfo.;
+   return [self.onlineServerInfo getCurrentDomainUrl];
 }
 
 
@@ -71,7 +81,7 @@ static GYoutubeHelper * instance = nil;
 - (NSString *)getRemoteSqliteDatabase {
    return [NSString stringWithFormat:@"%@/%@/%@",
                                      [self.onlineServerInfo getCurrentDomainUrl],
-                                     @".cache",
+                                     [self.onlineServerInfo cacheThumbmail],
                                      @"VideoTrainingDB.db"];
 }
 @end
