@@ -34,9 +34,10 @@ static NSString * const parseClassID = @"9RQwiYQhBS";
 - (void)saveOnlineVideoInfo:(OnlineServerInfo *)serverInfo {
    PFObject * gameScore = [PFObject objectWithClassName:@"OnlineServerInfo"];
 
-   gameScore[@"domainHost"] = serverInfo.domainHost;//@"http://192.168.1.103";
-   gameScore[@"domainPort"] = serverInfo.domainPort;//@"8040";
-   gameScore[@"cacheThumbmail"] = serverInfo.cacheThumbmail;//@"/.cache/thumbnail/";
+   gameScore[@"domainHost"] = serverInfo.domainHost;
+   gameScore[@"domainPort"] = serverInfo.domainPort;
+   gameScore[@"cacheThumbmail"] = serverInfo.cacheThumbmail;
+   gameScore[@"version"] = serverInfo.version;
 
    [gameScore saveInBackground];
 }
@@ -75,6 +76,7 @@ static NSString * const parseClassID = @"9RQwiYQhBS";
    serverInfo.domainHost = gameScore[@"domainHost"];
    serverInfo.domainPort = gameScore[@"domainPort"];
    serverInfo.cacheThumbmail = gameScore[@"cacheThumbmail"];
+   serverInfo.version = gameScore[@"version"];
 
    return serverInfo;
 }
@@ -87,9 +89,10 @@ static NSString * const parseClassID = @"9RQwiYQhBS";
 - (void)saveLocalVideoInfo:(OnlineServerInfo *)serverInfo {
    PFObject * gameScore = [PFObject objectWithClassName:@"OnlineServerInfo"];
 
-   gameScore[@"domainHost"] = serverInfo.domainHost;//@"http://192.168.1.103";
-   gameScore[@"domainPort"] = serverInfo.domainPort;//@"8040";
-   gameScore[@"cacheThumbmail"] = serverInfo.cacheThumbmail;//@"/.cache/thumbnail/";
+   gameScore[@"domainHost"] = serverInfo.domainHost;
+   gameScore[@"domainPort"] = serverInfo.domainPort;
+   gameScore[@"cacheThumbmail"] = serverInfo.cacheThumbmail;
+   gameScore[@"version"] = serverInfo.version;
 
    [gameScore pinInBackground];//The Local Datastore
 }

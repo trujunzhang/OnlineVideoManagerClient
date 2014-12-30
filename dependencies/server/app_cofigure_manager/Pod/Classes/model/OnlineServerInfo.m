@@ -25,6 +25,7 @@
    serverInfo.domainHost = @"http://192.168.1.103";
    serverInfo.domainPort = @"8040";
    serverInfo.cacheThumbmail = @"/.cache/thumbnail/";
+   serverInfo.version = @"1.0";
 
    return serverInfo;
 }
