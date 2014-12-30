@@ -11,17 +11,27 @@
 }
 
 + (void)saveSqliteVersion:(NSString *)version {
-
+   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+   [defaults setObject:version forKey:@"sqlite_version"];
+   [defaults synchronize];
 }
 
 
-+ (void)readSqliteVersion:(NSString *)version {
++ (NSString *)readSqliteVersion {
+   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+   if ([defaults objectForKey:@"sqlite_version"]) {
+      return [NSKeyedUnarchiver unarchiveObjectWithData:[defaults objectForKey:@"sqlite_version"]];
+   }
 
+   return @"";
 }
 
 
-+ (BOOL)checkLocalCacheSqliteExist {
-   return YES;
++ (BOOL)checkLocalCacheSqliteExist:(NSString *)filePathName {
+   BOOL myPathIsDir;
+   BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePathName isDirectory:&myPathIsDir];
+
+   return fileExists;
 }
 
 
