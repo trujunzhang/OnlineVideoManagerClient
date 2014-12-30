@@ -45,9 +45,11 @@ static GYoutubeHelper * instance = nil;
        if (error) {
           downloadCompletionBlock(nil, nil, error);
        } else {
-          // 2.
-          self.onlineServerInfo = object;
-          [self fetchSqliteRemoteFile:downloadCompletionBlock];
+          if ([self checkValidateLocalSqlite:object.version] == NO) {
+             // 2.
+             self.onlineServerInfo = object;
+             [self fetchSqliteRemoteFile:downloadCompletionBlock];
+          }
        }
    };
    // 1.
@@ -57,8 +59,16 @@ static GYoutubeHelper * instance = nil;
 }
 
 
+- (BOOL)checkValidateLocalSqlite:(NSString *)version {
+
+
+   return NO;
+}
+
+
 - (void)fetchSqliteRemoteFile:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
-   [Online_Request downloadSqliteFile:[self.onlineServerInfo getRemoteSqliteDatabase] downloadCompletionBlock:downloadCompletionBlock];
+   [Online_Request downloadSqliteFile:[self.onlineServerInfo getRemoteSqliteDatabase]
+              downloadCompletionBlock:downloadCompletionBlock];
 }
 
 
@@ -75,9 +85,6 @@ static GYoutubeHelper * instance = nil;
 
    return self;
 }
-
-
-
 
 
 @end
