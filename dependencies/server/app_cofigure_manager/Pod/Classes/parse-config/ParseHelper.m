@@ -13,7 +13,7 @@
 
 }
 
-- (ParseHelper *)sharedTabBarManager {
++ (ParseHelper *)sharedParseHelper {
    static ParseHelper * cache;
    static dispatch_once_t onceToken;
    dispatch_once(&onceToken, ^{

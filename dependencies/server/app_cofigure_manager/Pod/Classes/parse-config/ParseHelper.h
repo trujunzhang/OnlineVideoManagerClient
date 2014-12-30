@@ -11,7 +11,7 @@ typedef void (^ParseHelperResultBlock)(OnlineServerInfo * object, NSError * erro
 
 @interface ParseHelper : NSObject
 
-- (ParseHelper *)sharedTabBarManager;
++ (ParseHelper *)sharedParseHelper;
 - (void)saveOnlineVideoInfo:(OnlineServerInfo *)serverInfo;
 - (void)readOnlineVideoInfo:(ParseHelperResultBlock)parseHelperResultBlock;
 

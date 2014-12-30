@@ -10,6 +10,7 @@
 #import "GYoutubeHelper.h"
 #import "Online_Request.h"
 #import "OnlineServerInfo.h"
+#import "ParseHelper.h"
 
 
 static GYoutubeHelper * instance = nil;
@@ -24,9 +25,6 @@ static GYoutubeHelper * instance = nil;
 
 @implementation GYoutubeHelper
 
-#pragma mark -
-#pragma mark Global YTServiceYouTube instance
-
 
 #pragma mark -
 #pragma mark GYoutubeHelper Static instance
@@ -36,8 +34,6 @@ static GYoutubeHelper * instance = nil;
    @synchronized (self) {
       if (instance == nil) {
          instance = [[self alloc] init];
-
-
       }
    }
    return (instance);
@@ -45,7 +41,10 @@ static GYoutubeHelper * instance = nil;
 
 
 - (void)initOnlineClient:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
+   ParseHelperResultBlock parseHelperResultBlock = ^(OnlineServerInfo * object, NSError * error) {
 
+   };
+   [[ParseHelper sharedParseHelper] readOnlineVideoInfo:parseHelperResultBlock];
 }
 
 
