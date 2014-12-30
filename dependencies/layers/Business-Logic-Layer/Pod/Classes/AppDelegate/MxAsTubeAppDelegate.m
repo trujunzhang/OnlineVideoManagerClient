@@ -57,7 +57,7 @@
 
    [YTCacheImplement removeAllCacheDiskObjects];
 
-   [[GYoutubeHelper getInstance] fetchSqliteRemoteFile:^(NSURLResponse * response, NSURL * url, NSError * error) {
+   [[GYoutubeHelper getInstance] initOnlineClient:^(NSURLResponse * response, NSURL * url, NSError * error) {
        [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
    }];
 

@@ -36,16 +36,20 @@ static GYoutubeHelper * instance = nil;
    @synchronized (self) {
       if (instance == nil) {
          instance = [[self alloc] init];
-//         instance.domainUrl = @"http://192.168.1.200:8040";
-//         instance.domainUrl = @"http://192.168.1.103:8040";
+
+
       }
    }
    return (instance);
 }
 
 
-- (void)fetchSqliteRemoteFile:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
+- (void)initOnlineClient:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
 
+}
+
+
+- (void)fetchSqliteRemoteFile:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
    [Online_Request downloadSqliteFile:[self getRemoteSqliteDatabase] downloadCompletionBlock:downloadCompletionBlock];
 }
 

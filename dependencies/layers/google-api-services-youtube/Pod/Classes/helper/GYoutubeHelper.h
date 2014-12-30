@@ -49,4 +49,7 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 
 - (NSString *)getRemoteSqliteDatabase;
 - (void)fetchSqliteRemoteFile:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock;
+
+- (void)initOnlineClient:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock;
+
 @end
