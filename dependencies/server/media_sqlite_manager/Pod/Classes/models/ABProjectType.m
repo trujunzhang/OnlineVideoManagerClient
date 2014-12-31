@@ -9,8 +9,6 @@
 
 @implementation ABProjectType
 
-#define DEG2RAD(degrees) (degrees * 0.01745327) // degrees * pi over 180
-
 
 - (instancetype)init {
    self = [super init];
