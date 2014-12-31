@@ -41,7 +41,8 @@ void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineTypeRo
 
    NSMutableDictionary * projectTypesDictionary = onlineVideoStatisticsHelper.projectTypesDictionary;
 
-//   [[MobileDB dbInstance:cacheDirectory] saveForProjectTypeDictionary:projectTypesDictionary];
+   [[MobileDB dbInstance:cacheDirectory] saveForProjectTypeDictionary:projectTypesDictionary withName:onlineTypeName];
+
    NSString * debug = @"debug";
 }
 

@@ -605,7 +605,7 @@ static MobileDB * _dbInstance;
 }
 
 
-- (void)saveForProjectTypeDictionary:(NSMutableDictionary *)dictionary {
+- (void)saveForProjectTypeDictionary:(NSMutableDictionary *)dictionary withName:(NSString *)onlineTypeName {
    NSArray * allKeys = dictionary.allKeys;
 
    // step01: save ABProjectType 
