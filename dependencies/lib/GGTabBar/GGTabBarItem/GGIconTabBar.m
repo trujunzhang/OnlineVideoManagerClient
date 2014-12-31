@@ -47,7 +47,7 @@
       [self initSubViewsWithControllers:self.viewControllers];
 
       [self addHeightConstraints];
-//      [self addAllLayoutConstraints];
+      [self addAllLayoutConstraints];
 
       [self paintDebugViews];
    }
@@ -184,8 +184,11 @@
 
    CGFloat startX = tabBarPadding;
    for (int i = 0; i < buttonCount; i++) {
-      UIView * label = _buttons[i];
-      label.frame = CGRectMake(startX, 0, tabBarItemWidth, tabBarHeight);
+      UIView * uiView = _buttons[i];
+      CGRect rect = CGRectMake(startX, 0, tabBarItemWidth, tabBarHeight);
+      uiView.frame = rect;
+      CGRect cgRect = uiView.bounds;
+
       startX = startX + tabBarItemWidth;
    }
 }
