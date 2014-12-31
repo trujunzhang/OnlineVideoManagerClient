@@ -59,7 +59,8 @@ int main(int argc, const char * argv[]) {
       NSString * cacheDirectory = RealProjectCacheDirectory();
 
       NSMutableDictionary * onlineTypeDictionary = @{
-       @"Lynda.com" : @"/Volumes/macshare/MacPE/Lynda.com"
+       @"Lynda.com" : @"/Volumes/macshare/MacPE/Lynda.com",
+        @"Youtube.com" : @"/Volumes/AppCache/TubeDownload"
       };
 
       for (NSString * onlineTypeName in onlineTypeDictionary.allKeys) {
