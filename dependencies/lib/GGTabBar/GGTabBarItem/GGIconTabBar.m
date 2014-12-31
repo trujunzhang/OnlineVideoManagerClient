@@ -33,7 +33,7 @@
 #pragma mark - Public API
 
 
-- (instancetype)initWithFrame:(CGRect)frame viewControllers:(NSArray *)viewControllers appearance:(NSDictionary *)appearance inTop:(BOOL)inTop selectedIndex:(NSInteger)selectedIndex {
+- (instancetype)initWithFrame:(CGRect)frame viewControllers:(NSArray *)viewControllers inTop:(BOOL)inTop selectedIndex:(NSInteger)selectedIndex tabBarWidth:(CGFloat)tabBarWidth {
    self = [super initWithFrame:frame];
    if (self) {
       self.inTop = inTop;

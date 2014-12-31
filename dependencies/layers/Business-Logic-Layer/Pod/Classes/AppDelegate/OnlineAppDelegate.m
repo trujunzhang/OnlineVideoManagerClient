@@ -16,14 +16,9 @@
 #import "LeftRevealHelper.h"
 #import "CacheImageConstant.h"
 #import "MxTabBarManager.h"
-#import "ClientUIHelper.h"
-#import "DebugUtils.h"
 #import "CollectionConstant.h"
-#import "SqliteManager.h"
 #import "GYoutubeHelper.h"
-#import "ParseLocalStore.h"
 #import "GGTabBar.h"
-#import "GGLayoutStringTabBar.h"
 #import "GGTabBarController.h"
 #import "GGIconTabBar.h"
 #import "OnlineTypeViewController.h"
@@ -75,6 +70,10 @@
 
 - (NSMutableArray *)getTabBarControllerArray {
    OnlineTypeViewController * lyndaController = [[OnlineTypeViewController alloc] init];
+   lyndaController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil
+                                                              image:[UIImage imageNamed:@"global_normal"]
+                                                      selectedImage:[UIImage imageNamed:@"global_pressed"]];
+
    NSMutableArray * controllerArray = [[NSMutableArray alloc] init];
    [controllerArray addObject:lyndaController];
    return controllerArray;
@@ -91,8 +90,8 @@
    GGTabBarController * tabBarController = [[GGTabBarController alloc] initWithTabBarView:topTabBar];
    tabBarController.delegate = self;
 
-   CGRect rect = parentView.bounds;
-   tabBarController.view.frame = rect;// used
+//   CGRect rect = parentView.bounds;
+//   tabBarController.view.frame = rect;// used
 
    return tabBarController;
 }
@@ -109,7 +108,7 @@
        if (error) {
           NSString * debug = @"debug";
        } else {
-          [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
+//          [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
           [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
        }
    }];

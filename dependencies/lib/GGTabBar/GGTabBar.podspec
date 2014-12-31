@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/Goles/GGTabBar.git", :tag => "0.0.2" }
 
-  s.resources = 'resources/*/*.*'
+  s.resources = 'resources/*.*'
 
   s.subspec 'GGTabBar' do |sub|
     sub.source_files = 'GGTabBar/*.{h,m}'
