@@ -24,6 +24,7 @@
 #import "OnlineTypeViewController.h"
 #import "FetchingOnlineInfoViewController.h"
 #import "SqliteManager.h"
+#import "ABOnlineVideoType.h"
 #import <Parse/Parse.h>
 
 
@@ -81,16 +82,16 @@
 - (NSMutableArray *)getTabBarControllerArray {
    NSMutableArray * onlineVideoTypesArray = [[SqliteManager sharedSqliteManager] getOnlineVideoTypesArray];
 
-   OnlineTypeViewController * lyndaController = [[OnlineTypeViewController alloc] init];
-   lyndaController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil
-                                                              image:[UIImage imageNamed:@"global_normal"]
-                                                      selectedImage:[UIImage imageNamed:@"global_pressed"]];
-
-   UINavigationController * lyndaNavigationController = [[UINavigationController alloc] initWithRootViewController:lyndaController];
-
    NSMutableArray * controllerArray = [[NSMutableArray alloc] init];
-   [controllerArray addObject:lyndaNavigationController];
+   for (ABOnlineVideoType * onlineVideoType in onlineVideoTypesArray) {
+      OnlineTypeViewController * lyndaController = [[OnlineTypeViewController alloc] init];
+      lyndaController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil
+                                                                 image:[UIImage imageNamed:@"global_normal"]
+                                                         selectedImage:[UIImage imageNamed:@"global_pressed"]];
 
+      UINavigationController * lyndaNavigationController = [[UINavigationController alloc] initWithRootViewController:lyndaController];
+      [controllerArray addObject:lyndaNavigationController];
+   }
    return controllerArray;
 }
 
