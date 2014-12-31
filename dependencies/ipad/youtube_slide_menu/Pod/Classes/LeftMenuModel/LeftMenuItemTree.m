@@ -68,6 +68,7 @@
    NSMutableArray * menuItemTreeArray = [[NSMutableArray alloc] init];
 
    NSInteger currentNavigationIndex = [[MxTabBarManager sharedTabBarManager] getCurrentNavigationIndex];
+//   NSArray * projectTypeArray = [[SqliteManager sharedSqliteManager] getProjectTypeArray];
    NSArray * projectTypeArray = [[SqliteManager sharedSqliteManager] getCurrentOnlineVideoDictionary:currentNavigationIndex];
    for (YTYouTubeType * projectType in projectTypeArray) {
       NSString * projectTypeTitle = [YoutubeParser getYoutubeTypeTitle:projectType];

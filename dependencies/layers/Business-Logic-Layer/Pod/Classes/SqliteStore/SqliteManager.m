@@ -44,8 +44,10 @@ NSMutableArray * _onlineVideoTypeArray;
 }
 
 
-- (NSMutableDictionary *)getCurrentOnlineVideoDictionary:(NSInteger)selectedIndex {
-   return _onlineVideoTypeArray[selectedIndex];
+- (NSArray *)getCurrentOnlineVideoDictionary:(NSInteger)selectedIndex {
+   NSMutableDictionary * currentDictionary = _onlineVideoTypeArray[selectedIndex];
+
+   return currentDictionary.allValues;;
 }
 
 
