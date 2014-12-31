@@ -35,7 +35,7 @@ typedef void(^LocationResultsBlock)(NSArray * locations);
 - (void)setPreference:(NSString *)value forKey:(NSString *)key;
 
 #pragma mark - Utilities
-- (void)saveForProjectTypeDictionary:(NSMutableDictionary *)dictionary withName:(NSString *)onlineTypeName;
+- (void)saveForOnlineVideoTypeDictionary:(NSMutableDictionary *)dictionary withName:(NSString *)onlineTypeName;
 - (NSMutableDictionary *)readDictionaryForProjectType;
 + (NSString *)uniqueID;
 

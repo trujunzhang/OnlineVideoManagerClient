@@ -21,6 +21,8 @@
 - (instancetype)init {
    self = [super init];
    if (self) {
+      self.projectListID = [MobileDB uniqueID];
+
       self.projectListName = @"";
       self.projectFileInfos = [[NSMutableArray alloc] init];
    }
@@ -32,7 +34,6 @@
 - (instancetype)initWithProjectListName:(NSString *)projectListName {
    self = [self init];
    if (self) {
-      self.projectListID = [MobileDB uniqueID];
       self.projectListName = projectListName;
    }
 

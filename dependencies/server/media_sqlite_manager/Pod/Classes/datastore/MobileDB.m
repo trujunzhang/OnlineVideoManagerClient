@@ -11,6 +11,7 @@
 #import "ABSQLiteDB.h"
 #import "ABProjectFileInfo.h"
 #import "ABProjectType.h"
+#import "ABOnlineVideoType.h"
 
 static NSString * const dataBaseName = @"VideoTrainingDB.db";
 
@@ -605,30 +606,42 @@ static MobileDB * _dbInstance;
 }
 
 
+- (void)saveForOnlineVideoTypeDictionary:(NSMutableDictionary *)dictionary withName:(NSString *)onlineTypeName {
+   ABOnlineVideoType * projectType = [[ABOnlineVideoType alloc] init];
+
+}
+
+
 - (void)saveForProjectTypeDictionary:(NSMutableDictionary *)dictionary withName:(NSString *)onlineTypeName {
    NSArray * allKeys = dictionary.allKeys;
 
-   // step01: save ABProjectType 
+   // step01: save ABProjectType
    for (NSString * key in allKeys) {
       ABProjectType * projectType = [dictionary objectForKey:key];
       [self saveProjectType:projectType];
 
       // step02: save ABProjectName
-      NSMutableArray * projectNameArray = projectType.ProjectNameArray;
-      for (ABProjectName * projectName in projectNameArray) {
-         [self saveProjectName:projectName];
-
-         // step03: save ABProjectList
-         NSMutableArray * projectLists = projectName.projectLists;
-         for (ABProjectList * projectList in projectLists) {
-            [self saveProjectList:projectList];
+      [self saveForProjectTypeArray:projectType];
+   }
+}
 
 
-            // step04: save ABProjectFileInfo
-            NSMutableArray * projectLists = projectList.projectFileInfos;
-            for (ABProjectFileInfo * projectFileInfo in projectLists) {
-               [self saveProjectFileInfo:projectFileInfo];
-            }
+// step02: save ABProjectName
+- (void)saveForProjectTypeArray:(ABProjectType *)projectType {
+
+   NSMutableArray * projectNameArray = projectType.ProjectNameArray;
+   for (ABProjectName * projectName in projectNameArray) {
+      [self saveProjectName:projectName];
+
+      // step03: save ABProjectList
+      NSMutableArray * projectLists = projectName.projectLists;
+      for (ABProjectList * projectList in projectLists) {
+         [self saveProjectList:projectList];
+
+         // step04: save ABProjectFileInfo
+         NSMutableArray * projectLists = projectList.projectFileInfos;
+         for (ABProjectFileInfo * projectFileInfo in projectLists) {
+            [self saveProjectFileInfo:projectFileInfo];
          }
       }
    }

@@ -13,6 +13,7 @@
 - (instancetype)init {
    self = [super init];
    if (self) {
+      self.projectTypeID = [MobileDB uniqueID];
       self.ProjectNameArray = [[NSMutableArray alloc] init];
    }
 
@@ -34,7 +35,6 @@
 - (instancetype)initWithProjectType:(NSString *)projectName {
    self = [self init];
    if (self) {
-      self.projectTypeID = [MobileDB uniqueID];
       self.projectTypeName = projectName;
    }
 

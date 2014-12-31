@@ -14,5 +14,7 @@
 @property(copy) NSString * OnlineVideoTypePath;
 
 @property(strong) NSMutableArray * onlineNameArray;
+- (instancetype)initWithOnlineTypeName:(NSString *)onlineTypeName OnlineVideoTypePath:(NSString *)OnlineVideoTypePath;
+
 
 @end

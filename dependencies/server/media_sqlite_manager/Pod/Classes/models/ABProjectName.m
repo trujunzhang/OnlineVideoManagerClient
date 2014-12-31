@@ -2,7 +2,6 @@
 #import "MobileDB.h"
 
 
-
 @interface ABProjectName ()<NSCoding>
 
 @end
@@ -16,6 +15,8 @@
 - (instancetype)init {
    self = [super init];
    if (self) {
+      self.projectNameID = [MobileDB uniqueID];
+
       self.projectDownloadUrl = @"";
       self.projectAbstractPath = @"";
 
@@ -29,7 +30,6 @@
 - (instancetype)initWithProjectName:(NSString *)projectName {
    self = [self init];
    if (self) {
-      self.projectNameID = [MobileDB uniqueID];
       self.projectName = projectName;
    }
 

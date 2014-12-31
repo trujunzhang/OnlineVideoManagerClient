@@ -21,11 +21,11 @@
 - (instancetype)init {
    self = [super init];
    if (self) {
+      self.fileInfoID = [MobileDB uniqueID];
+
       self.fileInforName = @"";
       self.subtitleName = @"";
       self.abstractFilePath = @"";
-
-      self.fileInfoID = [MobileDB uniqueID];
    }
 
    return self;
