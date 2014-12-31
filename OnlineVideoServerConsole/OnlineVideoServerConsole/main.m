@@ -14,6 +14,7 @@
 #include <sys/types.h>
 #include <pwd.h>
 #include <assert.h>
+#import "NSString+PJR.h"
 
 
 NSString * RealHomeDirectory() {
@@ -30,7 +31,7 @@ NSString * RealProjectCacheDirectory() {
 }
 
 
-void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineTypeRoot, NSString * cacheDirectory) {
+void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineVideoTypePath, NSString * onlineTypeRoot, NSString * cacheDirectory) {
 
 //   NSString * videoPath = @"/Volumes/XBMC/ShareAFP/Online Tutorial/Video Training/Lynda.com";
 //   NSString * videoPath = @"/Volumes/macshare/MacPE/Lynda.com";
@@ -42,7 +43,9 @@ void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineTypeRo
    NSMutableDictionary * projectTypesDictionary = onlineVideoStatisticsHelper.projectTypesDictionary;
 
    [[MobileDB dbInstance:cacheDirectory] saveForOnlineVideoTypeDictionary:projectTypesDictionary
-                                                                 withName:onlineTypeName];
+                                                                 withName:onlineTypeName
+                                                 whithOnlineVideoTypePath:onlineVideoTypePath
+   ];
 
    NSString * debug = @"debug";
 }
@@ -61,7 +64,9 @@ int main(int argc, const char * argv[]) {
 
       for (NSString * onlineTypeName in onlineTypeDictionary.allKeys) {
          NSString * onlineTypeRoot = [onlineTypeDictionary valueForKey:onlineTypeName];
-         generateSqliteFromSource(onlineTypeName, onlineTypeRoot, cacheDirectory);
+         NSString * onlineVideoTypePath = [onlineTypeRoot replaceCharcter:htdocs
+                                                             withCharcter:@""];
+         generateSqliteFromSource(onlineTypeName, onlineVideoTypePath, onlineTypeRoot, cacheDirectory);
       }
 
       NSLog(@"Hello, World!");
