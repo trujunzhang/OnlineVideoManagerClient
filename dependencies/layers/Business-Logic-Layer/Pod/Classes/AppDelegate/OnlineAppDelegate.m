@@ -70,13 +70,16 @@
 
 
 - (NSMutableArray *)getTabBarControllerArray {
+
    OnlineTypeViewController * lyndaController = [[OnlineTypeViewController alloc] init];
    lyndaController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil
                                                               image:[UIImage imageNamed:@"global_normal"]
                                                       selectedImage:[UIImage imageNamed:@"global_pressed"]];
 
+   UINavigationController * lyndaNavigationController = [[UINavigationController alloc] initWithRootViewController:lyndaController];
+
    NSMutableArray * controllerArray = [[NSMutableArray alloc] init];
-   [controllerArray addObject:lyndaController];
+   [controllerArray addObject:lyndaNavigationController];
 
    return controllerArray;
 }
