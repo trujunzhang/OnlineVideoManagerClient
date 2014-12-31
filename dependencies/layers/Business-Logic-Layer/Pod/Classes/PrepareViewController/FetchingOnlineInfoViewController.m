@@ -17,6 +17,8 @@
    if (self) {
       self.delegate = delegate;
       [self initOnlineClientInfo];
+
+      self.view.backgroundColor = [UIColor redColor];
    }
 
    return self;
@@ -24,9 +26,17 @@
 
 
 - (void)initOnlineClientInfo {
+   [self.delegate fetchingOnlineClientCompletion];
+
+   [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
+   [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
+}
+
+
+- (void)initOnlineClientInfo123 {
    [[GYoutubeHelper getInstance] initOnlineClient:^(NSURLResponse * response, NSURL * url, NSError * error) {
        if (error) {
-//          [self showLoadingFailInfo];
+          [self showLoadingFailInfo];
        } else {
           [self.delegate fetchingOnlineClientCompletion];
 
@@ -34,6 +44,11 @@
           [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
        }
    }];
+}
+
+
+- (void)showLoadingFailInfo {
+
 }
 
 @end
