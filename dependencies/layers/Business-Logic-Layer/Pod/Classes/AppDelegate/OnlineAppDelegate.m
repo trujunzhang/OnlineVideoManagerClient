@@ -40,8 +40,7 @@
    // Override point for customization after application launch.
    [self setupCommonTools:launchOptions];
 
-   FetchingOnlineInfoViewController * prepareViewController = [[FetchingOnlineInfoViewController alloc] init];
-
+   FetchingOnlineInfoViewController * prepareViewController = [[FetchingOnlineInfoViewController alloc] initWithDelegate:self];
 
    self.window.rootViewController = prepareViewController;
 
