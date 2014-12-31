@@ -25,7 +25,7 @@
 }
 
 
-- (void)initOnlineClientInfo {
+- (void)initOnlineClientInfo234 {
    [self.delegate fetchingOnlineClientCompletion];
 
    [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
@@ -33,7 +33,7 @@
 }
 
 
-- (void)initOnlineClientInfo123 {
+- (void)initOnlineClientInfo {
    [[GYoutubeHelper getInstance] initOnlineClient:^(NSURLResponse * response, NSURL * url, NSError * error) {
        if (error) {
           [self showLoadingFailInfo];
