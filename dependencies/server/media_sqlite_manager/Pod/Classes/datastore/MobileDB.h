@@ -2,12 +2,13 @@
 #import <media_sqlite_manager/MobileDB.h>
 #import "ABProjectName.h"
 #import "ABProjectList.h"
+#import "MobileBaseDatabase.h"
 
 typedef void(^ReportResultsBlock)(NSArray * reports);
 typedef void(^LocationResultsBlock)(NSArray * locations);
 
 
-@interface MobileDB : NSObject
+@interface MobileDB : MobileBaseDatabase
 
 
 #pragma mark - Base
