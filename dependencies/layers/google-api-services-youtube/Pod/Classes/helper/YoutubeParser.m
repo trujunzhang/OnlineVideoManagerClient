@@ -70,6 +70,7 @@
    NSString * playListThumbnail = [fileInfo encodeAbstractFilePath];
 
    NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
+   domain = @"http://192.168.1.200:8040";// test
    return [NSString stringWithFormat:@"%@%@", domain, playListThumbnail];
 }
 
