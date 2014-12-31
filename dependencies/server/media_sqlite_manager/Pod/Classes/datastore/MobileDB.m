@@ -91,15 +91,6 @@ static MobileDB * _dbInstance;
 }
 
 
-+ (BOOL)checkSqliteFileExist:(NSString *)path {
-//"/Volumes/Home/djzhang/Library/Developer/CoreSimulator/Devices/F1B2461C-89B4-48A5-93D7-64546C39189E/data/Containers/Data/Application/9B95F76F-B072-4F20-B5EC-8E82B913289C/Library/Caches/VideoTrainingDB.db"
-   BOOL myPathIsDir;
-   BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&myPathIsDir];
-
-   return fileExists;
-}
-
-
 - (void)close {
    [db close];
 }
@@ -505,7 +496,6 @@ static MobileDB * _dbInstance;
 
    locationsBlock(projectNameArray);
 }
-
 
 
 - (void)saveForOnlineVideoTypeDictionary:(NSMutableDictionary *)dictionary withName:(NSString *)onlineTypeName whithOnlineVideoTypePath:(NSString *)onlineVideoTypePath {

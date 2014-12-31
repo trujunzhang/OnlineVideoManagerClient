@@ -38,7 +38,7 @@ typedef void(^LocationResultsBlock)(NSArray * locations);
 #pragma mark - Utilities
 - (void)saveForOnlineVideoTypeDictionary:(NSMutableDictionary *)dictionary withName:(NSString *)onlineTypeName whithOnlineVideoTypePath:(NSString *)onlineVideoTypePath;
 - (NSMutableDictionary *)readDictionaryForProjectType;
-+ (NSString *)uniqueID;
+
 
 @end
 

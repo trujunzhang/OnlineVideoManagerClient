@@ -2,6 +2,7 @@
 // Created by djzhang on 12/31/14.
 //
 
+#import <media_sqlite_manager/MobileDB.h>
 #import "MobileBaseDatabase.h"
 #import "ABDatabase.h"
 
@@ -67,6 +68,15 @@
    CFRelease(uuid);
 
    return uuidString;
+}
+
+
++ (BOOL)checkSqliteFileExist:(NSString *)path {
+//"/Volumes/Home/djzhang/Library/Developer/CoreSimulator/Devices/F1B2461C-89B4-48A5-93D7-64546C39189E/data/Containers/Data/Application/9B95F76F-B072-4F20-B5EC-8E82B913289C/Library/Caches/VideoTrainingDB.db"
+   BOOL myPathIsDir;
+   BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&myPathIsDir];
+
+   return fileExists;
 }
 
 
