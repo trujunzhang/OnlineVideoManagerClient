@@ -41,12 +41,15 @@
       _separators = [[NSMutableArray alloc] init];
       _marginSeparators = [[NSMutableArray alloc] init];
       self.viewControllers = viewControllers;
-      self.tabBarHeight = CGFLOAT_MIN;
+//      self.tabBarHeight = CGFLOAT_MIN;
+      self.tabBarHeight = 80;
       self.translatesAutoresizingMaskIntoConstraints = NO;
       [self initSubViewsWithControllers:self.viewControllers];
 
       [self addHeightConstraints];
-      [self addAllLayoutConstraints];
+//      [self addAllLayoutConstraints];
+
+      [self paintDebugViews];
    }
    return self;
 }
@@ -154,6 +157,47 @@
    [button sizeToFit];
    [button addTarget:self action:@selector(tabButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
    return button;
+}
+
+
+#pragma mark - Layout -
+
+
+- (void)layoutSubviews {
+   [super layoutSubviews];
+
+   CGRect rect = self.bounds;
+
+   NSUInteger integer = _separators.count;
+   NSUInteger count = _buttons.count;
+   [self layoutTabBarItems];
+
+//   _divider.frame = [FrameCalculator frameForBottomDivide:rect.size.width containerHeight:rect.size.height];
+}
+
+
+- (void)layoutTabBarItems {
+   CGFloat tabBarHeight = self.frame.size.height;
+   NSUInteger buttonCount = _buttons.count;
+
+   CGFloat tabBarItemWidth = [self getTabBarItemWidth:buttonCount];
+
+   CGFloat startX = tabBarPadding;
+   for (int i = 0; i < buttonCount; i++) {
+      UIView * label = _buttons[i];
+      label.frame = CGRectMake(startX, 0, tabBarItemWidth, tabBarHeight);
+      startX = startX + tabBarItemWidth;
+   }
+}
+
+
+- (CGFloat)getTabBarItemWidth:(NSUInteger)buttonCount {
+   CGFloat aFloat = self.frame.size.width;
+   CGFloat totalWidth = (aFloat - tabBarPadding * 2);
+   CGFloat allSeperatorWidth = separatorWidth * _separators.count;
+
+   CGFloat tabBarItemWidth = (totalWidth - allSeperatorWidth) / buttonCount;
+   return tabBarItemWidth;
 }
 
 
