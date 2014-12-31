@@ -16,7 +16,7 @@
 - (instancetype)init {
    self = [super init];
    if (self) {
-      self.onlineTypeID = [MobileDB uniqueID];
+      self.onlineVideoTypeID = [MobileDB uniqueID];
       self.onlineNameArray = [[NSMutableArray alloc] init];
    }
 

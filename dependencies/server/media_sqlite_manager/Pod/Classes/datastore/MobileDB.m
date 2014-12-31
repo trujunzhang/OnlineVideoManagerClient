@@ -115,21 +115,22 @@ static MobileDB * _dbInstance;
       NSString * sqlStringSerializationForUpdate = [onlineVideoType sqlStringSerializationForUpdate];
 
       sql = [NSString stringWithFormat:
-       @"update OnlineVideoType set %@ where onlineTypeID = %i",
+       @"update OnlineVideoType set %@ where onlineVideoTypeID = %i",
        sqlStringSerializationForUpdate,
-       onlineVideoType.onlineTypeID];
+       onlineVideoType.onlineVideoTypeID];
    } else {
       NSArray * sqlStringSerializationForInsert = [onlineVideoType sqlStringSerializationForInsert];
 
       sql = [NSString stringWithFormat:
-       @"insert into OnlineVideoType(onlineTypeID,%@) values(%i,%@)",
+       @"insert into OnlineVideoType(onlineVideoTypeID,%@) values(%i,%@)",
        sqlStringSerializationForInsert[0],
-       onlineVideoType.onlineTypeID,
+       onlineVideoType.onlineVideoTypeID,
        sqlStringSerializationForInsert[1]
       ];
    }
 
-   [db sqlExecute:sql];
+   NSString * debug = @"debug";
+//   [db sqlExecute:sql];
 
 //   [self saveProjectTypeNamesArray:onlineVideoType.projectTypeID withArray:onlineVideoType.ProjectNameArray];
 }
