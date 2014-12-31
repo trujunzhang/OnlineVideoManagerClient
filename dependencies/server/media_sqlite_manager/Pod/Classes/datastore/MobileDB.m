@@ -105,8 +105,8 @@ static MobileDB * _dbInstance;
    BOOL exists = NO;
 
    //select projectTypeName from ProjectType where projectTypeName ='@Muse'
-   sql = [NSString stringWithFormat:@"select onlineTypeName from OnlineVideoType where onlineTypeName ='%@'",
-                                    onlineVideoType.onlineTypeName];
+   sql = [NSString stringWithFormat:@"select onlineVideoTypeName from OnlineVideoType where onlineVideoTypeName ='%@'",
+                                    onlineVideoType.onlineVideoTypeName];
    id<ABRecordset> results = [db sqlSelect:sql];
    if (![results eof])
       exists = YES;

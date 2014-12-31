@@ -10,7 +10,7 @@
 @interface ABOnlineVideoType : ABSqliteObject
 
 @property(assign) int onlineVideoTypeID;
-@property(copy) NSString * onlineTypeName;
+@property(copy) NSString * onlineVideoTypeName;
 @property(copy) NSString * OnlineVideoTypePath;
 
 @property(strong) NSMutableArray * onlineNameArray;

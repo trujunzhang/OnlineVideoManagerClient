@@ -27,7 +27,7 @@
 - (instancetype)initWithOnlineTypeName:(NSString *)onlineTypeName OnlineVideoTypePath:(NSString *)OnlineVideoTypePath {
    self = [self init];
    if (self) {
-      self.onlineTypeName = onlineTypeName;
+      self.onlineVideoTypeName = onlineTypeName;
       self.OnlineVideoTypePath = OnlineVideoTypePath;
    }
 
@@ -46,7 +46,7 @@
 
 - (NSMutableDictionary *)getUpdateDictionary {
    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
-   [dictionary setObject:self.onlineTypeName forKey:@"onlineTypeName"];
+   [dictionary setObject:self.onlineVideoTypeName forKey:@"onlineVideoTypeName"];
    [dictionary setObject:self.OnlineVideoTypePath forKey:@"OnlineVideoTypePath"];
 
    return dictionary;
