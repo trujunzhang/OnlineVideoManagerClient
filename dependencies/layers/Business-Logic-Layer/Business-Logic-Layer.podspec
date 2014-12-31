@@ -48,5 +48,9 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/IconTarBars/*.{h,m}'
   end
 
+  s.subspec 'PrepareViewController' do |sub|
+    sub.source_files = 'Pod/Classes/PrepareViewController/*.{h,m}'
+  end
+
 end
 
