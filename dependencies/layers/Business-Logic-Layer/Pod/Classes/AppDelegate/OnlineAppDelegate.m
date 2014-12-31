@@ -86,8 +86,11 @@
                                                         inTop:NO
                                                 selectedIndex:0
                                                   tabBarWidth:0];
+   topTabBar.backgroundColor = [UIColor blackColor];
 
    GGTabBarController * tabBarController = [[GGTabBarController alloc] initWithTabBarView:topTabBar];
+   tabBarController.view.backgroundColor = [UIColor whiteColor];
+
    tabBarController.delegate = self;
 
 //   CGRect rect = parentView.bounds;
