@@ -14,6 +14,7 @@
 #import "YoutubeVideoDescriptionStringAttribute.h"
 #import "NSString+PJR.h"
 #import "GYoutubeHelper.h"
+#import "SqliteManager.h"
 
 
 @interface YoutubeParser ()
@@ -66,12 +67,13 @@
 }
 
 
-+ (NSString *)getVideoOnlineUrl:(YTYouTubeVideoCache *)fileInfo {
++ (NSString *)getVideoOnlineUrl:(YTYouTubeVideoCache *)fileInfo withNavigationIndex:(NSInteger)navigationIndex {
    NSString * playListThumbnail = [fileInfo encodeAbstractFilePath];
 
    NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
+   NSString * onlineVideoTypePath = [SqliteManager getCurrentOnlineVideoTypePath:navigationIndex];
    domain = @"http://192.168.1.200:8040";// test
-   return [NSString stringWithFormat:@"%@%@", domain, playListThumbnail];
+   return [NSString stringWithFormat:@"%@%@%@", domain, onlineVideoTypePath, playListThumbnail];
 }
 
 

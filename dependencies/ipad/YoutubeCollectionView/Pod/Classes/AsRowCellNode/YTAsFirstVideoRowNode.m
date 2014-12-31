@@ -67,7 +67,9 @@
 
 //YTYouTubePlayList
 - (void)buttonTapped:(id)buttonTapped {
-   NSString * videoThumbnails = [YoutubeParser getVideoOnlineUrl:self.nodeInfo];
+   NSInteger navigationIndex = [[MxTabBarManager sharedTabBarManager] getCurrentNavigationIndex];
+
+   NSString * videoThumbnails = [YoutubeParser getVideoOnlineUrl:self.nodeInfo withNavigationIndex:navigationIndex];
 
    //"http://192.168.1.103:8040/Adobe.com/@Muse/serials/@@Muse%20Essential%20Training%20by%20Justin%20Seeley/2.%20Getting%20to%20Know%20Adobe%20Muse/02-Exploring%20the%20Tools%20panel.mp4"
    //http://192.168.1.200:8040/Adobe.com/@Muse/serials/@@Muse%20Essential%20Training%20by%20Justin%20Seeley/2.%20Getting%20to%20Know%20Adobe%20Muse/02-Exploring%20the%20Tools%20panel.mp4

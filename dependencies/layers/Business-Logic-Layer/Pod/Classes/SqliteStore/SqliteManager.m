@@ -34,6 +34,13 @@ NSMutableArray * _onlineVideoTypeArray;
 }
 
 
++ (NSString *)getCurrentOnlineVideoTypePath:(NSInteger)navigationIndex {
+   ABOnlineVideoType * onlineVideoType = _onlineVideoTypeArray[navigationIndex];
+
+   return onlineVideoType.OnlineVideoTypePath;
+}
+
+
 - (void)resetOnlineVideoTypeArray {
    _onlineVideoTypeArray = [[MobileDB dbInstance] readOnlineVideoTypes];
    NSString * debug = @"debug";
