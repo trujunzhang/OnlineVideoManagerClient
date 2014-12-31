@@ -4,6 +4,7 @@
 //
 
 #import "ABOnlineVideoType.h"
+#import "ABProjectType.h"
 
 
 @implementation ABOnlineVideoType {
@@ -12,7 +13,7 @@
 
 
 - (void)appendProjectType:(ABProjectType *)projectType {
-   [self.ProjectNameArray addObject:projectType];
+   [self.onlineNameArray addObject:projectType];
 }
 
 @end

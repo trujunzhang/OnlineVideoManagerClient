@@ -4,9 +4,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ABSqliteObject.h"
 
 
-@interface ABOnlineVideoType : ABSqliteObject<MKAnnotation>
+@interface ABOnlineVideoType : ABSqliteObject
 
 @property(assign) int onlineTypeID;
 @property(copy) NSString * onlineTypeName;

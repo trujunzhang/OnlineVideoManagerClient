@@ -10,25 +10,57 @@
 #import "OnlineVideoStatisticsHelper.h"
 #import "MobileDB.h"
 
+#include <unistd.h>
+#include <sys/types.h>
+#include <pwd.h>
+#include <assert.h>
 
-void onButtonClicked() {
+
+NSString * RealHomeDirectory() {
+   struct passwd * pw = getpwuid(getuid());
+   assert(pw);
+   return [NSString stringWithUTF8String:pw->pw_dir];
+}
+
+
+NSString * RealProjectCacheDirectory() {
+   NSString * homeDirectory = RealHomeDirectory();
+
+   return [NSString stringWithFormat:@"%@%@", homeDirectory, @"/.AOnlineTutorial/.cache"];
+}
+
+
+void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineTypeRoot, NSString * cacheDirectory) {
 
 //   NSString * videoPath = @"/Volumes/XBMC/ShareAFP/Online Tutorial/Video Training/Lynda.com";
-   NSString * videoPath = @"/Volumes/macshare/MacPE/Lynda.com";
+//   NSString * videoPath = @"/Volumes/macshare/MacPE/Lynda.com";
 
-   NSString * sqliteFoldPath = [NSString stringWithFormat:@"%@/%@", videoPath, @".cache"];
-   OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:videoPath];
+
+   OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper =
+    [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:onlineTypeRoot
+                                                   withName:onlineTypeName];
 
    NSMutableDictionary * projectTypesDictionary = onlineVideoStatisticsHelper.projectTypesDictionary;
 
-   [[MobileDB dbInstance:sqliteFoldPath] saveForProjectTypeDictionary:projectTypesDictionary];
+   [[MobileDB dbInstance:cacheDirectory] saveForProjectTypeDictionary:projectTypesDictionary];
 }
 
 
 int main(int argc, const char * argv[]) {
    @autoreleasepool {
       // insert code here...
-      onButtonClicked();
+      NSString * htdocs = @"/Volumes";
+
+      NSString * cacheDirectory = RealProjectCacheDirectory();
+
+      NSMutableDictionary * onlineTypeDictionary = @{
+       @"Lynda.com" : @"/Volumes/macshare/MacPE/Lynda.com"
+      };
+
+      for (NSString * onlineTypeName in onlineTypeDictionary.allKeys) {
+         NSString * onlineTypeRoot = [onlineTypeDictionary valueForKey:onlineTypeName];
+         generateSqliteFromSource(onlineTypeName, onlineTypeRoot, cacheDirectory);
+      }
 
       NSLog(@"Hello, World!");
    }

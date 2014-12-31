@@ -14,10 +14,12 @@
 
 }
 
-- (instancetype)initWithOnlinePath:(NSString *)onlinePath {
+- (instancetype)initWithOnlinePath:(NSString *)onlinePath withName:(NSString *)onlineTypeName {
    self = [super init];
    if (self) {
       self.onlinePath = onlinePath;
+      self.onlineTypeName = onlineTypeName;
+
       self.projectTypesDictionary = [[NSMutableDictionary alloc] init];
 
       [self analysisPath:onlinePath withDictionaryKey:@""];
