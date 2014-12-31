@@ -6,10 +6,10 @@
 #import <Foundation/Foundation.h>
 
 
-
 @interface OnlineVideoStatisticsHelper : NSObject
 
 @property(nonatomic, strong) NSString * onlinePath;
+@property(nonatomic, copy) NSString * onlineTypeName;
 
 @property(nonatomic, strong) NSMutableDictionary * projectTypesDictionary;
 

@@ -35,14 +35,14 @@ void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineTypeRo
 //   NSString * videoPath = @"/Volumes/XBMC/ShareAFP/Online Tutorial/Video Training/Lynda.com";
 //   NSString * videoPath = @"/Volumes/macshare/MacPE/Lynda.com";
 
-
    OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper =
     [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:onlineTypeRoot
                                                    withName:onlineTypeName];
 
    NSMutableDictionary * projectTypesDictionary = onlineVideoStatisticsHelper.projectTypesDictionary;
 
-   [[MobileDB dbInstance:cacheDirectory] saveForProjectTypeDictionary:projectTypesDictionary];
+//   [[MobileDB dbInstance:cacheDirectory] saveForProjectTypeDictionary:projectTypesDictionary];
+   NSString * debug = @"debug";
 }
 
 
