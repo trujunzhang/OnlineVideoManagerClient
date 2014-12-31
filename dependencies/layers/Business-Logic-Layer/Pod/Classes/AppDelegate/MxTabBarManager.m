@@ -6,11 +6,13 @@
 #import "ClientUIHelper.h"
 #import "CollectionConstant.h"
 #import "AsFileInfoVideoCollectionViewController.h"
+#import "GGTabBarController.h"
 
 
 @interface MxTabBarManager ()<GYoutubeHelperDelegate> {
-   UITabBarController * _tabBarController;
-   YTLeftMenuViewController * _leftViewController; // left
+   GGTabBarController * _tabBarController;
+   NSArray * _tabBarViewControllerArray;
+   YTLeftMenuViewController * _leftViewController;
 }
 
 
@@ -31,9 +33,15 @@
 }
 
 
-- (void)registerTabBarController:(UITabBarController *)tabBarController withLeftViewController:(id)leftViewController {
+- (void)registerTabBarController:(GGTabBarController *)tabBarController withLeftViewController:(AsLeftMenuViewController *)leftViewController withTabbarControllerArray:(NSArray *)array {
    _tabBarController = tabBarController;
    _leftViewController = leftViewController;
+   _tabBarViewControllerArray = array;
+}
+
+
+- (void)registerTabBarController:(UITabBarController *)tabBarController withLeftViewController:(id)leftViewController {
+
 }
 
 
@@ -43,7 +51,8 @@
 
 
 - (UINavigationController *)currentNavigationController {
-   return _tabBarController.selectedViewController;
+   NSUInteger integer = _tabBarController.selectedIndex;
+   return _tabBarViewControllerArray[integer];
 }
 
 
@@ -99,5 +108,6 @@
 - (void)callbackUpdateYoutubeChannelCompletion {
    [_leftViewController refreshChannelInfo];
 }
+
 
 @end

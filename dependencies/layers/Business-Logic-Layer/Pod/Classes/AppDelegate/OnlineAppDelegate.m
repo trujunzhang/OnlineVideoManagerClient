@@ -53,8 +53,7 @@
    YTLeftMenuViewController * leftViewController = [[YTLeftMenuViewController alloc] init];
 
    // right controller
-   GGTabBarController * ggTabBarController = [self makeTabBarController:self
-                                                    withControllerArray:[self getTabBarControllerArray]];
+   GGTabBarController * ggTabBarController = [self makeTabBarControllerWithControllerArray:[self getTabBarControllerArray]];
 
 
    //6
@@ -64,7 +63,9 @@
 
    [[LeftRevealHelper sharedLeftRevealHelper] registerRevealController:self.revealController];
    [[MxTabBarManager sharedTabBarManager] registerTabBarController:ggTabBarController
-                                            withLeftViewController:leftViewController];
+                                            withLeftViewController:leftViewController
+                                         withTabbarControllerArray:ggTabBarController.tabBarView.viewControllers
+   ];
 }
 
 
@@ -76,11 +77,12 @@
 
    NSMutableArray * controllerArray = [[NSMutableArray alloc] init];
    [controllerArray addObject:lyndaController];
+
    return controllerArray;
 }
 
 
-- (GGTabBarController *)makeTabBarController:(UIView *)parentView withControllerArray:(NSMutableArray *)controllerArray {
+- (GGTabBarController *)makeTabBarControllerWithControllerArray:(NSMutableArray *)controllerArray {
    GGTabBar * topTabBar = [[GGIconTabBar alloc] initWithFrame:CGRectZero
                                               viewControllers:controllerArray
                                                         inTop:NO
@@ -111,7 +113,7 @@
        if (error) {
           NSString * debug = @"debug";
        } else {
-//          [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
+          [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
           [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
        }
    }];

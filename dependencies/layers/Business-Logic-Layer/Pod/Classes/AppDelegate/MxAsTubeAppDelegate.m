@@ -73,9 +73,9 @@
                                                                   frontViewController:tabBarController];
    self.revealController.delegate = self;
 
-   [[LeftRevealHelper sharedLeftRevealHelper] registerRevealController:self.revealController];
-   [[MxTabBarManager sharedTabBarManager] registerTabBarController:tabBarController
-                                            withLeftViewController:leftViewController];
+//   [[LeftRevealHelper sharedLeftRevealHelper] registerRevealController:self.revealController];
+//   [[MxTabBarManager sharedTabBarManager] registerTabBarController:tabBarController
+//                                            withLeftViewController:leftViewController];
 
 //   UINavigationController * navigationController=[[MxTabBarManager sharedTabBarManager] currentNavigationController];
 

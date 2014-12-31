@@ -5,8 +5,6 @@
 
 + (MxTabBarManager *)sharedTabBarManager;
 
-- (void)registerTabBarController:(UITabBarController *)tabBarController withLeftViewController:(id)leftViewController;
-
 - (void)setLeftMenuControllerDelegate:(id)delegate;
 - (UINavigationController *)currentNavigationController;
 - (id)makeVideoDetailViewController:(id)video;
@@ -16,4 +14,5 @@
 - (void)pushWithVideo:(id)video;
 
 - (void)callbackUpdateYoutubeChannelCompletion;
+- (void)registerTabBarController:(id)controller withLeftViewController:(id)controller1 withTabbarControllerArray:(NSArray *)array;
 @end
