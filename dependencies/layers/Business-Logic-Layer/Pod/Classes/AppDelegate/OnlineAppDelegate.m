@@ -22,10 +22,11 @@
 #import "GGTabBarController.h"
 #import "GGIconTabBar.h"
 #import "OnlineTypeViewController.h"
+#import "FetchingOnlineInfoViewController.h"
 #import <Parse/Parse.h>
 
 
-@interface OnlineAppDelegate ()
+@interface OnlineAppDelegate ()<FetchingOnlineInfoViewControllerDelegate>
 @property(nonatomic, strong) SWRevealViewController * revealController;
 @end
 
@@ -39,13 +40,19 @@
    // Override point for customization after application launch.
    [self setupCommonTools:launchOptions];
 
-   [self setupRevealViewController];
+   FetchingOnlineInfoViewController * prepareViewController = [[FetchingOnlineInfoViewController alloc] init];
 
-   self.window.rootViewController = self.revealController;
+
+   self.window.rootViewController = prepareViewController;
+
    [self.window makeKeyAndVisible];
 
    return YES;
 }
+
+
+#pragma mark -
+#pragma mark Setup Reveal view
 
 
 - (void)setupRevealViewController {
@@ -105,21 +112,15 @@
 }
 
 
+#pragma mark -
+#pragma mark Setup common tools
+
+
 - (void)setupCommonTools:(NSDictionary *)launchOptions {
    [self setupParse:launchOptions];
    [DebugUtils listAppHomeInfo];
 
    [YTCacheImplement removeAllCacheDiskObjects];
-
-
-   [[GYoutubeHelper getInstance] initOnlineClient:^(NSURLResponse * response, NSURL * url, NSError * error) {
-       if (error) {
-          NSString * debug = @"debug";
-       } else {
-          [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
-          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
-       }
-   }];
 }
 
 
@@ -164,5 +165,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+#pragma mark -
+#pragma mark FetchingOnlineInfoViewControllerDelegate
+
+
+- (void)fetchingOnlineClientCompletion {
+   [self setupRevealViewController];
+   self.window.rootViewController = self.revealController;
+}
+
 
 @end
