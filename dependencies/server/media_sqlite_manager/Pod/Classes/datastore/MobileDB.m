@@ -194,7 +194,7 @@ static MobileDB * _dbInstance;
    while (![results eof]) {
       int ProjectTypeID = [[results fieldWithName:@"ProjectTypeID"] intValue];
 
-      [[MobileDB dbInstance] readDictionaryForProjectTypeWithProjectTypeId:ProjectTypeID hasAllList:NO];
+      [self readDictionaryForProjectTypeWithProjectTypeId:ProjectTypeID hasAllList:NO];
 
       [results moveNext];
    }

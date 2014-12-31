@@ -23,6 +23,7 @@
 #import "GGIconTabBar.h"
 #import "OnlineTypeViewController.h"
 #import "FetchingOnlineInfoViewController.h"
+#import "SqliteManager.h"
 #import <Parse/Parse.h>
 
 
@@ -78,6 +79,7 @@
 
 
 - (NSMutableArray *)getTabBarControllerArray {
+   NSMutableArray * onlineVideoTypesArray = [[SqliteManager sharedSqliteManager] getOnlineVideoTypesArray];
 
    OnlineTypeViewController * lyndaController = [[OnlineTypeViewController alloc] init];
    lyndaController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil

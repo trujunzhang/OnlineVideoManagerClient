@@ -9,6 +9,7 @@
 #import "AnimatedContentsDisplayLayer.h"
 
 NSMutableDictionary * _videoDictionary;
+NSMutableArray * _onlineVideoTypeArray;
 
 
 @implementation SqliteManager {
@@ -20,7 +21,7 @@ NSMutableDictionary * _videoDictionary;
    static dispatch_once_t onceToken;
    dispatch_once(&onceToken, ^{
        sqliteManager = [[SqliteManager alloc] init];
-       [sqliteManager resetOnlineVideoDictionary];
+       [sqliteManager resetOnlineVideoTypeArray];
    });
 
    return sqliteManager;
@@ -28,8 +29,13 @@ NSMutableDictionary * _videoDictionary;
 
 
 - (NSMutableArray *)getOnlineVideoTypesArray {
+   return _onlineVideoTypeArray;
+}
 
-   return [[MobileDB dbInstance] readOnlineVideoTypes];
+
+- (void)resetOnlineVideoTypeArray {
+   _onlineVideoTypeArray = [[MobileDB dbInstance] readOnlineVideoTypes];
+   NSString * debug = @"debug";
 }
 
 

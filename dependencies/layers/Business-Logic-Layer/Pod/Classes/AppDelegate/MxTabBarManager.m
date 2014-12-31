@@ -1,7 +1,6 @@
 #import <google-api-services-youtube/GYoutubeHelper.h>
 #import "MxTabBarManager.h"
 #import "YTVideoDetailViewController.h"
-#import "LeftMenuViewController.h"
 #import "LeftRevealHelper.h"
 #import "ClientUIHelper.h"
 #import "CollectionConstant.h"
