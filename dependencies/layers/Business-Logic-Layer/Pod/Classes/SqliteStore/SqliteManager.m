@@ -7,6 +7,7 @@
 #import "MobileDB.h"
 #import "YoutubeConstants.h"
 #import "AnimatedContentsDisplayLayer.h"
+#import "ABOnlineVideoType.h"
 
 NSMutableDictionary * _videoDictionary;
 NSMutableArray * _onlineVideoTypeArray;
@@ -45,9 +46,10 @@ NSMutableArray * _onlineVideoTypeArray;
 
 
 - (NSArray *)getCurrentOnlineVideoDictionary:(NSInteger)selectedIndex {
-   NSMutableDictionary * currentDictionary = _onlineVideoTypeArray[selectedIndex];
+   ABOnlineVideoType * onlineVideoType = _onlineVideoTypeArray[selectedIndex];
+   NSMutableDictionary * dictionary = onlineVideoType.onlineTypeArray[0];
 
-   return currentDictionary.allValues;;
+   return dictionary.allValues;
 }
 
 
