@@ -49,6 +49,11 @@
 }
 
 
+- (NSInteger)getCurrentNavigationIndex {
+   return _tabBarController.selectedIndex;
+}
+
+
 - (UINavigationController *)currentNavigationController {
    NSUInteger integer = _tabBarController.selectedIndex;
    return _tabBarViewControllerArray[integer];

@@ -6,6 +6,7 @@
 + (MxTabBarManager *)sharedTabBarManager;
 
 - (void)setLeftMenuControllerDelegate:(id)delegate;
+- (NSInteger)getCurrentNavigationIndex;
 - (UINavigationController *)currentNavigationController;
 - (id)makeVideoDetailViewController:(id)video;
 

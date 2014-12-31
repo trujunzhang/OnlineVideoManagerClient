@@ -10,6 +10,7 @@
 #import "GYoutubeRequestInfo.h"
 #import "SqliteManager.h"
 #import "YoutubeParser.h"
+#import "MxTabBarManager.h"
 
 
 @interface LeftMenuItemTree ()
@@ -66,7 +67,8 @@
 + (NSMutableArray *)getSignOutMenuItemTreeArray {
    NSMutableArray * menuItemTreeArray = [[NSMutableArray alloc] init];
 
-   NSArray * projectTypeArray = [[SqliteManager sharedSqliteManager] getProjectTypeArray];
+   NSInteger currentNavigationIndex = [[MxTabBarManager sharedTabBarManager] getCurrentNavigationIndex];
+   NSArray * projectTypeArray = [[SqliteManager sharedSqliteManager] getCurrentOnlineVideoDictionary:currentNavigationIndex];
    for (YTYouTubeType * projectType in projectTypeArray) {
       NSString * projectTypeTitle = [YoutubeParser getYoutubeTypeTitle:projectType];
 

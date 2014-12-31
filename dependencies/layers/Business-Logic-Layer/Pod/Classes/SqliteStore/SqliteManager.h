@@ -12,6 +12,7 @@
 
 
 + (SqliteManager *)sharedSqliteManager;
+- (NSMutableDictionary *)getCurrentOnlineVideoDictionary:(NSInteger)selectedIndex;
 - (NSMutableDictionary *)getOnlineVideoDictionary;
 
 - (NSArray *)getProjectTypeArray;
