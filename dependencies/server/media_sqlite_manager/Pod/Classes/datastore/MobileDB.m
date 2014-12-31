@@ -101,7 +101,37 @@ static MobileDB * _dbInstance;
 
 
 - (void)saveOnlineVideoType:(ABOnlineVideoType *)onlineVideoType {
+   NSString * sql;
+   BOOL exists = NO;
 
+   //select projectTypeName from ProjectType where projectTypeName ='@Muse'
+   sql = [NSString stringWithFormat:@"select onlineTypeName from OnlineVideoType where onlineTypeName ='%@'",
+                                    onlineVideoType.onlineTypeName];
+   id<ABRecordset> results = [db sqlSelect:sql];
+   if (![results eof])
+      exists = YES;
+
+   if (exists) {
+      NSString * sqlStringSerializationForUpdate = [onlineVideoType sqlStringSerializationForUpdate];
+
+      sql = [NSString stringWithFormat:
+       @"update OnlineVideoType set %@ where onlineTypeID = %i",
+       sqlStringSerializationForUpdate,
+       onlineVideoType.onlineTypeID];
+   } else {
+      NSArray * sqlStringSerializationForInsert = [onlineVideoType sqlStringSerializationForInsert];
+
+      sql = [NSString stringWithFormat:
+       @"insert into OnlineVideoType(onlineTypeID,%@) values(%i,%@)",
+       sqlStringSerializationForInsert[0],
+       onlineVideoType.onlineTypeID,
+       sqlStringSerializationForInsert[1]
+      ];
+   }
+
+   [db sqlExecute:sql];
+
+//   [self saveProjectTypeNamesArray:onlineVideoType.projectTypeID withArray:onlineVideoType.ProjectNameArray];
 }
 
 
