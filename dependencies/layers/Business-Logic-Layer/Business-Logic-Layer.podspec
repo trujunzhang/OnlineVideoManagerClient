@@ -44,5 +44,9 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/SqliteStore/*.{h,m}'
   end
 
+  s.subspec 'IconTarBars' do |sub|
+    sub.source_files = 'Pod/Classes/IconTarBars/*.{h,m}'
+  end
+
 end
 
