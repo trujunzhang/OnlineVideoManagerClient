@@ -27,8 +27,14 @@ NSMutableDictionary * _videoDictionary;
 }
 
 
+- (NSMutableArray *)getOnlineVideoTypesArray {
+
+   return [[MobileDB dbInstance] readOnlineVideoTypes];
+}
+
+
 - (void)resetOnlineVideoDictionary {
-   _videoDictionary = [[MobileDB dbInstance] readDictionaryForProjectType];
+   _videoDictionary = [[MobileDB dbInstance] readDictionaryForProjectTypeWithProjectTypeId:nil hasAllList:NO];
 }
 
 

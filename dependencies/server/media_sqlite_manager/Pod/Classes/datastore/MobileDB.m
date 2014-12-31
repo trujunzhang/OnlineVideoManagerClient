@@ -156,6 +156,52 @@ static MobileDB * _dbInstance;
 }
 
 
+- (NSMutableArray *)readOnlineVideoTypes {
+   NSMutableArray * onlineVideoTypeArray = [[NSMutableArray alloc] init];
+
+   NSString * sql = @"select * from OnlineVideoTypeProjectTypes";
+
+   id<ABRecordset> results = [db sqlSelect:sql];
+   while (![results eof]) {
+      ABOnlineVideoType * onlineVideoType = [[ABOnlineVideoType alloc] init];
+
+      onlineVideoType.onlineVideoTypeID = [[results fieldWithName:@"onlineVideoTypeID"] intValue];
+      onlineVideoType.onlineVideoTypeName = [[results fieldWithName:@"onlineVideoTypeName"] stringValue];
+      onlineVideoType.OnlineVideoTypePath = [[results fieldWithName:@"OnlineVideoTypePath"] stringValue];
+
+      [onlineVideoTypeArray addObject:onlineVideoType];
+
+
+      [self readOnlineTypeArray:onlineVideoType.onlineVideoTypeID
+                      withArray:onlineVideoType.onlineTypeArray
+                    isReadArray:NO];
+
+      [results moveNext];
+   }
+
+
+   return onlineVideoTypeArray;
+
+}
+
+
+- (void)readOnlineTypeArray:(int)onlineVideoTypeID withArray:(NSMutableArray *)mutableArray isReadArray:(BOOL)isReadArray {
+   NSString * sql;
+   sql = [NSString stringWithFormat:@"select ProjectTypeID from OnlineVideoTypeProjectTypes where onlineVideoTypeID = '%i'",
+                                    onlineVideoTypeID];
+
+   id<ABRecordset> results = [db sqlSelect:sql];
+   while (![results eof]) {
+      int ProjectTypeID = [[results fieldWithName:@"ProjectTypeID"] intValue];
+
+      [[MobileDB dbInstance] readDictionaryForProjectTypeWithProjectTypeId:ProjectTypeID hasAllList:NO];
+
+      [results moveNext];
+   }
+
+}
+
+
 #pragma mark - ABProjectType
 
 
@@ -242,9 +288,13 @@ static MobileDB * _dbInstance;
 }
 
 
-- (void)readProjectTypeListWithResults:(LocationResultsBlock)locationsBlock {
+- (void)readProjectTypeListWithResults:(LocationResultsBlock)locationsBlock WithProjectTypeId:(int)projectTypeId hasAllList:(BOOL)isAllList {
    NSMutableArray * projectTypeArray = [[NSMutableArray alloc] init];
    NSString * sql = @"select * from ProjectType";
+   if (isAllList == NO) {
+      sql = [NSString stringWithFormat:@"select * from ProjectType where projectTypeId = '%@'",
+                                       projectTypeId];
+   }
 
    id<ABRecordset> results = [db sqlSelect:sql];
    while (![results eof]) {
@@ -611,7 +661,7 @@ static MobileDB * _dbInstance;
 }
 
 
-- (NSMutableDictionary *)readDictionaryForProjectType {
+- (NSMutableDictionary *)readDictionaryForProjectTypeWithProjectTypeId:(int)projectTypeId hasAllList:(BOOL)isAllList {
    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
 
    LocationResultsBlock LocationResultsBlock = ^(NSArray * locations) {
@@ -621,9 +671,10 @@ static MobileDB * _dbInstance;
           [self readProjectTypeNames:projectType.projectTypeID withArray:projectType.ProjectNameArray isReadArray:NO];
        }
    };
-   [self readProjectTypeListWithResults:LocationResultsBlock];
+   [self readProjectTypeListWithResults:LocationResultsBlock WithProjectTypeId:projectTypeId hasAllList:isAllList];
 
    return dictionary;
 }
+
 
 @end

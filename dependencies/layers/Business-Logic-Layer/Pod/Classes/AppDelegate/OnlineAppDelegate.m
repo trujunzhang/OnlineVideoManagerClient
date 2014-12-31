@@ -27,7 +27,7 @@
 
 
 @interface OnlineAppDelegate ()<FetchingOnlineInfoViewControllerDelegate>
-@property(nonatomic, strong) SWRevealViewController * revealController;
+//@property(nonatomic, strong) SWRevealViewController * revealController;
 @end
 
 
@@ -54,7 +54,7 @@
 #pragma mark Setup Reveal view
 
 
-- (void)setupRevealViewController {
+- (UIViewController *)setupRevealViewController {
    // left controller
    YTLeftMenuViewController * leftViewController = [[YTLeftMenuViewController alloc] init];
 
@@ -63,15 +63,17 @@
 
 
    //6
-   self.revealController = [[SWRevealViewController alloc] initWithRearViewController:leftViewController
-                                                                  frontViewController:ggTabBarController];
-   self.revealController.delegate = self;
+   SWRevealViewController * revealController = [[SWRevealViewController alloc] initWithRearViewController:leftViewController
+                                                                                      frontViewController:ggTabBarController];
+   revealController.delegate = self;
 
-   [[LeftRevealHelper sharedLeftRevealHelper] registerRevealController:self.revealController];
+   [[LeftRevealHelper sharedLeftRevealHelper] registerRevealController:revealController];
    [[MxTabBarManager sharedTabBarManager] registerTabBarController:ggTabBarController
                                             withLeftViewController:leftViewController
                                          withTabbarControllerArray:ggTabBarController.tabBarView.viewControllers
    ];
+
+   return revealController;
 }
 
 
@@ -171,8 +173,7 @@
 
 
 - (void)fetchingOnlineClientCompletion {
-   [self setupRevealViewController];
-   self.window.rootViewController = self.revealController;
+   self.window.rootViewController = [self setupRevealViewController];
 }
 
 

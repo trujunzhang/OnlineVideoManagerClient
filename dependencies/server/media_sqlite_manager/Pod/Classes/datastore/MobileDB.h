@@ -3,6 +3,7 @@
 #import "ABProjectName.h"
 #import "ABProjectList.h"
 #import "MobileBaseDatabase.h"
+#import "MobileDB.h"
 
 typedef void(^ReportResultsBlock)(NSArray * reports);
 typedef void(^LocationResultsBlock)(NSArray * locations);
@@ -37,9 +38,10 @@ typedef void(^LocationResultsBlock)(NSArray * locations);
 
 #pragma mark - Utilities
 - (void)saveForOnlineVideoTypeDictionary:(NSMutableDictionary *)dictionary withName:(NSString *)onlineTypeName whithOnlineVideoTypePath:(NSString *)onlineVideoTypePath;
-- (NSMutableDictionary *)readDictionaryForProjectType;
+- (NSMutableDictionary *)readDictionaryForProjectTypeWithProjectTypeId:(int)projectTypeId hasAllList:(BOOL)isAllList;
 
 
+- (NSMutableArray *)readOnlineVideoTypes;
 @end
 
 

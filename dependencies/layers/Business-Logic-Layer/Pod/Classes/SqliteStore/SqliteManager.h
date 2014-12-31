@@ -16,6 +16,7 @@
 
 - (NSArray *)getProjectTypeArray;
 
+- (NSMutableArray *)getOnlineVideoTypesArray;
 - (void)resetOnlineVideoDictionary;
 
 - (NSMutableArray *)getProjectListArray:(NSString *)projectNameId;

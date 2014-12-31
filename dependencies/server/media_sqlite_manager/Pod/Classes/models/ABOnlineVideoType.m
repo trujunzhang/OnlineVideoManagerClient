@@ -18,6 +18,7 @@
    if (self) {
       self.onlineVideoTypeID = [MobileDB uniqueID];
       self.onlineTypeArray = [[NSMutableArray alloc] init];
+      self.onlineTypeDictionary = [[NSMutableDictionary alloc] init];
    }
 
    return self;
