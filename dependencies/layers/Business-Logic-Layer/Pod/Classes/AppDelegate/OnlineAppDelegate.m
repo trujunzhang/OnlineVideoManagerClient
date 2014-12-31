@@ -27,8 +27,10 @@
 #import "ABOnlineVideoType.h"
 #import <Parse/Parse.h>
 
+#import "NSString+PJR.h"
 
-@interface OnlineAppDelegate ()<FetchingOnlineInfoViewControllerDelegate>
+
+@interface OnlineAppDelegate ()<FetchingOnlineInfoViewControllerDelegate, GGTabBarControllerDelegate>
 //@property(nonatomic, strong) SWRevealViewController * revealController;
 @end
 
@@ -61,7 +63,8 @@
    YTLeftMenuViewController * leftViewController = [[YTLeftMenuViewController alloc] init];
 
    // right controller
-   GGTabBarController * ggTabBarController = [self makeTabBarControllerWithControllerArray:[self getTabBarControllerArray]];
+   NSMutableArray * tabBarControllerArray = [self getTabBarControllerArray];
+   GGTabBarController * ggTabBarController = [self makeTabBarControllerWithControllerArray:tabBarControllerArray];
 
 
    //6
@@ -72,7 +75,7 @@
    [[LeftRevealHelper sharedLeftRevealHelper] registerRevealController:revealController];
    [[MxTabBarManager sharedTabBarManager] registerTabBarController:ggTabBarController
                                             withLeftViewController:leftViewController
-                                         withTabbarControllerArray:ggTabBarController.tabBarView.viewControllers
+                                         withTabbarControllerArray:tabBarControllerArray
    ];
 
    return revealController;
@@ -85,14 +88,26 @@
    NSMutableArray * controllerArray = [[NSMutableArray alloc] init];
    for (ABOnlineVideoType * onlineVideoType in onlineVideoTypesArray) {
       OnlineTypeViewController * lyndaController = [[OnlineTypeViewController alloc] init];
+
+      NSString * tabbarImageName = [self getTabbarImageName:onlineVideoType.onlineVideoTypeName];
       lyndaController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil
-                                                                 image:[UIImage imageNamed:@"global_normal"]
-                                                         selectedImage:[UIImage imageNamed:@"global_pressed"]];
+                                                                 image:[UIImage imageNamed:tabbarImageName]
+                                                         selectedImage:[UIImage imageNamed:tabbarImageName]];
 
       UINavigationController * lyndaNavigationController = [[UINavigationController alloc] initWithRootViewController:lyndaController];
       [controllerArray addObject:lyndaNavigationController];
    }
    return controllerArray;
+}
+
+
+- (NSString *)getTabbarImageName:(NSString *)tabbarName {
+   if ([tabbarName containsString:@"Lynda"]) {
+      return @"Lynda.png";
+   } else if ([tabbarName containsString:@"Youtube"]) {
+      return @"youtube.png";
+   }
+   return @"global_normal";
 }
 
 
@@ -177,6 +192,21 @@
 
 - (void)fetchingOnlineClientCompletion {
    self.window.rootViewController = [self setupRevealViewController];
+}
+
+
+#pragma mark -
+#pragma mark GGTabBarControllerDelegate
+
+
+- (void)ggTabBarController:(GGTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+   [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
+   [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
+}
+
+
+- (BOOL)ggTabBarController:(GGTabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+   return YES;
 }
 
 
