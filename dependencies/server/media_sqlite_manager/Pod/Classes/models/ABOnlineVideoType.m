@@ -39,4 +39,24 @@
    [self.onlineNameArray addObject:projectType];
 }
 
+
+#pragma mark -
+#pragma mark ABSqliteObject
+
+
+- (NSMutableDictionary *)getUpdateDictionary {
+   NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
+   [dictionary setObject:self.onlineTypeName forKey:@"onlineTypeName"];
+   [dictionary setObject:self.OnlineVideoTypePath forKey:@"OnlineVideoTypePath"];
+
+   return dictionary;
+}
+
+
+- (NSMutableDictionary *)getInsertDictionary {
+
+   return [self getUpdateDictionary];
+}
+
+
 @end

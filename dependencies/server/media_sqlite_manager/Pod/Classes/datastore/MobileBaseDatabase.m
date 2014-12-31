@@ -16,6 +16,11 @@
 
 
 - (void)makeDB {
+   // OnlineVideoType
+   [db sqlExecute:@"create table OnlineVideoType(onlineVideoTypeID int, onlineVideoTypeName text, primary key(onlineVideoTypeID));"];
+   [db sqlExecute:@"create table OnlineVideoTypeProjectTypes(onlineVideoTypeID int, ProjectTypeID int, primary key (onlineVideoTypeID,ProjectTypeID));"];
+
+
    // ProjectType
    [db sqlExecute:@"create table ProjectType(projectTypeID int, projectTypeName text, primary key(projectTypeID));"];
    [db sqlExecute:@"create table ProjectTypeNames(projectTypeID int, projectNameID int, primary key (projectTypeID,projectNameID));"];
@@ -40,6 +45,10 @@
    NSString * schemaVersion = [self preferenceForKey:@"SchemaVersion"];
 
    if ([schemaVersion isEqualToString:@"1"]) {
+      // OnlineVideoType
+      [db sqlExecute:@"create index idx_onlinevideotypes_onlinevideotypeid on OnlineVideoType(OnlineVideoTypeID);"];
+      [db sqlExecute:@"create index idx_onlinevideotypeprojecttypes_projecttypeid on OnlineVideoTypeProjectTypes(projectTypeID);"];// one->multiple
+
       // ProjectType
       [db sqlExecute:@"create index idx_projecttypes_projecttypeid on ProjectType(projectTypeID);"];
       [db sqlExecute:@"create index idx_projecttypenames_projectnameid on ProjectTypeNames(projectNameID);"];// one->multiple
