@@ -13,6 +13,7 @@ id<ABDatabase> db;
 }
 
 
++ (NSString *)uniqueID;
 - (void)makeDB;
 - (void)checkSchema;
 
