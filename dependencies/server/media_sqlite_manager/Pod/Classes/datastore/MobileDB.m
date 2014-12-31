@@ -550,12 +550,28 @@ static MobileDB * _dbInstance;
 
 
 - (void)saveForOnlineVideoTypeDictionary:(NSMutableDictionary *)dictionary withName:(NSString *)onlineTypeName whithOnlineVideoTypePath:(NSString *)onlineVideoTypePath {
+   // 01
    ABOnlineVideoType * onlineVideoType = [[ABOnlineVideoType alloc] initWithOnlineTypeName:onlineTypeName
                                                                        OnlineVideoTypePath:onlineVideoTypePath];
 
    [onlineVideoType appendProjectTypeDictionary:dictionary];
 
    [self saveOnlineVideoType:onlineVideoType];
+
+   // 02
+   [self saveForOnlineTypeArray:onlineVideoType];
+}
+
+
+// step02: save ABProjectType
+- (void)saveForOnlineTypeArray:(ABOnlineVideoType *)onlineVideoType {
+   NSMutableArray * onlineTypeArray = onlineVideoType.onlineTypeArray;
+   for (ABProjectType * projectType in onlineTypeArray) {
+      [self saveProjectType:projectType];
+
+      // step02: save ABProjectName
+      [self saveForProjectTypeArray:projectType];
+   }
 }
 
 
