@@ -17,7 +17,7 @@
 
 - (void)makeDB {
    // OnlineVideoType
-   [db sqlExecute:@"create table OnlineVideoType(onlineVideoTypeID int, onlineVideoTypeName text, primary key(onlineVideoTypeID));"];
+   [db sqlExecute:@"create table OnlineVideoType(onlineVideoTypeID int, onlineVideoTypeName text,OnlineVideoTypePath text, primary key(onlineVideoTypeID));"];
    [db sqlExecute:@"create table OnlineVideoTypeProjectTypes(onlineVideoTypeID int, ProjectTypeID int, primary key (onlineVideoTypeID,ProjectTypeID));"];
 
 
