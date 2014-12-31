@@ -129,10 +129,30 @@ static MobileDB * _dbInstance;
       ];
    }
 
-   NSString * debug = @"debug";
-//   [db sqlExecute:sql];
+   [db sqlExecute:sql];
 
-//   [self saveProjectTypeNamesArray:onlineVideoType.projectTypeID withArray:onlineVideoType.ProjectNameArray];
+   [self saveOnlineVideoTypeProjectTypesArray:onlineVideoType.onlineVideoTypeID
+                                    withArray:onlineVideoType.onlineTypeArray];
+}
+
+
+- (void)saveOnlineVideoTypeProjectTypesArray:(int)onlineVideoTypeID withArray:(NSMutableArray *)mutableArray {
+   NSString * sql;
+   if ([mutableArray count] > 0) {
+      for (ABProjectType * projectName in mutableArray) {
+         sql = [NSString stringWithFormat:@"select projectTypeID from OnlineVideoTypeProjectTypes where onlineVideoTypeID = %i and projectTypeID = %i",
+                                          onlineVideoTypeID,
+                                          projectName.projectTypeID];
+         id<ABRecordset> results = [db sqlSelect:sql];
+
+         if ([results eof]) {
+            sql = [NSString stringWithFormat:@"insert into OnlineVideoTypeProjectTypes(onlineVideoTypeID,projectTypeID) values(%i,%i);",
+                                             onlineVideoTypeID,
+                                             projectName.projectTypeID];
+            [db sqlExecute:sql];
+         }
+      }
+   }
 }
 
 
@@ -530,10 +550,12 @@ static MobileDB * _dbInstance;
 
 
 - (void)saveForOnlineVideoTypeDictionary:(NSMutableDictionary *)dictionary withName:(NSString *)onlineTypeName whithOnlineVideoTypePath:(NSString *)onlineVideoTypePath {
-   ABOnlineVideoType * projectType = [[ABOnlineVideoType alloc] initWithOnlineTypeName:onlineTypeName
-                                                                   OnlineVideoTypePath:onlineVideoTypePath];
+   ABOnlineVideoType * onlineVideoType = [[ABOnlineVideoType alloc] initWithOnlineTypeName:onlineTypeName
+                                                                       OnlineVideoTypePath:onlineVideoTypePath];
 
-   [self saveOnlineVideoType:projectType];
+   [onlineVideoType appendProjectTypeDictionary:dictionary];
+
+   [self saveOnlineVideoType:onlineVideoType];
 }
 
 

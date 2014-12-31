@@ -17,7 +17,7 @@
    self = [super init];
    if (self) {
       self.onlineVideoTypeID = [MobileDB uniqueID];
-      self.onlineNameArray = [[NSMutableArray alloc] init];
+      self.onlineTypeArray = [[NSMutableArray alloc] init];
    }
 
    return self;
@@ -35,8 +35,15 @@
 }
 
 
+- (void)appendProjectTypeDictionary:(NSMutableDictionary *)dictionary {
+   for (ABProjectType * projectType in dictionary.allValues) {
+      [self appendProjectType:projectType];
+   }
+}
+
+
 - (void)appendProjectType:(ABProjectType *)projectType {
-   [self.onlineNameArray addObject:projectType];
+   [self.onlineTypeArray addObject:projectType];
 }
 
 

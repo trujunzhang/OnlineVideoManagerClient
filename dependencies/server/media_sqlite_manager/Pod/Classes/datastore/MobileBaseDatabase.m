@@ -18,7 +18,7 @@
 - (void)makeDB {
    // OnlineVideoType
    [db sqlExecute:@"create table OnlineVideoType(onlineVideoTypeID int, onlineVideoTypeName text,OnlineVideoTypePath text, primary key(onlineVideoTypeID));"];
-   [db sqlExecute:@"create table OnlineVideoTypeProjectTypes(onlineVideoTypeID int, ProjectTypeID int, primary key (onlineVideoTypeID,ProjectTypeID));"];
+   [db sqlExecute:@"create table OnlineVideoTypeProjectTypes(onlineVideoTypeID int, projectTypeID int, primary key (onlineVideoTypeID,projectTypeID));"];
 
 
    // ProjectType
@@ -46,7 +46,7 @@
 
    if ([schemaVersion isEqualToString:@"1"]) {
       // OnlineVideoType
-      [db sqlExecute:@"create index idx_onlinevideotypes_onlinevideotypeid on OnlineVideoType(OnlineVideoTypeID);"];
+      [db sqlExecute:@"create index idx_onlinevideotypes_onlinevideotypeid on OnlineVideoType(onlineVideoTypeID);"];
       [db sqlExecute:@"create index idx_onlinevideotypeprojecttypes_projecttypeid on OnlineVideoTypeProjectTypes(projectTypeID);"];// one->multiple
 
       // ProjectType
