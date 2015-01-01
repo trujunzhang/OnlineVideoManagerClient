@@ -23,6 +23,10 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/models/*.{h,m}'
   end
 
+  s.subspec 'clientmodels' do |sub|
+    sub.source_files = 'Pod/Classes/clientmodels/*.{h,m}'
+  end
+
 end
 
 
