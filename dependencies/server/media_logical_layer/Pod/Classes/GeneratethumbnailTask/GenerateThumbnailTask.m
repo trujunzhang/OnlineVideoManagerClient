@@ -17,7 +17,7 @@
    NSString * format = [NSString stringWithFormat:@"ffmpeg -i '%@' -deinterlace -an -ss 1 -t 00:00:01 -s 320x180 -r 1 -y -vcodec mjpeg -f mjpeg '%@'",
                                                   fileAbstractPath,
                                                   destinateFilePath];
-//   [GenerateThumbnailTask runCommand:format];
+   [GenerateThumbnailTask runCommand:format];
 }
 
 
@@ -30,7 +30,6 @@
     @"-c",
     [NSString stringWithFormat:@"%@", commandToRun],
      nil];
-   NSLog(@"run command: %@", commandToRun);
    [task setArguments:arguments];
 
    NSPipe * pipe;
@@ -48,6 +47,7 @@
    NSString * output;
    output = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
+   NSLog(@"run command: %@", commandToRun);
    NSLog(@"output = %@", output);
 
    return output;

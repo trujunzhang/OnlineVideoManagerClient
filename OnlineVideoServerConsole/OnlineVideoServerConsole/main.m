@@ -78,7 +78,7 @@ BOOL cleanupCache(NSString * cacheDirectory) {
 
    NSString * thumbnailDirectory = [NSString stringWithFormat:@"%@/%@",
                                                               cacheDirectory,
-                                                              MobileBaseDatabase.thumbnailFolder];
+                                                              thumbnailFolder];
 
    BOOL fileExists = [MobileBaseDatabase checkDBFileExist:dbFilePath];
    if (fileExists == NO) {
