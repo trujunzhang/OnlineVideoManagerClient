@@ -43,8 +43,8 @@
 }
 
 
-- (void)appendProjectType:(ABProjectType *)projectType {  // TODO djzhang
-//   [self.onlineTypeArray addObject:projectType];
+- (void)appendProjectType:(ABProjectType *)projectType {
+   [self.onlineTypeDictionary setObject:projectType forKey:projectType.projectTypeName];
 }
 
 

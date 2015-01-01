@@ -129,24 +129,24 @@ static MobileDB * _dbInstance;
 
    [db sqlExecute:sql];
 
-//   [self saveOnlineVideoTypeProjectTypesArray:onlineVideoType.onlineVideoTypeID // TODO djzhang
-//                                    withArray:onlineVideoType.onlineTypeArray];
+   [self saveOnlineVideoTypeProjectTypesArray:onlineVideoType.onlineVideoTypeID
+                               withDictionary:onlineVideoType.onlineTypeDictionary];
 }
 
 
-- (void)saveOnlineVideoTypeProjectTypesArray:(int)onlineVideoTypeID withArray:(NSMutableArray *)mutableArray {
+- (void)saveOnlineVideoTypeProjectTypesArray:(int)onlineVideoTypeID withDictionary:(NSMutableDictionary *)mutableArray {
    NSString * sql;
    if ([mutableArray count] > 0) {
-      for (ABProjectType * projectName in mutableArray) {
+      for (ABProjectType * abProjectType in mutableArray.allValues) {
          sql = [NSString stringWithFormat:@"select projectTypeID from OnlineVideoTypeProjectTypes where onlineVideoTypeID = %i and projectTypeID = %i",
                                           onlineVideoTypeID,
-                                          projectName.projectTypeID];
+                                          abProjectType.projectTypeID];
          id<ABRecordset> results = [db sqlSelect:sql];
 
          if ([results eof]) {
             sql = [NSString stringWithFormat:@"insert into OnlineVideoTypeProjectTypes(onlineVideoTypeID,projectTypeID) values(%i,%i);",
                                              onlineVideoTypeID,
-                                             projectName.projectTypeID];
+                                             abProjectType.projectTypeID];
             [db sqlExecute:sql];
          }
       }
@@ -620,14 +620,14 @@ static MobileDB * _dbInstance;
 
 
 // step02: save ABProjectType
-- (void)saveForOnlineTypeArray:(ABOnlineVideoType *)onlineVideoType { // TODO djzhang
-//   NSMutableArray * onlineTypeArray = onlineVideoType.onlineTypeArray;
-//   for (ABProjectType * projectType in onlineTypeArray) {
-//      [self saveProjectType:projectType];
-//
-//      // step02: save ABProjectName
-//      [self saveForProjectTypeArray:projectType];
-//   }
+- (void)saveForOnlineTypeArray:(ABOnlineVideoType *)onlineVideoType {
+   NSMutableDictionary * onlineTypeArray = onlineVideoType.onlineTypeDictionary;
+   for (ABProjectType * projectType in onlineTypeArray.allValues) {
+      [self saveProjectType:projectType];
+
+      // step02: save ABProjectName
+      [self saveForProjectTypeArray:projectType];
+   }
 }
 
 
