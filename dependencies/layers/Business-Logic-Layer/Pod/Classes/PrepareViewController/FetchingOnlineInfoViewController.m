@@ -18,7 +18,7 @@
       self.delegate = delegate;
       [self initOnlineClientInfo];
 
-      self.view.backgroundColor = [UIColor redColor];
+      self.view.backgroundColor = [UIColor whiteColor];
    }
 
    return self;

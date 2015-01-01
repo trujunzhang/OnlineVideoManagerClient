@@ -114,7 +114,7 @@
 
 
 #pragma mark -
-#pragma mark GYoutubeHelperDelegate
+#pragma mark
 
 
 - (void)callbackUpdateYoutubeChannelCompletion:(NSUInteger)tabBarSelectedIndex {
