@@ -72,6 +72,16 @@
 }
 
 
+- (ABProjectFileInfo *)getFirstABProjectFileInfo {
+   if (self.projectFileInfos.count > 0) {
+      ABProjectFileInfo * firstFileInfo = self.projectFileInfos[0];
+
+      return firstFileInfo;
+   }
+   return nil;
+}
+
+
 - (NSString *)getPlayListThumbnailGeneratedFromVideo {
    if (self.projectFileInfos.count > 0) {
       ABProjectFileInfo * firstFileInfo = self.projectFileInfos[0];

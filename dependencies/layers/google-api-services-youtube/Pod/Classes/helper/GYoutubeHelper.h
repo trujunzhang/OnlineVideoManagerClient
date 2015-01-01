@@ -40,6 +40,7 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 - (NSString *)getCurrentDomainUrl;
 
 
+- (NSString *)getServerCacheDirectory;
 @property(nonatomic, weak) id<GYoutubeHelperDelegate> delegate;
 
 - (void)initOnlineClient:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock;

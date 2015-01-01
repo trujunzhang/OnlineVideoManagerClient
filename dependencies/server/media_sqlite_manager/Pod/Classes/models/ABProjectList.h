@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "ABProjectName.h"
+@class ABProjectFileInfo;
 
 
 @interface ABProjectList : ABSqliteObject<MKAnnotation>
@@ -16,5 +17,6 @@
 - (NSString *)JSONValue;
 
 - (void)appendFileInfo:(id)fileInfo;
+- (ABProjectFileInfo *)getFirstABProjectFileInfo;
 - (NSString *)getPlayListThumbnailGeneratedFromVideo;
 @end

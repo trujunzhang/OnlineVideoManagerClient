@@ -121,6 +121,11 @@ static GYoutubeHelper * instance = nil;
 }
 
 
+- (NSString *)getServerCacheDirectory {
+   return [self.onlineServerInfo cacheThumbmail];
+}
+
+
 - (instancetype)init {
    self = [super init];
    if (self) {

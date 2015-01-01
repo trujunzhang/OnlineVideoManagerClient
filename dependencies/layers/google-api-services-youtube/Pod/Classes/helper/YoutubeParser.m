@@ -16,6 +16,7 @@
 #import "GYoutubeHelper.h"
 #import "SqliteManager.h"
 #import "MxTabBarManager.h"
+#import "MobileBaseDatabase.h"
 
 
 @interface YoutubeParser ()
@@ -82,10 +83,13 @@
 
 
 + (NSString *)getVideoThumbnailsGeneratedFromVideo:(YTYouTubeVideoCache *)fileInfo {
-   NSString * playListThumbnail = [fileInfo getCacheFileInfoThumbnail];
 
+   NSString * thumbnailName = [MobileBaseDatabase getThumbnailName:fileInfo.fileInfoID];
    NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
-   return [NSString stringWithFormat:@"%@%@", domain, playListThumbnail];
+   return [NSString stringWithFormat:@"%@/%@/%@",
+                                     domain,
+                                     [[GYoutubeHelper getInstance] getServerCacheDirectory],
+                                     thumbnailName];
 }
 
 
@@ -99,10 +103,10 @@
 
 
 + (NSString *)getPlayListThumbnailsGeneratedFromVideo:(YTYouTubePlayList *)playList {
-   NSString * playListThumbnail = [playList getPlayListThumbnailGeneratedFromVideo];
 
-   NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
-   return [NSString stringWithFormat:@"%@%@", domain, playListThumbnail];
+   ABProjectFileInfo * firstFileInfo = [playList getFirstABProjectFileInfo];
+
+   return [self getVideoThumbnailsGeneratedFromVideo:firstFileInfo];
 }
 
 
