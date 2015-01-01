@@ -91,7 +91,7 @@
 
 
 - (void)buttonTapped:(id)sender {
-
+   [self initOnlineClientInfo];
 }
 
 
@@ -107,6 +107,7 @@
 
 
 - (void)initOnlineClientInfo {
+
    [[GYoutubeHelper getInstance] initOnlineClient:^(NSURLResponse * response, NSURL * url, NSError * error) {
        if (error) {
           [self showLoadingFailInfo];
@@ -117,6 +118,7 @@
           [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
        }
    }];
+
 }
 
 
