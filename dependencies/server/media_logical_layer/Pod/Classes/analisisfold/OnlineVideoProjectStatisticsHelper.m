@@ -85,7 +85,7 @@
 
 - (void)generateThumbnail:(int)fileInfoID forFile:(NSString *)fileAbstractPath {
    NSString * thumbnailName = [MobileBaseDatabase getThumbnailName:fileInfoID];
-   NSString * debug = @"debug";
+
    [GenerateThumbnailTask appendGenerateThumbnailTask:thumbnailName in:fileAbstractPath to:self.cacheDirectory];
 }
 
