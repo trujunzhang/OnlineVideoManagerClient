@@ -73,7 +73,7 @@ static GYoutubeHelper * instance = nil;
              [self.delegate showStepInfo:@"Downloading sqlite databse!"];
           } else {
              downloadCompletionBlock(nil, nil, nil);
-             [self.delegate showStepInfo:@"Cache dictionary already has sqlite file!"];
+//             [self.delegate showStepInfo:@"Cache dictionary already has sqlite file!"];
           }
        }
    };

@@ -86,9 +86,10 @@
 
    NSString * thumbnailName = [MobileBaseDatabase getThumbnailName:fileInfo.fileInfoID];
    NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
-   return [NSString stringWithFormat:@"%@/%@/%@",
+   return [NSString stringWithFormat:@"%@/%@/%@/%@",
                                      domain,
                                      [[GYoutubeHelper getInstance] getServerCacheDirectory],
+                                     thumbnailFolder,
                                      thumbnailName];
 }
 
@@ -103,9 +104,14 @@
 
 
 + (NSString *)getPlayListThumbnailsGeneratedFromVideo:(YTYouTubePlayList *)playList {
+   if (playList.projectFileInfos.count == 0) {
+      return @"";
+   }
+
    ABProjectFileInfo * firstFileInfo = [playList getFirstABProjectFileInfo];
 
-   return [self getVideoThumbnailsGeneratedFromVideo:firstFileInfo];
+   NSString * generatedFromVideo = [self getVideoThumbnailsGeneratedFromVideo:firstFileInfo];
+   return generatedFromVideo;
 }
 
 
