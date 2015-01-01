@@ -76,7 +76,6 @@
    NSString * onlineVideoTypePath = [SqliteManager getCurrentOnlineVideoTypePath:projectNameIDString];
 
    NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
-//   domain = @"http://192.168.1.200:8040";// test
 
    return [NSString stringWithFormat:@"%@%@%@", domain, onlineVideoTypePath, playListThumbnail];
 }
