@@ -165,7 +165,7 @@ static MobileDB * _dbInstance;
 
       onlineVideoType.onlineVideoTypeID = [[results fieldWithName:@"onlineVideoTypeID"] intValue];
       onlineVideoType.onlineVideoTypeName = [[results fieldWithName:@"onlineVideoTypeName"] stringValue];
-      onlineVideoType.OnlineVideoTypePath = [[results fieldWithName:@"OnlineVideoTypePath"] stringValue];
+      onlineVideoType.onlineVideoTypePath = [[results fieldWithName:@"onlineVideoTypePath"] stringValue];
 
       [onlineVideoTypeArray addObject:onlineVideoType];
 

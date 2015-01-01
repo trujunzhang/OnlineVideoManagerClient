@@ -12,6 +12,8 @@
    GGTabBarController * _tabBarController;
    NSArray * _tabBarViewControllerArray;
    YTLeftMenuViewController * _leftViewController;
+
+   NSString * projectNameIDString;
 }
 
 
@@ -68,7 +70,14 @@
 }
 
 
-- (void)pushAndResetControllers:(NSArray *)controllers {
+- (NSString *)getCurrentProjectNameIDString {
+   return projectNameIDString;
+}
+
+
+- (void)pushAndResetControllers:(NSArray *)controllers forChannelId:(NSString *)channelId {
+   projectNameIDString = channelId;
+
    [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
 
    UINavigationController * navigationController = [self currentNavigationController];

@@ -14,8 +14,6 @@
    ASNetworkImageNode * _videoCoverThumbnailsNode;
 }
 
-@property(nonatomic) CGFloat durationLabelWidth;
-
 @end
 
 

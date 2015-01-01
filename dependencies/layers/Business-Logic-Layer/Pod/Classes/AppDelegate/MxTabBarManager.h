@@ -10,7 +10,8 @@
 - (UINavigationController *)currentNavigationController;
 - (id)makeVideoDetailViewController:(id)video;
 
-- (void)pushAndResetControllers:(NSArray *)controllers;
+- (NSString *)getCurrentProjectNameIDString;
+- (void)pushAndResetControllers:(NSArray *)controllers forChannelId:(NSString *)id1;
 - (void)pushForYouTubePlayList:(id)playList withPlayListTitle:(NSString *)title;
 - (void)pushWithVideo:(id)video;
 

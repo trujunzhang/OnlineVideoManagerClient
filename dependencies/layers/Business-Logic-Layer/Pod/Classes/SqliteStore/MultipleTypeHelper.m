@@ -57,7 +57,7 @@
    NSMutableDictionary * onlineVideoTypePathDictionary = [[NSMutableDictionary alloc] init];
    for (ABOnlineVideoType * onlineVideoType in array) {
 
-      [onlineVideoTypePathDictionary setObject:onlineVideoType.OnlineVideoTypePath
+      [onlineVideoTypePathDictionary setObject:onlineVideoType.onlineVideoTypePath
                                         forKey:[NSString stringWithFormat:@"%i", onlineVideoType.onlineVideoTypeID]];
    }
 

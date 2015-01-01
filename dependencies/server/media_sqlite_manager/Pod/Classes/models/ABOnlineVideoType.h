@@ -12,7 +12,7 @@
 
 @property(assign) int onlineVideoTypeID;
 @property(copy) NSString * onlineVideoTypeName;
-@property(copy) NSString * OnlineVideoTypePath;
+@property(copy) NSString * onlineVideoTypePath;
 
 //@property(strong) NSMutableArray * onlineTypeArray;
 

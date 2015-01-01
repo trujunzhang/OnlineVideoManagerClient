@@ -36,10 +36,10 @@ NSMutableArray * _onlineVideoTypeArray;
 }
 
 
-+ (NSString *)getCurrentOnlineVideoTypePath:(NSInteger)navigationIndex {
-   ABOnlineVideoType * onlineVideoType = _onlineVideoTypeArray[navigationIndex];
++ (NSString *)getCurrentOnlineVideoTypePath:(NSString *)navigationIndex {
+   NSString * onlineVideoTypePath = [_onlineVideoTypePathDictionary objectForKey:navigationIndex];
 
-   return onlineVideoType.OnlineVideoTypePath;
+   return onlineVideoTypePath;
 }
 
 
