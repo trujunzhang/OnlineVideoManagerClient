@@ -58,6 +58,7 @@ static GYoutubeHelper * instance = nil;
                     [self.delegate showStepInfo:[NSString stringWithFormat:@"Download %@ failure?",
                                                                            [[objectForKey absoluteURL] absoluteString]]];
                  } else {
+                    [ParseLocalStore saveSqliteVersion:self.onlineServerInfo.version];
                     downloadCompletionBlock(nil, nil, nil);
                  }
              };
@@ -96,8 +97,8 @@ static GYoutubeHelper * instance = nil;
 
 //   [[ParseHelper sharedParseHelper] saveOnlineVideoInfo:[OnlineServerInfo standardServerInfo]];// test
 - (BOOL)checkValidateLocalSqlite:(NSString *)version {
+
    NSString * lastVersion = [ParseLocalStore readSqliteVersion];
-   [ParseLocalStore saveSqliteVersion:version];
    if ([ParseLocalStore checkLocalCacheSqliteExist] == YES) {// exist
       if ([lastVersion isEqualToString:version] == YES) { // the same
          return YES;

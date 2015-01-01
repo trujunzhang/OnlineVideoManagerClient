@@ -42,7 +42,7 @@
    NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
 
-   //"http://192.168.1.103:8040/XBMC/ShareAFP/Online Tutorial/Video Training/Lynda.com/.cache/VideoTrainingDB.db"
+   //"http://192.168.1.103:8040/Home/djzhang/.AOnlineTutorial/.cache/VideoTrainingDB.db"
    NSURL * URL = [NSURL URLWithString:remoteSqliteUrl];
 
    NSURLRequest * request = [NSURLRequest requestWithURL:URL];
