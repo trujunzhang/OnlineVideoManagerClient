@@ -38,7 +38,7 @@
 //}
 
 
-+ (void)downloadSqliteFile:(NSString *)remoteSqliteUrl downloadCompletionBlock:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
++ (void)downloadSqliteFile:(NSString *)remoteSqliteUrl downloadCompletionBlock:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock progressBlock:(__autoreleasing NSProgress **)progressBlock {
    NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
 
@@ -49,7 +49,7 @@
 
    NSURLSessionDownloadTask * downloadTask =
     [manager downloadTaskWithRequest:request
-                            progress:nil
+                            progress:progressBlock
                          destination:^NSURL *(NSURL * targetPath, NSURLResponse * response) {
                              NSURL * documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSCachesDirectory
                                                                                                     inDomain:NSUserDomainMask

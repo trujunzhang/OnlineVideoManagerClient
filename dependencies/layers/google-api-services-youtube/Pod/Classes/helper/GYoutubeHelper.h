@@ -23,7 +23,7 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 @protocol GYoutubeHelperDelegate<NSObject>
 
 @optional
-- (void)showStepInfo:(char *)string;
+- (void)showStepInfo:(NSString *)string;
 
 
 @end
@@ -42,7 +42,6 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 
 @property(nonatomic, weak) id<GYoutubeHelperDelegate> delegate;
 
-- (void)fetchSqliteRemoteFile:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock;
 - (void)initOnlineClient:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock;
 
 @end

@@ -46,23 +46,51 @@ static GYoutubeHelper * instance = nil;
        self.onlineServerInfo = object;
 
        if (error) {
-          downloadCompletionBlock(nil, nil, error);
-          [self.delegate showStepInfo:"Fetching failure?"];
+          [self.delegate showStepInfo:@"Fetching failure?"];
        } else {
           if ([self checkValidateLocalSqlite:object.version] == NO) {
              // 2.
-             [self fetchSqliteRemoteFile:downloadCompletionBlock];
-             [self.delegate showStepInfo:"Downloading sqlite databse!"];
+             NSProgress * progress;
+             void (^downloadCompletion)(NSURLResponse *, NSURL *, NSError *) = ^(NSURLResponse * response, NSURL * url, NSError * error) {
+                 if (error) {
+                    id objectForKey = [[error userInfo] objectForKey:@"NSErrorFailingURLKey"];
+
+                    [self.delegate showStepInfo:[NSString stringWithFormat:@"Download %@ failure?",
+                                                                           [[objectForKey absoluteURL] absoluteString]]];
+                 } else {
+                    downloadCompletionBlock(nil, nil, nil);
+                 }
+             };
+             [self fetchSqliteRemoteFile:downloadCompletion progressBlock:&progress];
+
+             // Observe fractionCompleted using KVO
+             [progress addObserver:self
+                        forKeyPath:@"fractionCompleted"
+                           options:NSKeyValueObservingOptionNew
+                           context:NULL];
+
+
+             [self.delegate showStepInfo:@"Downloading sqlite databse!"];
           } else {
              downloadCompletionBlock(nil, nil, nil);
-             [self.delegate showStepInfo:"Downloaded sqlite databse failure?"];
+             [self.delegate showStepInfo:@"Cache dictionary already has sqlite file!"];
           }
        }
    };
    // 1.
    [[ParseHelper sharedParseHelper] readOnlineVideoInfo:parseHelperResultBlock];
 
-   [self.delegate showStepInfo:"Fetching OnlineVideoInfo!"];
+   [self.delegate showStepInfo:@"Fetching OnlineVideoInfo frome parse.com !"];
+}
+
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+//   [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+
+   if ([keyPath isEqualToString:@"fractionCompleted"] && [object isKindOfClass:[NSProgress class]]) {
+      NSProgress * progress = (NSProgress *) object;
+      NSLog(@"Progress is %f", progress.fractionCompleted);
+   }
 }
 
 
@@ -81,9 +109,10 @@ static GYoutubeHelper * instance = nil;
 }
 
 
-- (void)fetchSqliteRemoteFile:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
+- (void)fetchSqliteRemoteFile:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock progressBlock:(__autoreleasing NSProgress **)progressBlock {
    [Online_Request downloadSqliteFile:[self.onlineServerInfo getRemoteSqliteDatabase]
-              downloadCompletionBlock:downloadCompletionBlock];
+              downloadCompletionBlock:downloadCompletionBlock
+                        progressBlock:progressBlock];
 }
 
 

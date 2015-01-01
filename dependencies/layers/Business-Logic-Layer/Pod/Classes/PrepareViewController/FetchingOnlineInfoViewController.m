@@ -101,7 +101,7 @@
    CGFloat dW = rect.size.width;
    CGFloat dH = 100;
    CGFloat dX = (rect.size.width - dW) / 2;
-   CGFloat dY = (rect.size.height - dH) / 2;
+   CGFloat dY = (rect.size.height - dH) / 2 - 200;
    _fetchingInfo.frame = CGRectMake(dX, dY, dW, dH);
 }
 
@@ -111,10 +111,10 @@
        if (error) {
           [self showLoadingFailInfo];
        } else {
-          [self.delegate fetchingOnlineClientCompletion];
-
-          [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
-          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
+//          [self.delegate fetchingOnlineClientCompletion];
+//
+//          [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
+//          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
        }
    }];
 }
@@ -129,8 +129,13 @@
 #pragma mark GYoutubeHelperDelegate
 
 
-- (void)showStepInfo:(char *)string {
-
+- (void)showStepInfo:(NSString *)string {
+   NSDictionary * attrsNode = @{
+    NSFontAttributeName : [UIFont systemFontOfSize:32.0f],
+    NSForegroundColorAttributeName : [UIColor blueColor],
+   };
+   _fetchingInfo.attributedString = [[NSAttributedString alloc] initWithString:string
+                                                                    attributes:attrsNode];
 }
 
 
