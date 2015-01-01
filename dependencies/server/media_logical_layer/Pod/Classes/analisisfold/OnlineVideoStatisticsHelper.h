@@ -8,11 +8,11 @@
 
 @interface OnlineVideoStatisticsHelper : NSObject
 
-@property(nonatomic, strong) NSString * onlinePath;
+@property(nonatomic, strong) NSString * videoScanFold;
 @property(nonatomic, copy) NSString * onlineTypeName;
 
 @property(nonatomic, strong) NSMutableDictionary * projectTypesDictionary;
 
-- (instancetype)initWithOnlinePath:(NSString *)onlinePath withName:(NSString *)name;
+- (instancetype)initWithOnlinePath:(NSString *)onlinePath;
 
 @end

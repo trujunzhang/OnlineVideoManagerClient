@@ -54,20 +54,18 @@ BOOL cleanupCache(NSString * cacheDirectory) {
 }
 
 
-void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineVideoTypePath, NSString * onlineTypeRoot, NSString * cacheDirectory) {
+void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineVideoTypePath, NSString * videoScanFold, NSString * dbDirectory) {
 
 //   NSString * videoPath = @"/Volumes/XBMC/ShareAFP/Online Tutorial/Video Training/Lynda.com";
 //   NSString * videoPath = @"/Volumes/macshare/MacPE/Lynda.com";
 
-   OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper =
-    [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:onlineTypeRoot
-                                                   withName:onlineTypeName];
+   // 1
+   OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:videoScanFold];
 
-   NSMutableDictionary * projectTypesDictionary = onlineVideoStatisticsHelper.projectTypesDictionary;
-
-   [[MobileDB dbInstance:cacheDirectory] saveForOnlineVideoTypeDictionary:projectTypesDictionary
-                                                                 withName:onlineTypeName
-                                                 whithOnlineVideoTypePath:onlineVideoTypePath
+   // 2
+   [[MobileDB dbInstance:dbDirectory] saveForOnlineVideoTypeDictionary:onlineVideoStatisticsHelper.projectTypesDictionary
+                                                              withName:onlineTypeName
+                                              whithOnlineVideoTypePath:onlineVideoTypePath
    ];
 
    NSString * debug = @"debug";
@@ -78,8 +76,8 @@ int main(int argc, const char * argv[]) {
    @autoreleasepool {
       // insert code here...
 
-      NSString * cacheDirectory = RealProjectCacheDirectory();
-      if (cleanupCache(cacheDirectory) == NO) {
+      NSString * dbDirectory = RealProjectCacheDirectory();
+      if (cleanupCache(dbDirectory) == NO) {
          NSLog(@"Remove failed");
          return 0;
       }
@@ -102,10 +100,15 @@ int main(int argc, const char * argv[]) {
       for (NSString * onlineTypeName in onlineTypeDictionary.allKeys) {
          NSArray * typePathArray = [onlineTypeDictionary valueForKey:onlineTypeName];
 
-         for (NSString * onlineTypeRoot in typePathArray) {
-            NSString * onlineVideoTypePath = [onlineTypeRoot replaceCharcter:htdocs
-                                                                withCharcter:@""];
-            generateSqliteFromSource(onlineTypeName, onlineVideoTypePath, onlineTypeRoot, cacheDirectory);
+         for (NSString * videoScanFold in typePathArray) {
+
+            generateSqliteFromSource(
+             onlineTypeName,// Youtube.com
+             [videoScanFold replaceCharcter:htdocs withCharcter:@""],// local path: "/macshare/MacPE/youtubes"
+             videoScanFold,// "/Volumes/macshare/MacPE/youtubes"
+             dbDirectory// "/Volumes/Home/djzhang/.AOnlineTutorial/.cache"+"xxx.db"
+            );
+
          }
       }
 
