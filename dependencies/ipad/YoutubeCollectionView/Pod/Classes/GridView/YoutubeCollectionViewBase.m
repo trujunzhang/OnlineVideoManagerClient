@@ -19,9 +19,7 @@
 
 @interface YoutubeCollectionViewBase () {
    BOOL isFirstRequest;
-
    GYoutubeRequestInfo * _youtubeRequestInfo;
-
    NSMutableArray * _projectListArray;
 }
 
@@ -177,10 +175,10 @@
 
 
 - (void)fetchActivityListByPageToken {
-//   GYoutubeRequestInfo * requestInfo = [self getYoutubeRequestInfo];
-//   NSMutableArray * projectListArray = _projectListArray;
-//
-//   [self updateAfterResponse:projectListArray];
+   GYoutubeRequestInfo * requestInfo = [self getYoutubeRequestInfo];
+   NSMutableArray * projectListArray = _projectListArray;
+
+   [self updateAfterResponse:projectListArray];
 
 }
 
