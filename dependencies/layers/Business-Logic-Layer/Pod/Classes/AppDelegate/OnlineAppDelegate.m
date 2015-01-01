@@ -86,13 +86,14 @@
    NSMutableArray * onlineVideoTypesArray = [[SqliteManager sharedSqliteManager] getOnlineVideoTypesArray];
 
    NSMutableArray * controllerArray = [[NSMutableArray alloc] init];
+
    for (ABOnlineVideoType * onlineVideoType in onlineVideoTypesArray) {
       OnlineTypeViewController * lyndaController = [[OnlineTypeViewController alloc] init];
 
-      NSString * tabbarImageName = [self getTabbarImageName:onlineVideoType.onlineVideoTypeName];
+      NSString * tabBarImageName = [self getTabbarImageName:onlineVideoType.onlineVideoTypeName];
       lyndaController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil
-                                                                 image:[UIImage imageNamed:tabbarImageName]
-                                                         selectedImage:[UIImage imageNamed:tabbarImageName]];
+                                                                 image:[UIImage imageNamed:tabBarImageName]
+                                                         selectedImage:[UIImage imageNamed:tabBarImageName]];
 
       UINavigationController * lyndaNavigationController = [[UINavigationController alloc] initWithRootViewController:lyndaController];
       [controllerArray addObject:lyndaNavigationController];
