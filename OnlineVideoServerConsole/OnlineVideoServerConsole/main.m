@@ -29,7 +29,8 @@ NSString * RealHomeDirectory() {
 NSString * RealProjectCacheDirectory() {
    NSString * homeDirectory = RealHomeDirectory();
 
-   return [NSString stringWithFormat:@"%@/%@/%@/%@", homeDirectory, appProfile, appCacheDirectory];
+   NSString * string = [NSString stringWithFormat:@"%@/%@/%@", homeDirectory, appProfile, appCacheDirectory];
+   return string;
 }
 
 
