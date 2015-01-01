@@ -59,6 +59,7 @@ static GYoutubeHelper * instance = nil;
    // 1.
    [[ParseHelper sharedParseHelper] readOnlineVideoInfo:parseHelperResultBlock];
 
+   [self.delegate showStepInfo:"Fetching OnlineVideoInfo ..."];
 //   [[ParseHelper sharedParseHelper] saveOnlineVideoInfo:[OnlineServerInfo standardServerInfo]];// test
 }
 

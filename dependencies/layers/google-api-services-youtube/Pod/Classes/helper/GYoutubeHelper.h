@@ -23,6 +23,7 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 @protocol GYoutubeHelperDelegate<NSObject>
 
 @optional
+- (void)showStepInfo:(char *)string;
 
 
 @end
@@ -33,20 +34,15 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 }
 // Accessor for the app's single instance of the service object.
 @property(nonatomic) BOOL isSignedIn;
-
-+ (GYoutubeHelper *)getInstance;
-
 @property(nonatomic, strong) OnlineServerInfo * onlineServerInfo;
 
-
++ (GYoutubeHelper *)getInstance;
 - (NSString *)getCurrentDomainUrl;
-- (void)searchByQueryWithRequestInfo:(GYoutubeRequestInfo *)info completionHandler:(YoutubeResponseBlock)handler errorHandler:(ErrorResponseBlock)handler1;
+
 
 @property(nonatomic, weak) id<GYoutubeHelperDelegate> delegate;
 
-
 - (void)fetchSqliteRemoteFile:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock;
-
 - (void)initOnlineClient:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock;
 
 @end

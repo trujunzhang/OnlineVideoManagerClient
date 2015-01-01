@@ -8,7 +8,7 @@
 #import "GGTabBarController.h"
 
 
-@interface MxTabBarManager ()<GYoutubeHelperDelegate> {
+@interface MxTabBarManager () {
    GGTabBarController * _tabBarController;
    NSArray * _tabBarViewControllerArray;
    YTLeftMenuViewController * _leftViewController;
