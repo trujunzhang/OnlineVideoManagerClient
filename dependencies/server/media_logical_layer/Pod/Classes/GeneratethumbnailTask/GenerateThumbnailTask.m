@@ -17,7 +17,7 @@
    NSString * format = [NSString stringWithFormat:@"ffmpeg -i '%@' -deinterlace -an -ss 1 -t 00:00:01 -s 320x180 -r 1 -y -vcodec mjpeg -f mjpeg '%@'",
                                                   fileAbstractPath,
                                                   destinateFilePath];
-   [GenerateThumbnailTask runCommand:format];
+//   [GenerateThumbnailTask runCommand:format];
 }
 
 

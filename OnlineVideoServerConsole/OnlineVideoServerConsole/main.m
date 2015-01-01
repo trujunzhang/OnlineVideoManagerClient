@@ -32,16 +32,36 @@ NSString * RealProjectCacheDirectory() {
 }
 
 
+void createDirectoryForCache(NSFileManager * filemgr, NSString * cacheDirectory) {
+   NSError * error = nil;
+   if (![filemgr createDirectoryAtPath:cacheDirectory withIntermediateDirectories:YES attributes:nil error:&error]) {
+      // An error has occurred, do something to handle it
+      NSLog(@"Failed to create directory \"%@\". Error: %@", cacheDirectory, error);
+   }
+
+   NSString * thumbnailDirectory = [NSString stringWithFormat:@"%@/%@",
+                                                              cacheDirectory,
+                                                              MobileBaseDatabase.thumbnailFolder];
+
+   if (![filemgr createDirectoryAtPath:thumbnailDirectory withIntermediateDirectories:YES attributes:nil error:&error]) {
+      // An error has occurred, do something to handle it
+      NSLog(@"Failed to create directory \"%@\". Error: %@", thumbnailDirectory, error);
+   }
+
+}
+
+
 BOOL cleanupCache(NSString * cacheDirectory) {
+   NSFileManager * filemgr = [NSFileManager defaultManager];
+
    NSString * dbFilePath = [cacheDirectory stringByAppendingPathComponent:dataBaseName];
 
    BOOL fileExists = [MobileBaseDatabase checkDBFileExist:dbFilePath];
    if (fileExists == NO) {
+      createDirectoryForCache(filemgr, cacheDirectory);
       return YES;
    }
 
-   NSFileManager * filemgr;
-   filemgr = [NSFileManager defaultManager];
 
    if ([filemgr removeItemAtPath:dbFilePath error:NULL] == YES) {
       return YES;
@@ -60,7 +80,8 @@ void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineVideoT
 //   NSString * videoPath = @"/Volumes/macshare/MacPE/Lynda.com";
 
    // 1
-   OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:videoScanFold withCacheDirectory:dbDirectory];
+   OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:videoScanFold
+                                                                                                    withCacheDirectory:dbDirectory];
 
    // 2
    [[MobileDB dbInstance:dbDirectory] saveForOnlineVideoTypeDictionary:onlineVideoStatisticsHelper.projectTypesDictionary
