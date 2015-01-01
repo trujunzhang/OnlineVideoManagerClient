@@ -16,6 +16,7 @@
 #include <assert.h>
 #import "NSString+PJR.h"
 #import "MobileBaseDatabase.h"
+#import "ServerVideoConfigure.h"
 
 
 NSString * RealHomeDirectory() {
@@ -28,7 +29,7 @@ NSString * RealHomeDirectory() {
 NSString * RealProjectCacheDirectory() {
    NSString * homeDirectory = RealHomeDirectory();
 
-   return [NSString stringWithFormat:@"%@%@", homeDirectory, @"/.AOnlineTutorial/.cache"];
+   return [NSString stringWithFormat:@"%@/%@/%@/%@", homeDirectory, appProfile, appCacheDirectory];
 }
 
 
@@ -126,19 +127,9 @@ int main(int argc, const char * argv[]) {
          return 0;
       }
 
-      NSString * htdocs = @"/Volumes";
-
-      NSArray * youtubeArray = @[
-       @"/Volumes/macshare/MacPE/youtubes",
-       @"/Volumes/AppCache/TubeDownload",
-      ];
-      NSArray * lyndaArray = @[
-       @"/Volumes/macshare/MacPE/Lynda.com",
-      ];
-
       NSMutableDictionary * onlineTypeDictionary = @{
-       @"Youtube.com" : youtubeArray,
-       @"Lynda.com" : lyndaArray,
+       @"Youtube.com" : [ServerVideoConfigure youtubeArray],
+       @"Lynda.com" : [ServerVideoConfigure lyndaArray],
       };
 
       for (NSString * onlineTypeName in onlineTypeDictionary.allKeys) {

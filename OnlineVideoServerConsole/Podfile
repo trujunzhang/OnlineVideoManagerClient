@@ -9,6 +9,6 @@ target 'OnlineVideoServerConsole', :exclusive => true do
   pod 'media_logical_layer', :path => '../dependencies/server/media_logical_layer'
 
 
-  pod 'GCDTask', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/GCDTask'
+  pod 'online_video_manager_config', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/OnlineVideoManagerClient/online_video_manager_config'
 
 end

@@ -4,8 +4,6 @@
 //
 
 #import "GenerateThumbnailTask.h"
-#import "GCDTask.h"
-
 
 @implementation GenerateThumbnailTask {
 
