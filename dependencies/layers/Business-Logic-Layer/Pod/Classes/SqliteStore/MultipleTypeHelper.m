@@ -36,8 +36,7 @@
 
 + (void)copyOnlineVideoTypeDictionary:(NSMutableDictionary *)onlineTypeDictionary to:(ABOnlineVideoType *)lastOnlineVideoType {
    for (NSString * key in onlineTypeDictionary.allKeys) {
-      id objectValue = [onlineTypeDictionary objectForKey:key];
-      [lastOnlineVideoType.onlineTypeDictionary setObject:objectValue forKey:key];
+      [lastOnlineVideoType.onlineTypeDictionary setObject:[onlineTypeDictionary objectForKey:key] forKey:key];
    }
 }
 
@@ -56,10 +55,9 @@
 + (NSMutableDictionary *)getOnlineVideoTypePathDictionary:(NSMutableArray *)array {
    NSMutableDictionary * onlineVideoTypePathDictionary = [[NSMutableDictionary alloc] init];
    for (ABOnlineVideoType * onlineVideoType in array) {
-      int onlineVideoTypeID = onlineVideoType.onlineVideoTypeID;
 
       [onlineVideoTypePathDictionary setObject:onlineVideoType.OnlineVideoTypePath
-                                        forKey:[NSString stringWithFormat:@"%i", onlineVideoTypeID]];
+                                        forKey:[NSString stringWithFormat:@"%i", onlineVideoType.onlineVideoTypeID]];
    }
 
    return onlineVideoTypePathDictionary;
