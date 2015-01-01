@@ -45,7 +45,7 @@ NSMutableArray * _onlineVideoTypeArray;
 
 - (void)resetOnlineVideoTypeArray {
    NSMutableArray * mutableArray = [[MobileDB dbInstance] readOnlineVideoTypes];
-   _onlineVideoTypePathDictionary == [MultipleTypeHelper getOnlineVideoTypePathDictionary:mutableArray];
+   _onlineVideoTypePathDictionary = [MultipleTypeHelper getOnlineVideoTypePathDictionary:mutableArray];
    _onlineVideoTypeArray = [MultipleTypeHelper getSingleOnlineVideoTypesArray:mutableArray];
 
    NSString * debug = @"debug";
