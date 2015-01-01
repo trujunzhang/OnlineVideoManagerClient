@@ -129,8 +129,8 @@ static MobileDB * _dbInstance;
 
    [db sqlExecute:sql];
 
-   [self saveOnlineVideoTypeProjectTypesArray:onlineVideoType.onlineVideoTypeID
-                                    withArray:onlineVideoType.onlineTypeArray];
+//   [self saveOnlineVideoTypeProjectTypesArray:onlineVideoType.onlineVideoTypeID // TODO djzhang
+//                                    withArray:onlineVideoType.onlineTypeArray];
 }
 
 
@@ -170,7 +170,7 @@ static MobileDB * _dbInstance;
       [onlineVideoTypeArray addObject:onlineVideoType];
 
       [self readOnlineTypeArray:onlineVideoType.onlineVideoTypeID
-                      withArray:onlineVideoType.onlineTypeArray
+                      withArray:onlineVideoType.onlineTypeDictionary
                     isReadArray:NO];
 
       [results moveNext];
@@ -182,7 +182,7 @@ static MobileDB * _dbInstance;
 }
 
 
-- (void)readOnlineTypeArray:(int)onlineVideoTypeID withArray:(NSMutableArray *)mutableArray isReadArray:(BOOL)isReadArray {
+- (void)readOnlineTypeArray:(int)onlineVideoTypeID withArray:(NSMutableDictionary *)dictionary isReadArray:(BOOL)isReadArray {
    NSString * sql;
    sql = [NSString stringWithFormat:@"select ProjectTypeID from OnlineVideoTypeProjectTypes where onlineVideoTypeID = '%i'",
                                     onlineVideoTypeID];
@@ -191,10 +191,9 @@ static MobileDB * _dbInstance;
    while (![results eof]) {
       int ProjectTypeID = [[results fieldWithName:@"ProjectTypeID"] intValue];
 
-      NSMutableDictionary * dictionary = [self readDictionaryForProjectTypeWithProjectTypeId:ProjectTypeID
-                                                                                  hasAllList:NO];
+      [self readDictionaryForProjectTypeWithProjectTypeId:ProjectTypeID toDictionary:dictionary hasAllList:NO];
+
       [self addOnlineVideoInfo:onlineVideoTypeID toProjectTypeDictionary:dictionary];
-      [mutableArray addObject:dictionary];
 
       [results moveNext];
    }
@@ -621,14 +620,14 @@ static MobileDB * _dbInstance;
 
 
 // step02: save ABProjectType
-- (void)saveForOnlineTypeArray:(ABOnlineVideoType *)onlineVideoType {
-   NSMutableArray * onlineTypeArray = onlineVideoType.onlineTypeArray;
-   for (ABProjectType * projectType in onlineTypeArray) {
-      [self saveProjectType:projectType];
-
-      // step02: save ABProjectName
-      [self saveForProjectTypeArray:projectType];
-   }
+- (void)saveForOnlineTypeArray:(ABOnlineVideoType *)onlineVideoType { // TODO djzhang
+//   NSMutableArray * onlineTypeArray = onlineVideoType.onlineTypeArray;
+//   for (ABProjectType * projectType in onlineTypeArray) {
+//      [self saveProjectType:projectType];
+//
+//      // step02: save ABProjectName
+//      [self saveForProjectTypeArray:projectType];
+//   }
 }
 
 
@@ -668,8 +667,7 @@ static MobileDB * _dbInstance;
 }
 
 
-- (NSMutableDictionary *)readDictionaryForProjectTypeWithProjectTypeId:(int)projectTypeId hasAllList:(BOOL)isAllList {
-   NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
+- (void)readDictionaryForProjectTypeWithProjectTypeId:(int)projectTypeId toDictionary:(NSMutableDictionary *)dictionary hasAllList:(BOOL)isAllList {
 
    LocationResultsBlock LocationResultsBlock = ^(NSArray * locations) {
        for (ABProjectType * projectType in locations) {
@@ -680,7 +678,6 @@ static MobileDB * _dbInstance;
    };
    [self readProjectTypeListWithResults:LocationResultsBlock WithProjectTypeId:projectTypeId hasAllList:isAllList];
 
-   return dictionary;
 }
 
 

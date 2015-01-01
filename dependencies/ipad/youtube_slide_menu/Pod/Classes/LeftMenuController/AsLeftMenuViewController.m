@@ -58,7 +58,6 @@
 
    YTYouTubeChannel * line = menuItemTree.rowsArray[indexPath.row];
 
-
    YTAsLeftTableCellNode * node =
     [[YTAsLeftTableCellNode alloc]
      initWithNodeCellSize:CGSizeMake(250, ROW_HEIGHT)

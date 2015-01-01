@@ -4,10 +4,13 @@
 //
 
 #import <Foundation/Foundation.h>
+@class ABOnlineVideoType;
 
 
 @interface MultipleTypeHelper : NSObject
 
-+ (void)getSingleOnlineVideoTypesArray:(NSMutableArray *)array;
++ (NSMutableArray *)getSingleOnlineVideoTypesArray:(NSMutableArray *)array;
 
++ (NSMutableDictionary *)getOnlineVideoTypePathDictionary:(NSMutableArray *)array;
++ (void)copyOnlineVideoTypeDictionary:(NSMutableArray *)onlineTypeDictionary to:(ABOnlineVideoType *)to;
 @end

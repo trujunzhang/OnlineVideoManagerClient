@@ -11,6 +11,7 @@
 #import "MultipleTypeHelper.h"
 
 NSMutableDictionary * _videoDictionary;
+NSMutableDictionary * _onlineVideoTypePathDictionary;
 NSMutableArray * _onlineVideoTypeArray;
 
 
@@ -44,22 +45,24 @@ NSMutableArray * _onlineVideoTypeArray;
 
 - (void)resetOnlineVideoTypeArray {
    NSMutableArray * mutableArray = [[MobileDB dbInstance] readOnlineVideoTypes];
-   [MultipleTypeHelper getSingleOnlineVideoTypesArray:mutableArray];
+   _onlineVideoTypePathDictionary == [MultipleTypeHelper getOnlineVideoTypePathDictionary:mutableArray];
+   _onlineVideoTypeArray = [MultipleTypeHelper getSingleOnlineVideoTypesArray:mutableArray];
 
    NSString * debug = @"debug";
 }
 
 
-- (void)resetOnlineVideoDictionary {
-   _videoDictionary = [[MobileDB dbInstance] readDictionaryForProjectTypeWithProjectTypeId:nil hasAllList:NO];
-}
+//- (void)resetOnlineVideoDictionary {
+//   _videoDictionary = [[MobileDB dbInstance] readDictionaryForProjectTypeWithProjectTypeId:nil hasAllList:NO];
+//}
 
 
-- (NSArray *)getCurrentOnlineVideoDictionary:(NSInteger)selectedIndex {
+- (NSArray *)getCurrentOnlineVideoDictionary:(NSInteger)selectedIndex {// TODO djzhang
    ABOnlineVideoType * onlineVideoType = _onlineVideoTypeArray[selectedIndex];
-   NSMutableDictionary * dictionary = onlineVideoType.onlineTypeArray[0];
+//   NSMutableDictionary * dictionary = onlineVideoType.onlineTypeArray[0];
 
-   return dictionary.allValues;
+//   return dictionary.allValues;
+   return nil;
 }
 
 

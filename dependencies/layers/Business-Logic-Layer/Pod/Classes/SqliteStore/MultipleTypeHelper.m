@@ -10,9 +10,66 @@
 @implementation MultipleTypeHelper {
 
 }
-+ (void)getSingleOnlineVideoTypesArray:(NSMutableArray *)array {
++ (NSMutableArray *)getSingleOnlineVideoTypesArray:(NSMutableArray *)array {
+   NSMutableArray * singleOnlineVideoTypesArray = [[NSMutableArray alloc] init];
+
    for (ABOnlineVideoType * onlineVideoType in array) {
+      NSString * videoTypeName = onlineVideoType.onlineVideoTypeName;
+
+      [MultipleTypeHelper checkExistAndAppend:onlineVideoType to:singleOnlineVideoTypesArray from:array];
+
+      NSString * debug = @"debug";
 
    }
+
+
+   return singleOnlineVideoTypesArray;
+}
+
+
++ (void)checkExistAndAppend:(ABOnlineVideoType *)onlineVideoType to:(NSMutableArray *)singleOnlineVideoTypesArray from:(NSMutableArray *)array {
+
+   ABOnlineVideoType * lastOnlineVideoType = [MultipleTypeHelper checkExist:onlineVideoType.onlineVideoTypeName
+                                                                         in:singleOnlineVideoTypesArray];
+   if (lastOnlineVideoType) {
+      [MultipleTypeHelper copyOnlineVideoTypeDictionary:onlineVideoType.onlineTypeDictionary to:lastOnlineVideoType];
+
+      NSString * debug = @"debug";
+   } else {
+      [singleOnlineVideoTypesArray addObject:onlineVideoType];
+   }
+
+}
+
+
++ (void)copyOnlineVideoTypeDictionary:(NSMutableDictionary *)onlineTypeDictionary to:(ABOnlineVideoType *)lastOnlineVideoType {
+   for (NSString * key in onlineTypeDictionary.allKeys) {
+      id objectValue = [onlineTypeDictionary objectForKey:key];
+      [lastOnlineVideoType.onlineTypeDictionary setObject:objectValue forKey:key];
+   }
+}
+
+
++ (ABOnlineVideoType *)checkExist:(NSString *)onlineVideoTypeName in:(NSMutableArray *)singleOnlineVideoTypesArray {
+   for (ABOnlineVideoType * onlineVideoType in singleOnlineVideoTypesArray) {
+      if ([onlineVideoTypeName isEqualToString:onlineVideoType.onlineVideoTypeName]) {
+         return onlineVideoType;
+      }
+   }
+
+   return nil;
+}
+
+
++ (NSMutableDictionary *)getOnlineVideoTypePathDictionary:(NSMutableArray *)array {
+   NSMutableDictionary * onlineVideoTypePathDictionary = [[NSMutableDictionary alloc] init];
+   for (ABOnlineVideoType * onlineVideoType in array) {
+      int onlineVideoTypeID = onlineVideoType.onlineVideoTypeID;
+
+      [onlineVideoTypePathDictionary setObject:onlineVideoType.OnlineVideoTypePath
+                                        forKey:[NSString stringWithFormat:@"%i", onlineVideoTypeID]];
+   }
+
+   return onlineVideoTypePathDictionary;
 }
 @end
