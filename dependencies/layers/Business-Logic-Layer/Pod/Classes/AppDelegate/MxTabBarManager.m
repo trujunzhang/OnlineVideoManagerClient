@@ -13,7 +13,7 @@
    NSArray * _tabBarViewControllerArray;
    YTLeftMenuViewController * _leftViewController;
 
-   NSString * projectNameIDString;
+   int * _onlineVideoTypeID;
 }
 
 
@@ -71,13 +71,11 @@
 
 
 - (NSString *)getCurrentProjectNameIDString {
-   return projectNameIDString;
+   return [NSString stringWithFormat:@"%i", _onlineVideoTypeID];
 }
 
 
-- (void)pushAndResetControllers:(NSArray *)controllers forChannelId:(NSString *)channelId {
-   projectNameIDString = channelId;
-
+- (void)pushAndResetControllers:(NSArray *)controllers {
    [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
 
    UINavigationController * navigationController = [self currentNavigationController];
@@ -123,4 +121,7 @@
 }
 
 
+- (void)setCurrentOnlineVideoTypeID:(int)onlineVideoTypeID {
+   _onlineVideoTypeID = onlineVideoTypeID;
+}
 @end

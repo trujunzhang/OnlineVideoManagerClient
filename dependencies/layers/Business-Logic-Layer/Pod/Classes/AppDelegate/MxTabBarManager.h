@@ -11,10 +11,11 @@
 - (id)makeVideoDetailViewController:(id)video;
 
 - (NSString *)getCurrentProjectNameIDString;
-- (void)pushAndResetControllers:(NSArray *)controllers forChannelId:(NSString *)id1;
+- (void)pushAndResetControllers:(NSArray *)controllers;
 - (void)pushForYouTubePlayList:(id)playList withPlayListTitle:(NSString *)title;
 - (void)pushWithVideo:(id)video;
 
 - (void)callbackUpdateYoutubeChannelCompletion;
 - (void)registerTabBarController:(id)controller withLeftViewController:(id)controller1 withTabbarControllerArray:(NSArray *)array;
+- (void)setCurrentOnlineVideoTypeID:(int)id;
 @end

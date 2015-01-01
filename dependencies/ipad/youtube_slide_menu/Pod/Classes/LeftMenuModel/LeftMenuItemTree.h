@@ -22,12 +22,14 @@ typedef NS_ENUM (NSUInteger, LeftMenuItemTreeType) {
 @property(nonatomic, copy) NSString * title;
 @property(nonatomic, assign) LeftMenuItemTreeType itemType;
 @property(nonatomic, strong) NSMutableArray * rowsArray;
+@property(assign) int onlineVideoTypeID;
+
 @property(nonatomic) BOOL hideTitle;
 @property(nonatomic) BOOL isRemoteImage;
 @property(nonatomic, copy) NSString * cellIdentifier;
 
 
-- (instancetype)initWithTitle:(NSString *)string itemType:(LeftMenuItemTreeType)type rowsArray:(NSArray *)array hideTitle:(BOOL)title remoteImage:(BOOL)image;
+- (instancetype)initWithTitle:(NSString *)title itemType:(LeftMenuItemTreeType)type rowsArray:(NSMutableArray *)rowsArray onlineVideoTypeID:(int)onlineVideoTypeID hideTitle:(BOOL)hideTitle remoteImage:(BOOL)remoteImage;
 
 + (instancetype)getCategoriesMenuItemTree;
 

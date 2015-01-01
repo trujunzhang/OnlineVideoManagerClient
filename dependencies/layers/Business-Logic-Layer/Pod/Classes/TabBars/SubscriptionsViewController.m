@@ -59,7 +59,7 @@
                                                                                          action:@selector(leftBarButtonItemAction:)];
 
    // 3
-   [[MxTabBarManager sharedTabBarManager] pushAndResetControllers:@[ gridViewController ] forChannelId:nil];
+   [[MxTabBarManager sharedTabBarManager] pushAndResetControllers:@[ gridViewController ]];
 
    // 4
    _playlistItemsType = playlistItemsType;
@@ -78,7 +78,7 @@
                                                                                  target:self
                                                                                  action:@selector(leftBarButtonItemAction:)];
 
-   [[MxTabBarManager sharedTabBarManager] pushAndResetControllers:@[ controller ] forChannelId:nil];
+   [[MxTabBarManager sharedTabBarManager] pushAndResetControllers:@[ controller ]];
 }
 
 

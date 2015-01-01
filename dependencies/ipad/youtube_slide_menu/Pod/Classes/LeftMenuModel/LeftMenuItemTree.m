@@ -21,12 +21,13 @@
 @implementation LeftMenuItemTree
 
 
-- (instancetype)initWithTitle:(NSString *)title itemType:(LeftMenuItemTreeType)type rowsArray:(NSMutableArray *)rowsArray hideTitle:(BOOL)hideTitle remoteImage:(BOOL)remoteImage {
+- (instancetype)initWithTitle:(NSString *)title itemType:(LeftMenuItemTreeType)type rowsArray:(NSMutableArray *)rowsArray onlineVideoTypeID:(int)onlineVideoTypeID hideTitle:(BOOL)hideTitle remoteImage:(BOOL)remoteImage {
    self = [super init];
    if (self) {
       self.title = title;
       self.itemType = type;
       self.rowsArray = rowsArray;
+      self.onlineVideoTypeID = onlineVideoTypeID;
       self.hideTitle = hideTitle;
       self.isRemoteImage = remoteImage;
       self.cellIdentifier = [LeftMenuItemTree cellIdentifierArray][type];
@@ -36,46 +37,21 @@
 }
 
 
-+ (instancetype)getCategoriesMenuItemTree {
-   return [[self alloc] initWithTitle:@"  Categories"
-                             itemType:LMenuTreeCategories
-                            rowsArray:[LeftMenuItemTree defaultCategories]
-                            hideTitle:NO
-                          remoteImage:NO];
-}
-
-
-+ (instancetype)getSignInMenuItemTree {
-   return [[self alloc] initWithTitle:@"  "
-                             itemType:LMenuTreeUser
-                            rowsArray:[LeftMenuItemTree signUserCategories]
-                            hideTitle:YES
-                          remoteImage:NO];
-}
-
-
-+ (instancetype)getEmptySubscriptionsMenuItemTree {
-   return [[self alloc] initWithTitle:@"  Subscriptions"
-                             itemType:LMenuTreeSubscriptions
-                            rowsArray:[[NSMutableArray alloc] init]
-                            hideTitle:NO
-                          remoteImage:YES];
-
-}
-
-
 + (NSMutableArray *)getSignOutMenuItemTreeArray {
    NSMutableArray * menuItemTreeArray = [[NSMutableArray alloc] init];
 
    NSInteger currentNavigationIndex = [[MxTabBarManager sharedTabBarManager] getCurrentNavigationIndex];
    NSArray * projectTypeArray = [[SqliteManager sharedSqliteManager] getCurrentOnlineVideoDictionary:currentNavigationIndex];
+
    for (YTYouTubeType * projectType in projectTypeArray) {
       NSString * projectTypeTitle = [YoutubeParser getYoutubeTypeTitle:projectType];
+      int onlineVideoTypeID = projectType.onlineVideoTypeID;
 
       LeftMenuItemTree * leftMenuItemTree =
        [[self alloc] initWithTitle:projectTypeTitle
                           itemType:LMenuTreeSubscriptions
                          rowsArray:projectType.ProjectNameArray
+                 onlineVideoTypeID:onlineVideoTypeID
                          hideTitle:NO
                        remoteImage:NO];
 
@@ -84,15 +60,6 @@
 
 
    return menuItemTreeArray;
-}
-
-
-+ (NSMutableArray *)getSignInMenuItemTreeArray {
-   return @[
-    [LeftMenuItemTree getSignInMenuItemTree],
-    [LeftMenuItemTree getEmptySubscriptionsMenuItemTree],
-    [LeftMenuItemTree getCategoriesMenuItemTree],
-   ];
 }
 
 

@@ -11,6 +11,7 @@
 #import "LeftMenuItemTree.h"
 #import "LeftMenuTableHeaderView.h"
 #import "YoutubeParser.h"
+#import "MxTabBarManager.h"
 
 
 @interface LeftMenuViewBase ()<UserInfoViewSigningOutDelegate, UIAlertViewDelegate>
@@ -87,6 +88,8 @@
 - (void)togglePageViewController:(NSInteger)sectionIndex rowIndex:(NSInteger)rowIndex {
    LeftMenuItemTree * menuItemTree = self.tableSectionArray[sectionIndex];
    YTYouTubeChannel * line = menuItemTree.rowsArray[rowIndex];
+
+   [[MxTabBarManager sharedTabBarManager] setCurrentOnlineVideoTypeID:menuItemTree.onlineVideoTypeID];
 
    [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:[YoutubeParser getChannelSnippetId:line]
                                                           withTitle:[LeftMenuItemTree getTitleInRow:line]];
