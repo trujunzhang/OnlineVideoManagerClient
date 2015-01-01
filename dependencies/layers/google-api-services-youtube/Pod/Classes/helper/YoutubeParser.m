@@ -71,10 +71,13 @@
 + (NSString *)getVideoOnlineUrl:(YTYouTubeVideoCache *)fileInfo withNavigationIndex:(NSInteger)navigationIndex {
    NSString * playListThumbnail = [fileInfo encodeAbstractFilePath];
 
-   NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
+
    NSString * projectNameIDString = [[MxTabBarManager sharedTabBarManager] getCurrentProjectNameIDString];
    NSString * onlineVideoTypePath = [SqliteManager getCurrentOnlineVideoTypePath:projectNameIDString];
+
+   NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
    domain = @"http://192.168.1.200:8040";// test
+
    return [NSString stringWithFormat:@"%@%@%@", domain, onlineVideoTypePath, playListThumbnail];
 }
 
