@@ -60,15 +60,13 @@ void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineVideoT
 //   NSString * videoPath = @"/Volumes/macshare/MacPE/Lynda.com";
 
    // 1
-   OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:videoScanFold];
+   OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:videoScanFold withCacheDirectory:dbDirectory];
 
    // 2
    [[MobileDB dbInstance:dbDirectory] saveForOnlineVideoTypeDictionary:onlineVideoStatisticsHelper.projectTypesDictionary
                                                               withName:onlineTypeName
                                               whithOnlineVideoTypePath:onlineVideoTypePath
    ];
-
-   NSString * debug = @"debug";
 }
 
 

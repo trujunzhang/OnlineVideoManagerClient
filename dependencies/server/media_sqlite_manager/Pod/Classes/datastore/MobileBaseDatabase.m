@@ -144,4 +144,9 @@
 }
 
 
++ (NSString *)getThumbnailName:(int)fileInfoID {
+   return [NSString stringWithFormat:@"%@%i.jpg", thumbnailPrefix, fileInfoID];
+}
+
+
 @end

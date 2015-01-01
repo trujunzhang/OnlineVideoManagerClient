@@ -7,9 +7,9 @@
 
 @interface OnlineVideoProjectStatisticsHelper : NSObject
 @property(nonatomic, strong) NSString * onlinePath;
+@property(nonatomic, copy) NSString * cacheDirectory;
 
-- (instancetype)initWithOnlinePath:(NSString *)onlinePath;
-
+- (instancetype)initWithOnlinePath:(NSString *)onlinePath withCacheDirectory:(NSString *)cacheDirectory;
 
 - (void)makeProjectList:(NSString *)aPath withFullPath:(NSString *)fullPath to:(id)projectType;
 @end

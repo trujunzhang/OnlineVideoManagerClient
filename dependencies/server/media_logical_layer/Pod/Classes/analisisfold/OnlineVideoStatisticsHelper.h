@@ -13,6 +13,6 @@
 
 @property(nonatomic, strong) NSMutableDictionary * projectTypesDictionary;
 
-- (instancetype)initWithOnlinePath:(NSString *)onlinePath;
+- (instancetype)initWithOnlinePath:(NSString *)onlinePath withCacheDirectory:(NSString *)directory;
 
 @end

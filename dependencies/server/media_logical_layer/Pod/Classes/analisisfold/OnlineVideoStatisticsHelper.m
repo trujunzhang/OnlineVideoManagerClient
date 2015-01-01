@@ -14,10 +14,11 @@
 
 }
 
-- (instancetype)initWithOnlinePath:(NSString *)videoScanFold {
+- (instancetype)initWithOnlinePath:(NSString *)videoScanFold withCacheDirectory:(NSString *)cacheDirectory {
    self = [super init];
    if (self) {
       self.videoScanFold = videoScanFold;
+      self.cacheDirectory = cacheDirectory;
 
       self.projectTypesDictionary = [[NSMutableDictionary alloc] init];
 
@@ -86,7 +87,8 @@
 
 - (void)makeProjectListWithProjectType:(ABProjectType *)projectType aPath:(NSString *)aPath fullPath:(NSString *)fullPath {
    OnlineVideoProjectStatisticsHelper * onlineVideoProjectStatisticsHelper =
-    [[OnlineVideoProjectStatisticsHelper alloc] initWithOnlinePath:self.videoScanFold];
+    [[OnlineVideoProjectStatisticsHelper alloc] initWithOnlinePath:self.videoScanFold
+                                                withCacheDirectory:self.cacheDirectory];
 
    [onlineVideoProjectStatisticsHelper makeProjectList:aPath withFullPath:fullPath to:projectType];
 }

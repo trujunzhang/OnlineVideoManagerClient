@@ -8,15 +8,17 @@
 #import "ABProjectList.h"
 #import "ABProjectFileInfo.h"
 #import "NSString+PJR.h"
+#import "MobileBaseDatabase.h"
 
 
 @implementation OnlineVideoProjectStatisticsHelper {
 
 }
-- (instancetype)initWithOnlinePath:(NSString *)onlinePath {
+- (instancetype)initWithOnlinePath:(NSString *)onlinePath withCacheDirectory:(NSString *)cacheDirectory {
    self = [super init];
    if (self) {
       self.onlinePath = onlinePath;
+      self.cacheDirectory = cacheDirectory;
    }
 
    return self;
@@ -70,10 +72,19 @@
                                                                                      abstractFilePath:fileAbstractPath];
 //               NSLog(@"http://192.168.1.200:8040%@", fileAbstractPath);
                [projectList appendFileInfo:projectFileInfo];
+
+               [self generateThumbnail:projectFileInfo.fileInfoID
+                               forFile:[NSString stringWithFormat:@"%@/%@", appDocDir, aPath]];
             }
          }
       }
    }
+}
+
+
+- (void)generateThumbnail:(int)fileInfoID forFile:(NSString *)aPath {
+   NSString * thumbnailName = [MobileBaseDatabase getThumbnailName:fileInfoID];
+   NSString * debug = @"debug";
 }
 
 

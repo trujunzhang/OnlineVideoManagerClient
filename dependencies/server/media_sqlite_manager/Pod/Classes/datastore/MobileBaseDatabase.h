@@ -7,6 +7,7 @@
 
 id<ABDatabase> db;
 static NSString * const dataBaseName = @"VideoTrainingDB.db";
+static NSString * const thumbnailPrefix = @"TH_";
 
 
 @interface MobileBaseDatabase : NSObject {
@@ -18,4 +19,5 @@ static NSString * const dataBaseName = @"VideoTrainingDB.db";
 - (void)makeDB;
 - (void)checkSchema;
 + (BOOL)checkDBFileExist:(NSString *)filePathName;
++ (NSString *)getThumbnailName:(int)fileInfoID;
 @end
