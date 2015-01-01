@@ -19,6 +19,9 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/analisisfold/*.{h,m}'
   end
 
+  s.subspec 'GeneratethumbnailTask' do |sub|
+    sub.source_files = 'Pod/Classes/GeneratethumbnailTask/*.{h,m}'
+  end
 
 end
 

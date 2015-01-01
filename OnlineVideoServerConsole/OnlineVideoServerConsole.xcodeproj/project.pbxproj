@@ -67,6 +67,8 @@
 				5E04B4DC1A51635500F2F2D7 /* Products */,
 				41429CC93026730B66185249 /* Pods */,
 				32D5032AB16D2FF18E01ED6B /* Frameworks */,
+				65B8C99F2B3FFBC957E72CA4 /* GeneratethumbnailTask.m */,
+				65B8C6E6B463498B429927CF /* GeneratethumbnailTask.h */,
 			);
 			sourceTree = "<group>";
 		};
