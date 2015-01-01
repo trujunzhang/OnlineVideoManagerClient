@@ -9,7 +9,7 @@
 #import "ABProjectFileInfo.h"
 #import "NSString+PJR.h"
 #import "MobileBaseDatabase.h"
-//#import "GenerateThumbnailTask.h"
+#import "GenerateThumbnailTask.h"
 
 
 @implementation OnlineVideoProjectStatisticsHelper {
@@ -86,7 +86,7 @@
 - (void)generateThumbnail:(int)fileInfoID forFile:(NSString *)fileAbstractPath {
    NSString * thumbnailName = [MobileBaseDatabase getThumbnailName:fileInfoID];
    NSString * debug = @"debug";
-//   [GenerateThumbnailTask appendGenerateThumbnailTask:thumbnailName in:fileAbstractPath to:self.cacheDirectory];
+   [GenerateThumbnailTask appendGenerateThumbnailTask:thumbnailName in:fileAbstractPath to:self.cacheDirectory];
 }
 
 
