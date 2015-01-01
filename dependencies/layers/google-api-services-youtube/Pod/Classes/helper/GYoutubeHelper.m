@@ -47,23 +47,26 @@ static GYoutubeHelper * instance = nil;
 
        if (error) {
           downloadCompletionBlock(nil, nil, error);
+          [self.delegate showStepInfo:"Fetching failure?"];
        } else {
           if ([self checkValidateLocalSqlite:object.version] == NO) {
              // 2.
              [self fetchSqliteRemoteFile:downloadCompletionBlock];
+             [self.delegate showStepInfo:"Downloading sqlite databse!"];
           } else {
              downloadCompletionBlock(nil, nil, nil);
+             [self.delegate showStepInfo:"Downloaded sqlite databse failure?"];
           }
        }
    };
    // 1.
    [[ParseHelper sharedParseHelper] readOnlineVideoInfo:parseHelperResultBlock];
 
-   [self.delegate showStepInfo:"Fetching OnlineVideoInfo ..."];
-//   [[ParseHelper sharedParseHelper] saveOnlineVideoInfo:[OnlineServerInfo standardServerInfo]];// test
+   [self.delegate showStepInfo:"Fetching OnlineVideoInfo!"];
 }
 
 
+//   [[ParseHelper sharedParseHelper] saveOnlineVideoInfo:[OnlineServerInfo standardServerInfo]];// test
 - (BOOL)checkValidateLocalSqlite:(NSString *)version {
    NSString * lastVersion = [ParseLocalStore readSqliteVersion];
    [ParseLocalStore saveSqliteVersion:version];
