@@ -111,10 +111,10 @@
        if (error) {
           [self showLoadingFailInfo];
        } else {
-//          [self.delegate fetchingOnlineClientCompletion];
-//
-//          [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
-//          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
+          [self.delegate fetchingOnlineClientCompletion];
+
+          [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
+          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
        }
    }];
 }
