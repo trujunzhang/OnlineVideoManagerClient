@@ -106,8 +106,8 @@ static MobileDB * _dbInstance;
    sql = [NSString stringWithFormat:@"select onlineVideoTypeName from OnlineVideoType where onlineVideoTypeName ='%@'",
                                     onlineVideoType.onlineVideoTypeName];
    id<ABRecordset> results = [db sqlSelect:sql];
-   if (![results eof])
-      exists = YES;
+//   if (![results eof])
+//      exists = YES;
 
    if (exists) {
       NSString * sqlStringSerializationForUpdate = [onlineVideoType sqlStringSerializationForUpdate];

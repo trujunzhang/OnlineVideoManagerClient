@@ -85,17 +85,28 @@ int main(int argc, const char * argv[]) {
       }
 
       NSString * htdocs = @"/Volumes";
+
+      NSArray * youtubeArray = @[
+       @"/Volumes/macshare/MacPE/youtubes",
+       @"/Volumes/AppCache/TubeDownload",
+      ];
+      NSArray * lyndaArray = @[
+       @"/Volumes/macshare/MacPE/Lynda.com",
+      ];
+
       NSMutableDictionary * onlineTypeDictionary = @{
-       @"Lynda.com" : @"/Volumes/macshare/MacPE/Lynda.com",
-       @"Youtube.com" : @"/Volumes/AppCache/TubeDownload",
-       @"Youtube.com" : @"/Volumes/macshare/MacPE/youtubes"
+       @"Youtube.com" : youtubeArray,
+       @"Lynda.com" : lyndaArray,
       };
 
       for (NSString * onlineTypeName in onlineTypeDictionary.allKeys) {
-         NSString * onlineTypeRoot = [onlineTypeDictionary valueForKey:onlineTypeName];
-         NSString * onlineVideoTypePath = [onlineTypeRoot replaceCharcter:htdocs
-                                                             withCharcter:@""];
-         generateSqliteFromSource(onlineTypeName, onlineVideoTypePath, onlineTypeRoot, cacheDirectory);
+         NSArray * typePathArray = [onlineTypeDictionary valueForKey:onlineTypeName];
+
+         for (NSString * onlineTypeRoot in typePathArray) {
+            NSString * onlineVideoTypePath = [onlineTypeRoot replaceCharcter:htdocs
+                                                                withCharcter:@""];
+            generateSqliteFromSource(onlineTypeName, onlineVideoTypePath, onlineTypeRoot, cacheDirectory);
+         }
       }
 
       NSLog(@"Hello, World!");
