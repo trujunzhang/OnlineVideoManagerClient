@@ -103,7 +103,6 @@
 
 
 + (NSString *)getPlayListThumbnailsGeneratedFromVideo:(YTYouTubePlayList *)playList {
-
    ABProjectFileInfo * firstFileInfo = [playList getFirstABProjectFileInfo];
 
    return [self getVideoThumbnailsGeneratedFromVideo:firstFileInfo];
