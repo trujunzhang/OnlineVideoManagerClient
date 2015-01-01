@@ -47,7 +47,7 @@
           NSString * debug = @"debug";
        } else {
           [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
-          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
+          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
        }
    }];
 

@@ -29,7 +29,7 @@
    [self.delegate fetchingOnlineClientCompletion];
 
    [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
-   [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
+   [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
 }
 
 
@@ -41,7 +41,7 @@
           [self.delegate fetchingOnlineClientCompletion];
 
           [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
-          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
+          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
        }
    }];
 }

@@ -44,7 +44,7 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-   return 1 + [self.tableSectionArray count];
+   return 1 + [self.headers count];
 }
 
 
@@ -89,6 +89,8 @@
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+   if (section > self.headers.count)
+      return nil;
    if (section == 0) {
       return nil;
    }

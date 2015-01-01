@@ -202,7 +202,9 @@
 
 - (void)ggTabBarController:(GGTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
    [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
-   [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion];
+
+   NSUInteger tabBarSelectedIndex = tabBarController.selectedIndex;
+   [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:tabBarSelectedIndex];
 }
 
 

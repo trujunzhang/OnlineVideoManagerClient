@@ -14,6 +14,7 @@
    YTLeftMenuViewController * _leftViewController;
 
    int * _onlineVideoTypeID;
+   NSInteger _tabBarSelectedIndex;
 }
 
 
@@ -52,7 +53,7 @@
 
 
 - (NSInteger)getCurrentNavigationIndex {
-   return _tabBarController.selectedIndex;
+   return _tabBarSelectedIndex;
 }
 
 
@@ -116,7 +117,8 @@
 #pragma mark GYoutubeHelperDelegate
 
 
-- (void)callbackUpdateYoutubeChannelCompletion {
+- (void)callbackUpdateYoutubeChannelCompletion:(NSUInteger)tabBarSelectedIndex {
+   _tabBarSelectedIndex = tabBarSelectedIndex;
    [_leftViewController refreshChannelInfo];
 }
 
