@@ -10,6 +10,7 @@
 @implementation MultipleTypeHelper {
 
 }
+
 + (NSMutableArray *)getSingleOnlineVideoTypesArray:(NSMutableArray *)array {
    NSMutableArray * singleOnlineVideoTypesArray = [[NSMutableArray alloc] init];
 
