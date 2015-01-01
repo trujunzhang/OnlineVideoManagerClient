@@ -14,14 +14,8 @@
    NSMutableArray * singleOnlineVideoTypesArray = [[NSMutableArray alloc] init];
 
    for (ABOnlineVideoType * onlineVideoType in array) {
-      NSString * videoTypeName = onlineVideoType.onlineVideoTypeName;
-
       [MultipleTypeHelper checkExistAndAppend:onlineVideoType to:singleOnlineVideoTypesArray from:array];
-
-      NSString * debug = @"debug";
-
    }
-
 
    return singleOnlineVideoTypesArray;
 }
@@ -33,8 +27,6 @@
                                                                          in:singleOnlineVideoTypesArray];
    if (lastOnlineVideoType) {
       [MultipleTypeHelper copyOnlineVideoTypeDictionary:onlineVideoType.onlineTypeDictionary to:lastOnlineVideoType];
-
-      NSString * debug = @"debug";
    } else {
       [singleOnlineVideoTypesArray addObject:onlineVideoType];
    }

@@ -51,7 +51,7 @@ NSMutableArray * _onlineVideoTypeArray;
 }
 
 
-- (NSArray *)getCurrentOnlineVideoDictionary:(NSInteger)selectedIndex {// TODO djzhang
+- (NSArray *)getCurrentOnlineVideoDictionary:(NSInteger)selectedIndex {
    ABOnlineVideoType * onlineVideoType = _onlineVideoTypeArray[selectedIndex];
 
    return onlineVideoType.onlineTypeDictionary.allValues;
