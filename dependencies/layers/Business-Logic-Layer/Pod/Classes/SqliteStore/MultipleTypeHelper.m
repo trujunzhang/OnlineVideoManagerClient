@@ -4,9 +4,15 @@
 //
 
 #import "MultipleTypeHelper.h"
+#import "ABOnlineVideoType.h"
 
 
 @implementation MultipleTypeHelper {
 
+}
++ (void)getSingleOnlineVideoTypesArray:(NSMutableArray *)array {
+   for (ABOnlineVideoType * onlineVideoType in array) {
+
+   }
 }
 @end

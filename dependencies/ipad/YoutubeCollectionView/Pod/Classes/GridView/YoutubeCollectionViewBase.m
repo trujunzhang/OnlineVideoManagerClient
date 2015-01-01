@@ -141,7 +141,6 @@
 }
 
 
-
 #pragma mark -
 #pragma mark Search events
 
@@ -178,10 +177,10 @@
 
 
 - (void)fetchActivityListByPageToken {
-   GYoutubeRequestInfo * requestInfo = [self getYoutubeRequestInfo];
-   NSMutableArray * projectListArray = _projectListArray;
-
-   [self updateAfterResponse:projectListArray];
+//   GYoutubeRequestInfo * requestInfo = [self getYoutubeRequestInfo];
+//   NSMutableArray * projectListArray = _projectListArray;
+//
+//   [self updateAfterResponse:projectListArray];
 
 }
 
@@ -215,7 +214,6 @@
 
 
 - (void)fetchVideoListFromChannelByPageToken {
-   GYoutubeRequestInfo * requestInfo = [self getYoutubeRequestInfo];
    NSMutableArray * projectListArray = [[SqliteManager sharedSqliteManager] getAllFileInfoListFromProjectList:_projectListArray];
 
    [self updateAfterResponse:projectListArray];
@@ -236,7 +234,6 @@
 
 
 - (void)fetchPlayListFromChannelByPageToken {
-   GYoutubeRequestInfo * requestInfo = [self getYoutubeRequestInfo];
    NSMutableArray * projectListArray = [[SqliteManager sharedSqliteManager] getProgressionProjectList:_projectListArray];
 
    [self updateAfterResponse:projectListArray];
@@ -272,21 +269,7 @@
 
 
 - (void)fetchPlayListByPageToken {
-   if ([self checkRequest])
-      return;
 
-//   NSLog(@" *** fetchPlayListByPageToken = %d", [[self getYoutubeRequestInfo] hasNextPage]);
-
-   YoutubeResponseBlock completion = ^(NSArray * array, NSObject * respObject) {
-       [self updateAfterResponse:array];
-   };
-   ErrorResponseBlock error = ^(NSError * error) {
-       NSString * debug = @"debug";
-   };
-   [[GYoutubeHelper getInstance] fetchPlaylistItemsListWithRequestInfo:[self getYoutubeRequestInfo]
-                                                            completion:completion
-                                                          errorHandler:error
-   ];
 }
 
 

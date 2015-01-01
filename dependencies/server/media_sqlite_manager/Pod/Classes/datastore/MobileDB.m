@@ -169,7 +169,6 @@ static MobileDB * _dbInstance;
 
       [onlineVideoTypeArray addObject:onlineVideoType];
 
-
       [self readOnlineTypeArray:onlineVideoType.onlineVideoTypeID
                       withArray:onlineVideoType.onlineTypeArray
                     isReadArray:NO];
@@ -194,11 +193,19 @@ static MobileDB * _dbInstance;
 
       NSMutableDictionary * dictionary = [self readDictionaryForProjectTypeWithProjectTypeId:ProjectTypeID
                                                                                   hasAllList:NO];
+      [self addOnlineVideoInfo:onlineVideoTypeID toProjectTypeDictionary:dictionary];
       [mutableArray addObject:dictionary];
 
       [results moveNext];
    }
 
+}
+
+
+- (void)addOnlineVideoInfo:(int)onlineVideoTypeID toProjectTypeDictionary:(NSMutableDictionary *)dictionary {
+   for (ABProjectType * projectType in dictionary.allValues) {
+      projectType.onlineVideoTypeID = onlineVideoTypeID;
+   }
 }
 
 

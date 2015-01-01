@@ -13,6 +13,9 @@
 
 @interface ABProjectType : ABSqliteObject<MKAnnotation>
 
+
+@property(assign) int onlineVideoTypeID;
+
 @property(assign) int projectTypeID;
 
 // @Muse

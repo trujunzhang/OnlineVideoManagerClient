@@ -8,6 +8,7 @@
 #import "YoutubeConstants.h"
 #import "AnimatedContentsDisplayLayer.h"
 #import "ABOnlineVideoType.h"
+#import "MultipleTypeHelper.h"
 
 NSMutableDictionary * _videoDictionary;
 NSMutableArray * _onlineVideoTypeArray;
@@ -42,7 +43,9 @@ NSMutableArray * _onlineVideoTypeArray;
 
 
 - (void)resetOnlineVideoTypeArray {
-   _onlineVideoTypeArray = [[MobileDB dbInstance] readOnlineVideoTypes];
+   NSMutableArray * mutableArray = [[MobileDB dbInstance] readOnlineVideoTypes];
+   [MultipleTypeHelper getSingleOnlineVideoTypesArray:mutableArray];
+
    NSString * debug = @"debug";
 }
 
@@ -87,8 +90,6 @@ NSMutableArray * _onlineVideoTypeArray;
 
    for (YTYouTubePlayList * playList in projectLists) {
       for (YTYouTubeVideoCache * videoCache in playList.projectFileInfos) {
-//         NSString * fileInforName = videoCache.fileInforName;
-//         NSString * debug = @"debug";
          [allFileInfoArray addObject:videoCache];
       }
    }

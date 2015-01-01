@@ -7,4 +7,7 @@
 
 
 @interface MultipleTypeHelper : NSObject
+
++ (void)getSingleOnlineVideoTypesArray:(NSMutableArray *)array;
+
 @end
