@@ -31,7 +31,7 @@
 
 
 @interface OnlineAppDelegate ()<FetchingOnlineInfoViewControllerDelegate, GGTabBarControllerDelegate>
-//@property(nonatomic, strong) SWRevealViewController * revealController;
+
 @end
 
 
