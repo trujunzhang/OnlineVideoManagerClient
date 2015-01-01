@@ -32,22 +32,42 @@ NSString * RealProjectCacheDirectory() {
 }
 
 
-void createDirectoryForCache(NSFileManager * filemgr, NSString * cacheDirectory) {
+void emptyCacheThumbnailDirectory(NSFileManager * filemgr, NSString * dirToEmpty) {
+   NSFileManager * manager = [NSFileManager defaultManager];
+   NSError * error = nil;
+   NSArray * files = [manager contentsOfDirectoryAtPath:dirToEmpty
+                                                  error:&error];
+
+   if (error) {
+      //deal with error and bail.
+      return;
+   }
+
+   for (NSString * file in files) {
+      [manager removeItemAtPath:[dirToEmpty stringByAppendingPathComponent:file]
+                          error:&error];
+      if (error) {
+         //an error occurred...
+      }
+   }
+}
+
+
+void createDirectoryForCache(NSFileManager * filemgr, NSString * cacheDirectory, NSString * thumbnailDirectory) {
    NSError * error = nil;
    if (![filemgr createDirectoryAtPath:cacheDirectory withIntermediateDirectories:YES attributes:nil error:&error]) {
       // An error has occurred, do something to handle it
       NSLog(@"Failed to create directory \"%@\". Error: %@", cacheDirectory, error);
    }
 
-   NSString * thumbnailDirectory = [NSString stringWithFormat:@"%@/%@",
-                                                              cacheDirectory,
-                                                              MobileBaseDatabase.thumbnailFolder];
 
-   if (![filemgr createDirectoryAtPath:thumbnailDirectory withIntermediateDirectories:YES attributes:nil error:&error]) {
+   if (![filemgr createDirectoryAtPath:thumbnailDirectory
+           withIntermediateDirectories:YES
+                            attributes:nil
+                                 error:&error]) {
       // An error has occurred, do something to handle it
       NSLog(@"Failed to create directory \"%@\". Error: %@", thumbnailDirectory, error);
    }
-
 }
 
 
@@ -56,12 +76,17 @@ BOOL cleanupCache(NSString * cacheDirectory) {
 
    NSString * dbFilePath = [cacheDirectory stringByAppendingPathComponent:dataBaseName];
 
+   NSString * thumbnailDirectory = [NSString stringWithFormat:@"%@/%@",
+                                                              cacheDirectory,
+                                                              MobileBaseDatabase.thumbnailFolder];
+
    BOOL fileExists = [MobileBaseDatabase checkDBFileExist:dbFilePath];
    if (fileExists == NO) {
-      createDirectoryForCache(filemgr, cacheDirectory);
+      createDirectoryForCache(filemgr, cacheDirectory, thumbnailDirectory);
       return YES;
    }
 
+   emptyCacheThumbnailDirectory(filemgr, thumbnailDirectory);
 
    if ([filemgr removeItemAtPath:dbFilePath error:NULL] == YES) {
       return YES;
