@@ -13,7 +13,6 @@
 #import "ABProjectType.h"
 #import "ABOnlineVideoType.h"
 
-static NSString * const dataBaseName = @"VideoTrainingDB.db";
 
 static MobileDB * _dbInstance;
 
@@ -41,8 +40,7 @@ static MobileDB * _dbInstance;
 
    _dbInstance = self;
 
-   BOOL myPathIsDir;
-   BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:filePathName isDirectory:&myPathIsDir];
+   BOOL fileExists = [MobileBaseDatabase checkDBFileExist:filePathName];
 
    // backupDbPath allows for a pre-made database to be in the app. Good for testing
    NSString * backupDbPath = [[NSBundle mainBundle] pathForResource:@"Mobile" ofType:@"db"];

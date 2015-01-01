@@ -13,6 +13,7 @@ typedef void(^LocationResultsBlock)(NSArray * locations);
 
 
 #pragma mark - Base
+
 + (MobileDB *)dbInstance;
 + (MobileDB *)dbInstance:(NSString *)path;
 

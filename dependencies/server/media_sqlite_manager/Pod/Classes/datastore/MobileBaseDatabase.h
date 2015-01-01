@@ -6,6 +6,7 @@
 @protocol ABDatabase;
 
 id<ABDatabase> db;
+static NSString * const dataBaseName = @"VideoTrainingDB.db";
 
 
 @interface MobileBaseDatabase : NSObject {
@@ -16,5 +17,5 @@ id<ABDatabase> db;
 + (NSString *)uniqueID;
 - (void)makeDB;
 - (void)checkSchema;
-
++ (BOOL)checkDBFileExist:(NSString *)filePathName;
 @end
