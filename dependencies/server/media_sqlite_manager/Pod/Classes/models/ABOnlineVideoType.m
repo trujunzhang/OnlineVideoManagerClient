@@ -44,7 +44,7 @@
 
 
 - (void)appendProjectType:(ABProjectType *)projectType {
-   [self.onlineTypeDictionary setObject:projectType forKey:projectType.projectTypeName];
+   [self.onlineTypeDictionary setObject:projectType forKey:projectType.sqliteObjectName];
 }
 
 

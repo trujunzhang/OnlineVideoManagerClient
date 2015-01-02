@@ -178,6 +178,6 @@
 
 
 + (NSString *)getYoutubeTypeTitle:(YTYouTubeType *)projectType {
-   return [projectType.projectTypeName removeSubString:@"@"];
+   return [projectType.sqliteObjectName removeSubString:@"@"];
 }
 @end

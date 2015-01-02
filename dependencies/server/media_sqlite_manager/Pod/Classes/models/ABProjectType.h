@@ -19,7 +19,7 @@
 @property(assign) int projectTypeID;
 
 // @Muse
-@property(copy) NSString * projectTypeName;
+@property(copy) NSString * sqliteObjectName;
 
 @property(strong) NSMutableArray * ProjectNameArray;
 

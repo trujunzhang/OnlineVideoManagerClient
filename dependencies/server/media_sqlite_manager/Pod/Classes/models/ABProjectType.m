@@ -25,7 +25,7 @@
    self = [self init];
    if (self) {
       self.projectTypeID = projectTypeID;
-      self.projectTypeName = projectTypeName;
+      self.sqliteObjectName = projectTypeName;
    }
 
    return self;
@@ -35,7 +35,7 @@
 - (instancetype)initWithProjectType:(NSString *)projectName {
    self = [self init];
    if (self) {
-      self.projectTypeName = projectName;
+      self.sqliteObjectName = projectName;
    }
 
    return self;
@@ -55,7 +55,7 @@
 
 - (NSMutableDictionary *)getUpdateDictionary {
    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
-   [dictionary setObject:self.projectTypeName forKey:@"projectTypeName"];
+   [dictionary setObject:self.sqliteObjectName forKey:@"sqliteObjectName"];
 
    return dictionary;
 }
@@ -76,7 +76,7 @@
    NSMutableDictionary * projectNamesDictionary = [[NSMutableDictionary alloc] init];
 
    for (ABProjectType * projectType in projectTypesDictionary.allValues) {
-      NSString * projectTypeName = projectType.projectTypeName;
+      NSString * projectTypeName = projectType.sqliteObjectName;
 
       for (ABProjectName * abProjectName in projectType.ProjectNameArray) {
          NSString * projectName = abProjectName.projectName;
