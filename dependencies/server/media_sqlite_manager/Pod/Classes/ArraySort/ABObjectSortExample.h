@@ -8,6 +8,7 @@
 
 @interface ABObjectSortExample : NSObject
 
++ (NSArray *)getABProjectNameArray;
 
-+ (NSMutableArray *)getABProjectListSortArray;
++ (NSMutableArray *)getABProjectListSortArray:(NSArray *)projectListNamesArray;
 @end

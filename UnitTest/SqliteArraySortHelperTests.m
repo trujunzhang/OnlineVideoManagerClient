@@ -34,10 +34,13 @@
 
 - (void)testExample {
    // This is an example of a functional test case.
-   NSString * str = @"stack";
-   NSMutableArray * charArray = [NSMutableArray arrayWithCapacity:str.length];
-   for (int i = 0; i < str.length; ++i) {
-      NSString * charStr = [str substringWithRange:NSMakeRange(i, 1)];
+   NSMutableArray * array = [ABObjectSortExample getABProjectNameArray];
+
+//   NSString * str = @"03s11t02a01k";
+
+   NSMutableArray * charArray = [NSMutableArray arrayWithCapacity:array.count];
+   for (int i = 0; i < array.count; ++i) {
+      NSString * charStr = array[i];
       [charArray addObject:charStr];
    }
 
@@ -51,8 +54,10 @@
 
 
 - (void)testPerformanceExample {
-   [ABObjectSortExample getABProjectListSortArray];
+   NSMutableArray * projectListSortArray = [ABObjectSortExample getABProjectListSortArray:[ABObjectSortExample getABProjectNameArray]];
+   NSArray * sortForABProjectList = [SqliteArraySortHelper sortForABProjectList:projectListSortArray];
 
+   NSString * debug = @"debug";
 }
 
 @end
