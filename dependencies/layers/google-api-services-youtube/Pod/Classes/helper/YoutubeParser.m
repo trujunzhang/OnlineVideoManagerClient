@@ -50,7 +50,7 @@
 
 
 + (NSString *)getVideoSnippetTitle:(YTYouTubeVideoCache *)video {
-   return video.fileInforName;
+   return video.sqliteObjectName;
 }
 
 

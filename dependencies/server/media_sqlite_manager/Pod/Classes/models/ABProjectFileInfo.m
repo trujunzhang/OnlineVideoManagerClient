@@ -23,7 +23,7 @@
    if (self) {
       self.fileInfoID = [MobileDB uniqueID];
 
-      self.fileInforName = @"";
+      self.sqliteObjectName = @"";
       self.subtitleName = @"";
       self.abstractFilePath = @"";
    }
@@ -35,7 +35,7 @@
 - (instancetype)initWithFileInforName:(NSString *)fileInforName abstractFilePath:(NSString *)abstractFilePath {
    self = [self init];
    if (self) {
-      self.fileInforName = fileInforName;
+      self.sqliteObjectName = fileInforName;
       self.abstractFilePath = abstractFilePath;
    }
 
@@ -50,7 +50,7 @@
 - (NSMutableDictionary *)getUpdateDictionary {
    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
 
-   [dictionary setObject:self.fileInforName forKey:@"fileInforName"];
+   [dictionary setObject:self.sqliteObjectName forKey:@"sqliteObjectName"];
    [dictionary setObject:self.subtitleName forKey:@"subtitleName"];
    [dictionary setObject:self.abstractFilePath forKey:@"abstractFilePath"];
 

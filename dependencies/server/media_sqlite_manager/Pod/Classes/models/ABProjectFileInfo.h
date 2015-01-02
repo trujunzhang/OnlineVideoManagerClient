@@ -6,7 +6,6 @@
 
 @property(assign) int fileInfoID;
 
-@property(copy) NSString * fileInforName;
 @property(copy) NSString * subtitleName;
 @property(copy) NSString * abstractFilePath;
 
