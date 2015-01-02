@@ -51,7 +51,7 @@
 
 
 - (void)testPerformanceExample {
-   [ABObjectSortExample ]
+   [ABObjectSortExample getABProjectListSortArray];
 
 }
 
