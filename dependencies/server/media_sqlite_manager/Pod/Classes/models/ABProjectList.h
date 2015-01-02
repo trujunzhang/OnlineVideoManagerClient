@@ -3,7 +3,7 @@
 @class ABProjectFileInfo;
 
 
-@interface ABProjectList : ABSqliteObject<MKAnnotation>
+@interface ABProjectList : ABSqliteObject
 
 @property(assign) int projectListID;
 @property(strong) NSMutableArray * projectFileInfos;

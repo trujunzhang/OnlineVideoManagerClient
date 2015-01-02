@@ -15,6 +15,7 @@
 @property(nonatomic, strong) NSString * version;
 
 + (OnlineServerInfo *)standardServerInfo;
++ (OnlineServerInfo *)localServerInfo;
 - (NSString *)getCurrentDomainUrl;
 - (NSString *)getRemoteSqliteDatabase;
 @end

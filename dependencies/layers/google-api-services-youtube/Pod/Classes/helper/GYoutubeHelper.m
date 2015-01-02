@@ -43,6 +43,11 @@ static GYoutubeHelper * instance = nil;
 
 - (void)initOnlineClient:(SqliteResponseBlock)downloadCompletionBlock {
    [self.delegate showStepInfo:@"Fetching OnlineVideoInfo frome parse.com !"];
+   if (hasLocalSqliteFile) {
+      self.onlineServerInfo = [OnlineServerInfo localServerInfo];
+      downloadCompletionBlock(nil);
+      return;
+   }
 
    ParseHelperResultBlock parseHelperResultBlock = ^(OnlineServerInfo * object, NSError * error) {
        self.onlineServerInfo = object;

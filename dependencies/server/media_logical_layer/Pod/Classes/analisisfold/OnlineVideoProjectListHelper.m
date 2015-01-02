@@ -41,12 +41,11 @@
       if ([[NSFileManager defaultManager] fileExistsAtPath:fullPath isDirectory:&isDir]) {
          if (isDir == YES) {
             ABProjectList * projectList = [[ABProjectList alloc] initWithProjectListName:aPath];
-            NSString * projectListName = projectList.projectListName;
 
             if ([self checkIgnoureProjectType:projectList] == NO) {
 
                NSLog(@"appDocDir = %@", appDocDir);
-               NSLog(@"projectListName = %@", projectListName);
+               NSLog(@"projectListName = %@", projectList.sqliteObjectName);
 
                [projectName appendProjectList:projectList];
                [self analysisProjectNames:fullPath to:projectList];
@@ -60,10 +59,11 @@
 - (BOOL)checkIgnoureProjectType:(ABProjectList *)projectList {
    NSArray * ignoreProjectTypeNameArray = @[
     @"Exercise Files",
+    @"Exercise File",
    ];
 
    for (NSString * ignoreName in ignoreProjectTypeNameArray) {
-      if ([projectList.projectListName isEqualToString:ignoreName]) {
+      if ([projectList.sqliteObjectName isEqualToString:ignoreName]) {
          return YES;
       }
    }
