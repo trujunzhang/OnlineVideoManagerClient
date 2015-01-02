@@ -41,47 +41,57 @@ static GYoutubeHelper * instance = nil;
 }
 
 
-- (void)initOnlineClient:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock {
+- (void)initOnlineClient:(SqliteResponseBlock)downloadCompletionBlock {
+   [self.delegate showStepInfo:@"Fetching OnlineVideoInfo frome parse.com !"];
+
    ParseHelperResultBlock parseHelperResultBlock = ^(OnlineServerInfo * object, NSError * error) {
        self.onlineServerInfo = object;
-
        if (error) {
           [self.delegate showStepInfo:@"Fetching failure?"];
        } else {
-          if ([self checkValidateLocalSqlite:object.version] == NO) {
-             // 2.
-             NSProgress * progress;
-             void (^downloadCompletion)(NSURLResponse *, NSURL *, NSError *) = ^(NSURLResponse * response, NSURL * url, NSError * error) {
-                 if (error) {
-                    id objectForKey = [[error userInfo] objectForKey:@"NSErrorFailingURLKey"];
-
-                    [self.delegate showStepInfo:[NSString stringWithFormat:@"Download %@ failure?",
-                                                                           [[objectForKey absoluteURL] absoluteString]]];
-                 } else {
-                    [ParseLocalStore saveSqliteVersion:self.onlineServerInfo.version];
-                    downloadCompletionBlock(nil, nil, nil);
-                 }
-             };
-             // 2
-             [self fetchSqliteRemoteFile:downloadCompletion progressBlock:&progress];
-
-             // Observe fractionCompleted using KVO
-             [progress addObserver:self
-                        forKeyPath:@"fractionCompleted"
-                           options:NSKeyValueObservingOptionNew
-                           context:NULL];
-
-
-             [self.delegate showStepInfo:@"Downloading sqlite databse!"];
-          } else {
-             downloadCompletionBlock(nil, nil, nil);
-          }
+          [self checkAndFetchSqliteFileFromRemote:downloadCompletionBlock object:object];
        }
    };
-   // 1.
-   [[ParseHelper sharedParseHelper] readOnlineVideoInfo:parseHelperResultBlock];
 
-   [self.delegate showStepInfo:@"Fetching OnlineVideoInfo frome parse.com !"];
+   [[ParseHelper sharedParseHelper] readOnlineVideoInfo:parseHelperResultBlock];
+}
+
+
+- (void)checkAndFetchSqliteFileFromRemote:(SqliteResponseBlock)downloadCompletionBlock object:(OnlineServerInfo *)object {
+   if ([self checkValidateLocalSqlite:object.version] == NO) {
+      [self.delegate showStepInfo:@"Downloading sqlite databse!"];
+      [self fetchSqliteFileFromRemote:downloadCompletionBlock];
+   } else {
+      downloadCompletionBlock(nil);
+   }
+}
+
+
+- (void)fetchSqliteFileFromRemote:(SqliteResponseBlock)downloadCompletionBlock {
+   NSString * remoteSqliteUrl = [self.onlineServerInfo getRemoteSqliteDatabase];
+
+   NSProgress * progress;
+   void (^downloadCompletion)(NSURLResponse *, NSURL *, NSError *) = ^(NSURLResponse * response, NSURL * url, NSError * error) {
+       if (error) {
+          id objectForKey = [[error userInfo] objectForKey:@"NSErrorFailingURLKey"];
+
+          [self.delegate showStepInfo:[NSString stringWithFormat:@"Download %@ failure?",
+                                                                 [[objectForKey absoluteURL] absoluteString]]];
+       } else {
+          [ParseLocalStore saveSqliteVersion:self.onlineServerInfo.version];
+          downloadCompletionBlock(nil);
+       }
+   };
+   // 2
+   [Online_Request downloadSqliteFile:remoteSqliteUrl
+              downloadCompletionBlock:downloadCompletion
+                        progressBlock:&progress];
+
+   // Observe fractionCompleted using KVO
+   [progress addObserver:self
+              forKeyPath:@"fractionCompleted"
+                 options:NSKeyValueObservingOptionNew
+                 context:NULL];
 }
 
 

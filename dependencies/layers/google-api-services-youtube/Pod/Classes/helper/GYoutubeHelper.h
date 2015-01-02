@@ -18,6 +18,7 @@
 
 typedef void (^YoutubeResponseBlock)(NSArray * array, NSObject * respObject);
 typedef void (^ErrorResponseBlock)(NSError * error);
+typedef void (^SqliteResponseBlock)(NSObject * respObject);
 
 
 @protocol GYoutubeHelperDelegate<NSObject>
@@ -43,6 +44,6 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 - (NSString *)getServerCacheDirectory;
 @property(nonatomic, weak) id<GYoutubeHelperDelegate> delegate;
 
-- (void)initOnlineClient:(void (^)(NSURLResponse *, NSURL *, NSError *))downloadCompletionBlock;
+- (void)initOnlineClient:(SqliteResponseBlock)downloadCompletionBlock;
 
 @end

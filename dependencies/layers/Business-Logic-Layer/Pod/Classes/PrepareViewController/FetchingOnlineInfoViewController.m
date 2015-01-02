@@ -108,17 +108,14 @@
 
 - (void)initOnlineClientInfo {
 
-   [[GYoutubeHelper getInstance] initOnlineClient:^(NSURLResponse * response, NSURL * url, NSError * error) {
-       if (error) {
-          [self showLoadingFailInfo];
-       } else {
-          [self.delegate fetchingOnlineClientCompletion];
+   SqliteResponseBlock sqliteResponseBlock = ^(NSObject * respObject) {
+       [self.delegate fetchingOnlineClientCompletion];
 
-          [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
-          [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
-       }
-   }];
+       [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
+       [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
+   };
 
+   [[GYoutubeHelper getInstance] initOnlineClient:sqliteResponseBlock];
 }
 
 
