@@ -30,7 +30,7 @@
 - (instancetype)initWithProjectName:(NSString *)projectName {
    self = [self init];
    if (self) {
-      self.projectName = projectName;
+      self.sqliteObjectName = projectName;
    }
 
    return self;
@@ -50,7 +50,7 @@
 
 - (NSMutableDictionary *)getUpdateDictionary {
    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
-   [dictionary setObject:self.projectName forKey:@"projectName"];
+   [dictionary setObject:self.sqliteObjectName forKey:@"sqliteObjectName"];
    [dictionary setObject:self.projectDownloadUrl forKey:@"projectDownloadUrl"];
    [dictionary setObject:self.projectAbstractPath forKey:@"projectAbstractPath"];
 

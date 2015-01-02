@@ -8,9 +8,7 @@
 @property(assign) int projectListID;
 @property(strong) NSMutableArray * projectFileInfos;
 
-@property(copy) NSString * sqliteObjectName;
 - (instancetype)initWithProjectListName:(NSString *)projectListName;
-
 
 + (ABProjectList *)reportFromJSON:(NSString *)json;
 + (NSArray *)reportsFromJSON:(NSString *)json;

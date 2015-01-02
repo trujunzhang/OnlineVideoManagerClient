@@ -15,8 +15,6 @@
 
 @property(assign) int projectNameID;
 
-// Muse Essential Training by Justin Seeley
-@property(copy) NSString * projectName;
 
 // http://kickass.so/lynda-muse-essential-training-by-justin-seeley-t9250299.html
 @property(copy) NSString * projectDownloadUrl;
@@ -27,7 +25,6 @@
 @property(strong) NSMutableArray * projectLists;
 
 - (instancetype)initWithProjectName:(NSString *)projectName;
-
 
 + (ABProjectName *)locationFromJSON:(NSString *)json;
 + (NSArray *)locationsFromJSON:(NSString *)json;

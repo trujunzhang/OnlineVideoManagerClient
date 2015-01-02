@@ -79,7 +79,7 @@
       NSString * projectTypeName = projectType.sqliteObjectName;
 
       for (ABProjectName * abProjectName in projectType.ProjectNameArray) {
-         NSString * projectName = abProjectName.projectName;
+         NSString * projectName = abProjectName.sqliteObjectName;
 
          [projectNamesDictionary setObject:projectName forKey:projectTypeName];
       }
