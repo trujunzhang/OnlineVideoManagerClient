@@ -164,7 +164,7 @@ static MobileDB * _dbInstance;
       ABOnlineVideoType * onlineVideoType = [[ABOnlineVideoType alloc] init];
 
       onlineVideoType.onlineVideoTypeID = [[results fieldWithName:@"onlineVideoTypeID"] intValue];
-      onlineVideoType.onlineVideoTypeName = [[results fieldWithName:@"onlineVideoTypeName"] stringValue];
+      onlineVideoType.sqliteObjectName = [[results fieldWithName:@"onlineVideoTypeName"] stringValue];
       onlineVideoType.onlineVideoTypePath = [[results fieldWithName:@"onlineVideoTypePath"] stringValue];
 
       [onlineVideoTypeArray addObject:onlineVideoType];
