@@ -375,6 +375,12 @@ static MobileDB * _dbInstance;
 }
 
 
+/**
+* Sort Array
+*
+* @param mutableArray The current `ABProjectList`
+*
+*/
 - (void)readProjectNameLists:(int)projectNameID withArray:(NSMutableArray *)mutableArray isReadArray:(BOOL)isReadArray {
    NSString * sql;
    sql = [NSString stringWithFormat:@"select projectListID from ProjectNameLists where projectNameID = '%i'",

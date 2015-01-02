@@ -70,6 +70,12 @@ NSMutableArray * _onlineVideoTypeArray;
 }
 
 
+/**
+* Sort object Array by  ABProjectList.projectListName
+*
+* @return The object `ABProjectList` array
+*
+*/
 - (NSMutableArray *)getProjectListArray:(NSString *)projectNameId {
 
    NSMutableArray * projectLists = [[NSMutableArray alloc] init];
