@@ -10,6 +10,7 @@
 #import <XCTest/XCTest.h>
 
 #import "SqliteArraySortHelper.h"
+#import "ABObjectSortExample.h"
 
 
 @interface SqliteArraySortHelperTests : XCTestCase
@@ -50,6 +51,7 @@
 
 
 - (void)testPerformanceExample {
+   [ABObjectSortExample ]
 
 }
 
