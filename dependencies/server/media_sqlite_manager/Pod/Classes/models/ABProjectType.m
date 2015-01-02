@@ -55,7 +55,7 @@
 
 - (NSMutableDictionary *)getUpdateDictionary {
    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
-   [dictionary setObject:self.sqliteObjectName forKey:@"sqliteObjectName"];
+   [dictionary setObject:self.sqliteObjectName forKey:@"projectTypeName"];
 
    return dictionary;
 }

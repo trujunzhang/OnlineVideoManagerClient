@@ -11,7 +11,7 @@
 #import "ABSqliteObject.h"
 
 
-@interface ABProjectName : ABSqliteObject<MKAnnotation>
+@interface ABProjectName : ABSqliteObject
 
 @property(assign) int projectNameID;
 
