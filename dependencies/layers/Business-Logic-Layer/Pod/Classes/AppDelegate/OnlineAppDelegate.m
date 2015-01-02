@@ -201,14 +201,16 @@
 
 
 - (void)ggTabBarController:(GGTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-   NSUInteger tabBarSelectedIndex = tabBarController.selectedIndex;
-   BOOL isSameTableBarSelectedIndex = [[MxTabBarManager sharedTabBarManager] isSameTableBarSelectedIndex:tabBarSelectedIndex];
+
+   BOOL isSameTableBarSelectedIndex = [[MxTabBarManager sharedTabBarManager] isSameTableBarSelectedIndex:tabBarController.selectedIndex];
+
    if (isSameTableBarSelectedIndex) {
       [[LeftRevealHelper sharedLeftRevealHelper] toggleReveal];
    } else {
-      [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
-      [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:tabBarSelectedIndex];
+      [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenuAndRearOpen];
+      [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:tabBarController.selectedIndex];
    }
+
 }
 
 

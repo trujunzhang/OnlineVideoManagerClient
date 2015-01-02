@@ -22,6 +22,7 @@
 - (void)toggleReveal;
 - (void)closeLeftMenu;
 - (void)closeLeftMenuAndNoRearOpen;
+- (void)openLeftMenuAndRearOpen;
 - (void)openLeftMenu;
 
 - (void)registerRevealController:(SWRevealViewController *)controller;

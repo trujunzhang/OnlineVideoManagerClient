@@ -73,12 +73,18 @@ LeftRevealHelper * instance;
 }
 
 
+- (void)openLeftMenuAndRearOpen {
+   [self openLeftMenu];
+   self.isRearOpen = YES;
+}
+
+
 - (void)openLeftMenu {
    [_revealController setFrontViewPosition:FrontViewPositionRight animated:YES];
 }
 
 
-#pragma mark - 
+#pragma mark -
 #pragma mark - 
 
 
