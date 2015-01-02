@@ -87,6 +87,17 @@ NSMutableArray * _onlineVideoTypeArray;
 }
 
 
+/**
+* Sort object Array by  ABProjectFileInfo.sqliteObjectName
+*
+* @return The object `ABProjectList.projectFileInfos` array
+*
+*/
+- (void)sortForFileInfoArrayIn:(ABProjectList *)projectList {
+   projectList.projectFileInfos = [SqliteArraySortHelper sortForABProjectList:projectList.projectFileInfos];
+}
+
+
 // Array type is YTYouTubePlayList
 - (NSMutableArray *)getAllFileInfoListFromProjectList:(NSMutableArray *)projectLists {
    NSMutableArray * allFileInfoArray = [[NSMutableArray alloc] init];
@@ -105,4 +116,6 @@ NSMutableArray * _onlineVideoTypeArray;
 - (NSMutableArray *)getProgressionProjectList:(NSMutableArray *)projectLists {
    return projectLists;
 }
+
+
 @end

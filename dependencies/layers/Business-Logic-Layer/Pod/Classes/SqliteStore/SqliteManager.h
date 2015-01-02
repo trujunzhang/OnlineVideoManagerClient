@@ -24,4 +24,5 @@
 - (NSMutableArray *)getProjectListArray:(NSString *)projectNameId;
 - (NSMutableArray *)getAllFileInfoListFromProjectList:(NSMutableArray *)projectLists;
 - (NSMutableArray *)getProgressionProjectList:(NSMutableArray *)projectLists;
+- (void)sortForFileInfoArrayIn:(id)projectList;
 @end

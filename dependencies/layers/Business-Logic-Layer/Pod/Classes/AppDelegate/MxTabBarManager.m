@@ -6,6 +6,8 @@
 #import "CollectionConstant.h"
 #import "AsFileInfoVideoCollectionViewController.h"
 #import "GGTabBarController.h"
+#import "SqliteArraySortHelper.h"
+#import "SqliteManager.h"
 
 
 @interface MxTabBarManager () {
@@ -86,7 +88,8 @@
 }
 
 
-- (void)pushForYouTubePlayList:(id)playList withPlayListTitle:(NSString *)title {
+- (void)pushForYouTubePlayList:(ABProjectList *)playList withPlayListTitle:(NSString *)title {
+   [[SqliteManager sharedSqliteManager] sortForFileInfoArrayIn:playList];
    NSMutableArray * projectListArray = @[ playList ];
 
    AsFileInfoVideoCollectionViewController * controller = [[AsFileInfoVideoCollectionViewController alloc] initWithTitle:title
