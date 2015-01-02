@@ -4,6 +4,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+PJR.h"
 
 
 @interface ABSqliteObject : NSObject
@@ -18,5 +19,7 @@
 
 - (NSString *)sqlStringSerializationForUpdate;
 - (NSString *)sqlStringSerializationForInsert;
+
+- (NSNumber *)getSortNumber;
 
 @end

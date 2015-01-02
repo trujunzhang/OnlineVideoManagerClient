@@ -18,4 +18,5 @@
 
 - (void)appendFileInfo:(id)fileInfo;
 - (ABProjectFileInfo *)getFirstABProjectFileInfo;
+
 @end
