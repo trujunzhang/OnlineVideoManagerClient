@@ -51,6 +51,7 @@ target 'OnlineVideoClient', :exclusive => true do
   pod 'media_sqlite_manager', :path => '../dependencies/server/media_sqlite_manager'
   pod 'app_cofigure_manager', :path => '../dependencies/server/app_cofigure_manager'
 
+  pod 'Shimmer', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/Shimmer'
 
 end
 

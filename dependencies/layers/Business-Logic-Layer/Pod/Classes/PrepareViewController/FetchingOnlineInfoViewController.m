@@ -7,6 +7,7 @@
 #import "GYoutubeHelper.h"
 #import "LeftRevealHelper.h"
 #import "MxTabBarManager.h"
+#import "FBShimmeringView.h"
 
 static CGFloat kTextPadding = 100.0f;
 
@@ -25,8 +26,8 @@ static CGFloat kTextPadding = 100.0f;
    self = [super init];
    if (self) {
       self.delegate = delegate;
-
       [GYoutubeHelper getInstance].delegate = self;
+
       [self initOnlineClientInfo];
 
       [self setupUI];
@@ -45,6 +46,7 @@ static CGFloat kTextPadding = 100.0f;
        // self.view isn't a node, so we can only use it on the main thread
        dispatch_sync(dispatch_get_main_queue(), ^{
            [self layoutForFetchInfoNode];
+//           [self addEffectFor:_fetchingInfo.view withViewFrame:_fetchingInfo.frame];
            [self.view addSubview:_fetchingInfo.view];
        });
    });
@@ -52,8 +54,6 @@ static CGFloat kTextPadding = 100.0f;
 
 
 - (void)setupUI {
-//   [self makeFetchInfoNodeAndShow:@"wanghao"];
-
    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
        // attribute a string
        NSDictionary * attrs = @{
@@ -76,8 +76,7 @@ static CGFloat kTextPadding = 100.0f;
        // size all the things
        CGRect b = self.view.bounds; // convenience
        CGSize size = [_shuffleNode measure:CGSizeMake(b.size.width, FLT_MAX)];
-       CGPoint origin = CGPointMake(roundf((b.size.width - size.width) / 2.0f),
-        roundf((b.size.height - size.height) / 2.0f));
+       CGPoint origin = CGPointMake(roundf((b.size.width - size.width) / 2.0f), roundf((b.size.height - size.height) / 2.0f));
        _shuffleNode.frame = (CGRect) { origin, size };
 
        // self.view isn't a node, so we can only use it on the main thread
@@ -85,6 +84,17 @@ static CGFloat kTextPadding = 100.0f;
            [self.view addSubview:_shuffleNode.view];
        });
    });
+
+}
+
+
+- (void)addEffectFor:(UIView *)view withViewFrame:(CGRect)viewFrame {
+   FBShimmeringView * shimmeringView = [[FBShimmeringView alloc] initWithFrame:viewFrame];
+   [self.view addSubview:shimmeringView];
+
+   shimmeringView.contentView = view;
+
+   shimmeringView.shimmering = YES;
 
 }
 
@@ -98,7 +108,6 @@ static CGFloat kTextPadding = 100.0f;
    node.attributedString = [[NSAttributedString alloc] initWithString:info
                                                            attributes:attrsNode];
    [node measure:CGSizeMake(self.view.frame.size.width - kTextPadding, self.view.frame.size.height)];
-//   node.frame = CGRectMake(100, 100, 100, 100);
    node.backgroundColor = [UIColor whiteColor];
    node.contentMode = UIViewContentModeRight;
 
@@ -113,8 +122,6 @@ static CGFloat kTextPadding = 100.0f;
 
 - (void)viewDidLayoutSubviews {
    [super viewDidLayoutSubviews];
-
-//   [self layoutForFetchInfoNode];
 }
 
 
@@ -131,10 +138,10 @@ static CGFloat kTextPadding = 100.0f;
 - (void)initOnlineClientInfo {
 
    SqliteResponseBlock sqliteResponseBlock = ^(NSObject * respObject) {
-       [self.delegate fetchingOnlineClientCompletion];
+//       [self.delegate fetchingOnlineClientCompletion];
 
-       [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
-       [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
+//       [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
+//       [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
    };
 
    [[GYoutubeHelper getInstance] initOnlineClient:sqliteResponseBlock];
