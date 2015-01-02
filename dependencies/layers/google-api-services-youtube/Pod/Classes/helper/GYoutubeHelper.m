@@ -84,9 +84,9 @@ static GYoutubeHelper * instance = nil;
        }
    };
    // 2
-//   [Online_Request downloadSqliteFile:remoteSqliteUrl
-//              downloadCompletionBlock:downloadCompletion
-//                        progressBlock:&progress];
+   [Online_Request downloadSqliteFile:remoteSqliteUrl
+              downloadCompletionBlock:downloadCompletion
+                        progressBlock:&progress];
 
    // Observe fractionCompleted using KVO
    [progress addObserver:self
