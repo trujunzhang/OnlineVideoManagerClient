@@ -37,7 +37,7 @@
 
 // Video cache
 + (NSString *)getVideoSnippetThumbnails:(YTYouTubeVideoCache *)video;
-+ (NSString *)getWatchVideoId:(YTYouTubeVideoCache *)video;
+//+ (NSString *)getWatchVideoId:(YTYouTubeVideoCache *)video;
 + (NSString *)getChannelIdByVideo:(YTYouTubeVideoCache *)video;
 + (NSString *)getVideoSnippetTitle:(YTYouTubeVideoCache *)video;
 + (NSString *)getVideoStatisticsViewCount:(YTYouTubeVideoCache *)video;

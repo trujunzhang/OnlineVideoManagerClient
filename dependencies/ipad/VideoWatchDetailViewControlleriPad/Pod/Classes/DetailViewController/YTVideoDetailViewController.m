@@ -107,7 +107,7 @@
                                                                       withProjectListArray:nil];
    self.thirdViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"2", nil];
 
-   [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
+//   [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
 
    // 2
    _videoHorizontalDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:_detailVideo];
@@ -198,10 +198,6 @@
 - (void)setupPlayer:(UIView *)pView {
    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
 
-   NSString * watchVideoId = [YoutubeParser getWatchVideoId:_detailVideo];
-
-   _directVideo = [[YKDirectVideo alloc] initWithContent:[NSURL URLWithString:watchVideoId]];
-   [_directVideo playInView:pView withQualityOptions:YKQualityLow];
 }
 
 
@@ -324,12 +320,12 @@
 
 
 - (void)executeRefreshTask {
-   [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
+//   [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
 }
 
 
 - (void)executeNextPageTask {
-   [self.thirdViewController fetchSuggestionListByPageToken];
+//   [self.thirdViewController fetchSuggestionListByPageToken];
 }
 
 

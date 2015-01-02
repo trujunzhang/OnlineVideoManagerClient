@@ -82,14 +82,4 @@
 }
 
 
-- (NSString *)getPlayListThumbnailGeneratedFromVideo {
-   if (self.projectFileInfos.count > 0) {
-      ABProjectFileInfo * firstFileInfo = self.projectFileInfos[0];
-
-      return [firstFileInfo getCacheFileInfoThumbnail];
-   }
-   return @"";
-}
-
-
 @end

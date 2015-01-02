@@ -18,5 +18,4 @@
 
 - (void)appendFileInfo:(id)fileInfo;
 - (ABProjectFileInfo *)getFirstABProjectFileInfo;
-- (NSString *)getPlayListThumbnailGeneratedFromVideo;
 @end

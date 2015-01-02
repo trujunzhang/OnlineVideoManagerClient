@@ -36,12 +36,12 @@
 }
 
 
-+ (NSString *)getWatchVideoId:(YTYouTubeVideoCache *)video {
-
-   NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
-   NSString * onlineVideoPlayUrl = [video getOnlineVideoPlayUrl:domain];
-   return onlineVideoPlayUrl;
-}
+//+ (NSString *)getWatchVideoId:(YTYouTubeVideoCache *)video {
+//
+//   NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
+//   NSString * onlineVideoPlayUrl = [video getOnlineVideoPlayUrl:domain];
+//   return onlineVideoPlayUrl;
+//}
 
 
 + (NSString *)getChannelIdByVideo:(YTYouTubeVideoCache *)video {
@@ -69,8 +69,13 @@
 }
 
 
++ (NSString *)encodeAbstractPath:(NSString *)url {
+   return [url replaceCharcter:@" " withCharcter:@"%20"];
+}
+
+
 + (NSString *)getVideoOnlineUrl:(YTYouTubeVideoCache *)fileInfo withNavigationIndex:(NSInteger)navigationIndex {
-   NSString * playListThumbnail = [fileInfo encodeAbstractFilePath];
+   NSString * playListThumbnail = fileInfo.abstractFilePath;
 
 
    NSString * projectNameIDString = [[MxTabBarManager sharedTabBarManager] getCurrentProjectNameIDString];
@@ -78,7 +83,11 @@
 
    NSObject * domain = [[GYoutubeHelper getInstance] getCurrentDomainUrl];
 
-   return [NSString stringWithFormat:@"%@%@%@", domain, onlineVideoTypePath, playListThumbnail];
+   NSString * encodeAbstractPath = [YoutubeParser encodeAbstractPath:[NSString stringWithFormat:@"%@%@",
+                                                                                                onlineVideoTypePath,
+                                                                                                playListThumbnail]];
+
+   return [NSString stringWithFormat:@"%@%@", domain, encodeAbstractPath];
 }
 
 
