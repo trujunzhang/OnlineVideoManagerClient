@@ -28,6 +28,8 @@
 
    // Do any additional setup after loading the view, typically from a nib.
    [[MxTabBarManager sharedTabBarManager] setLeftMenuControllerDelegate:self];
+
+   self.navigationItem.leftBarButtonItem = [self getLeftBarButtonItem];
 }
 
 
@@ -49,10 +51,7 @@
    gridViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
 
    // 2
-   gridViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mt_side_tab_button"]
-                                                                                          style:UIBarButtonItemStyleBordered
-                                                                                         target:self
-                                                                                         action:@selector(leftBarButtonItemAction:)];
+   gridViewController.navigationItem.leftBarButtonItem = [self getLeftBarButtonItem];
 
    // 3
    [[MxTabBarManager sharedTabBarManager] pushAndResetControllers:@[ gridViewController ]];
@@ -61,6 +60,15 @@
    _playlistItemsType = playlistItemsType;
    _gridViewController = gridViewController;
    [_gridViewController fetchPlayListByType:playlistItemsType];
+}
+
+
+- (UIBarButtonItem *)getLeftBarButtonItem {
+   UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mt_side_tab_button"]
+                                                                      style:UIBarButtonItemStyleBordered
+                                                                     target:self
+                                                                     action:@selector(leftBarButtonItemAction:)];
+   return barButtonItem;
 }
 
 
