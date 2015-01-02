@@ -175,7 +175,6 @@
 
 
 - (void)fetchActivityListByPageToken {
-   GYoutubeRequestInfo * requestInfo = [self getYoutubeRequestInfo];
    NSMutableArray * projectListArray = _projectListArray;
 
    [self updateAfterResponse:projectListArray];
