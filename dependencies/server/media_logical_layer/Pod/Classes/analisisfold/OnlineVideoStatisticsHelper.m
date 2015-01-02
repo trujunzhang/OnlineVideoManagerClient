@@ -6,7 +6,7 @@
 #import "OnlineVideoStatisticsHelper.h"
 #import "ABProjectName.h"
 #import "ABProjectType.h"
-#import "OnlineVideoProjectStatisticsHelper.h"
+#import "OnlineVideoProjectListHelper.h"
 #import "OnlineVideoConstant.h"
 
 
@@ -92,11 +92,11 @@
 
 
 - (void)makeProjectListInProjectType:(ABProjectType *)projectType aPath:(NSString *)aPath fullPath:(NSString *)fullPath {
-   OnlineVideoProjectStatisticsHelper * onlineVideoProjectStatisticsHelper =
-    [[OnlineVideoProjectStatisticsHelper alloc] initWithOnlinePath:self.videoScanFold
-                                                withCacheDirectory:self.cacheDirectory];
+   OnlineVideoProjectListHelper * onlineVideoProjectListHelper =
+    [[OnlineVideoProjectListHelper alloc] initWithOnlinePath:self.videoScanFold
+                                          withCacheDirectory:self.cacheDirectory];
 
-   [onlineVideoProjectStatisticsHelper makeProjectList:aPath withFullPath:fullPath to:projectType];
+   [onlineVideoProjectListHelper makeProjectList:aPath withFullPath:fullPath to:projectType];
 }
 
 

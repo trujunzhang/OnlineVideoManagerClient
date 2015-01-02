@@ -5,7 +5,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface OnlineVideoProjectStatisticsHelper : NSObject
+@interface OnlineVideoProjectListHelper : NSObject
 @property(nonatomic, strong) NSString * onlinePath;
 @property(nonatomic, copy) NSString * cacheDirectory;
 

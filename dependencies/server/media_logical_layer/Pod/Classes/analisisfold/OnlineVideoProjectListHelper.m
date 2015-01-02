@@ -2,7 +2,7 @@
 // Created by djzhang on 12/27/14.
 //
 
-#import "OnlineVideoProjectStatisticsHelper.h"
+#import "OnlineVideoProjectListHelper.h"
 #import "ABProjectType.h"
 #import "ABProjectName.h"
 #import "ABProjectList.h"
@@ -12,7 +12,7 @@
 #import "GenerateThumbnailTask.h"
 
 
-@implementation OnlineVideoProjectStatisticsHelper {
+@implementation OnlineVideoProjectListHelper {
 
 }
 - (instancetype)initWithOnlinePath:(NSString *)onlinePath withCacheDirectory:(NSString *)cacheDirectory {
