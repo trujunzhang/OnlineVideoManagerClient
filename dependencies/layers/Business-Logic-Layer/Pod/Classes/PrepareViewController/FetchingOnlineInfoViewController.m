@@ -99,7 +99,7 @@
    [super viewDidLayoutSubviews];
    CGRect rect = self.view.bounds;
    CGFloat dW = rect.size.width;
-   CGFloat dH = 100;
+   CGFloat dH = 200;
    CGFloat dX = (rect.size.width - dW) / 2;
    CGFloat dY = (rect.size.height - dH) / 2 - 200;
    _fetchingInfo.frame = CGRectMake(dX, dY, dW, dH);
