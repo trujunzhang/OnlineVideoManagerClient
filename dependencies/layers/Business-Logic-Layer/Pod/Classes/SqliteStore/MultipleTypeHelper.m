@@ -24,7 +24,7 @@
 
 + (void)checkExistAndAppend:(ABOnlineVideoType *)onlineVideoType to:(NSMutableArray *)singleOnlineVideoTypesArray from:(NSMutableArray *)array {
 
-   ABOnlineVideoType * lastOnlineVideoType = [MultipleTypeHelper checkExist:onlineVideoType.onlineVideoTypeName
+   ABOnlineVideoType * lastOnlineVideoType = [MultipleTypeHelper checkExist:onlineVideoType.sqliteObjectName
                                                                          in:singleOnlineVideoTypesArray];
    if (lastOnlineVideoType) {
       [MultipleTypeHelper copyOnlineVideoTypeDictionary:onlineVideoType.onlineTypeDictionary to:lastOnlineVideoType];
@@ -44,7 +44,7 @@
 
 + (ABOnlineVideoType *)checkExist:(NSString *)onlineVideoTypeName in:(NSMutableArray *)singleOnlineVideoTypesArray {
    for (ABOnlineVideoType * onlineVideoType in singleOnlineVideoTypesArray) {
-      if ([onlineVideoTypeName isEqualToString:onlineVideoType.onlineVideoTypeName]) {
+      if ([onlineVideoTypeName isEqualToString:onlineVideoType.sqliteObjectName]) {
          return onlineVideoType;
       }
    }

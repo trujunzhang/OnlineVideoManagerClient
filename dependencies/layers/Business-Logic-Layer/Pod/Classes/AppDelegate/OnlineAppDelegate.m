@@ -90,7 +90,7 @@
    for (ABOnlineVideoType * onlineVideoType in onlineVideoTypesArray) {
       OnlineTypeViewController * lyndaController = [[OnlineTypeViewController alloc] init];
 
-      NSString * tabBarImageName = [self getTabbarImageName:onlineVideoType.onlineVideoTypeName];
+      NSString * tabBarImageName = [self getTabbarImageName:onlineVideoType.sqliteObjectName];
       lyndaController.tabBarItem = [[UITabBarItem alloc] initWithTitle:nil
                                                                  image:[UIImage imageNamed:tabBarImageName]
                                                          selectedImage:[UIImage imageNamed:tabBarImageName]];

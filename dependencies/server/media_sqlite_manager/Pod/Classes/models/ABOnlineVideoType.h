@@ -11,15 +11,11 @@
 @interface ABOnlineVideoType : ABSqliteObject
 
 @property(assign) int onlineVideoTypeID;
-@property(copy) NSString * onlineVideoTypeName;
 @property(copy) NSString * onlineVideoTypePath;
-
-//@property(strong) NSMutableArray * onlineTypeArray;
 
 @property(strong) NSMutableDictionary * onlineTypeDictionary;
 
 - (instancetype)initWithOnlineTypeName:(NSString *)onlineTypeName OnlineVideoTypePath:(NSString *)OnlineVideoTypePath;
-
 
 - (void)appendProjectTypeDictionary:(NSMutableDictionary *)dictionary;
 - (void)appendProjectType:(ABProjectType *)projectType;
