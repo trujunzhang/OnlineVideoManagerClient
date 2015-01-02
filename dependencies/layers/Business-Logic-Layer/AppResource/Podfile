@@ -62,5 +62,6 @@ target 'OnlineVideoClientTests', :exclusive => true do
   #pod 'OCHamcrest', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCHamcrest'
   #pod 'OCMockito', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCMockito'
 
+  pod 'media_sqlite_manager', :path => '../dependencies/server/media_sqlite_manager'
 
 end
