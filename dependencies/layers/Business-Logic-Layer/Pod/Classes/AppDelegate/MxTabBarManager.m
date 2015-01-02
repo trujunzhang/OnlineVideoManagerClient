@@ -123,6 +123,11 @@
 }
 
 
+- (BOOL)isSameTableBarSelectedIndex:(NSUInteger)tabBarSelectedIndex {
+   return (_tabBarSelectedIndex == tabBarSelectedIndex);
+}
+
+
 - (void)setCurrentOnlineVideoTypeID:(int)onlineVideoTypeID {
    _onlineVideoTypeID = onlineVideoTypeID;
 }

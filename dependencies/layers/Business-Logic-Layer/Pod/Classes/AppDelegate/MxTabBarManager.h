@@ -17,5 +17,6 @@
 
 - (void)callbackUpdateYoutubeChannelCompletion:(NSUInteger)index;
 - (void)registerTabBarController:(id)controller withLeftViewController:(id)controller1 withTabbarControllerArray:(NSArray *)array;
+- (BOOL)isSameTableBarSelectedIndex:(NSUInteger)tabBarSelectedIndex;
 - (void)setCurrentOnlineVideoTypeID:(int)id;
 @end
