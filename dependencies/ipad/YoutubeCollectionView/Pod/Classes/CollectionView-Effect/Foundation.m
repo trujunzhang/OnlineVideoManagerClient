@@ -135,7 +135,7 @@
 
    NSDictionary * titleAttributes =
     @{ NSFontAttributeName : font,
-     NSForegroundColorAttributeName : [UIColor blackColor],
+     NSForegroundColorAttributeName : [UIColor darkTextColor],
      NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyleForCollectionVideoTitle]
     };
 
