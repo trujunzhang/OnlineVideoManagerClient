@@ -59,7 +59,6 @@ static GYoutubeHelper * instance = nil;
 
 - (void)checkAndFetchSqliteFileFromRemote:(SqliteResponseBlock)downloadCompletionBlock object:(OnlineServerInfo *)object {
    if ([self checkValidateLocalSqlite:object.version] == NO) {
-      [self.delegate showStepInfo:@"Downloading sqlite databse!"];
       [self fetchSqliteFileFromRemote:downloadCompletionBlock];
    } else {
       downloadCompletionBlock(nil);
@@ -70,12 +69,14 @@ static GYoutubeHelper * instance = nil;
 - (void)fetchSqliteFileFromRemote:(SqliteResponseBlock)downloadCompletionBlock {
    NSString * remoteSqliteUrl = [self.onlineServerInfo getRemoteSqliteDatabase];
 
+   [self.delegate showStepInfo:[NSString stringWithFormat:@"Downloading sqlite file from %@", remoteSqliteUrl]];
+
    NSProgress * progress;
    void (^downloadCompletion)(NSURLResponse *, NSURL *, NSError *) = ^(NSURLResponse * response, NSURL * url, NSError * error) {
        if (error) {
           id objectForKey = [[error userInfo] objectForKey:@"NSErrorFailingURLKey"];
 
-          [self.delegate showStepInfo:[NSString stringWithFormat:@"Download %@ failure?",
+          [self.delegate showStepInfo:[NSString stringWithFormat:@"Downloaded %@ failure?",
                                                                  [[objectForKey absoluteURL] absoluteString]]];
        } else {
           [ParseLocalStore saveSqliteVersion:self.onlineServerInfo.version];
