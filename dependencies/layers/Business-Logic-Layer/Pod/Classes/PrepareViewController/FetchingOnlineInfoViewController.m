@@ -8,11 +8,12 @@
 #import "LeftRevealHelper.h"
 #import "MxTabBarManager.h"
 
+static CGFloat kTextPadding = 100.0f;
+
 
 @interface FetchingOnlineInfoViewController ()<GYoutubeHelperDelegate> {
    ASTextNode * _fetchingInfo;
    ASTextNode * _shuffleNode;
-
 }
 @end
 
@@ -37,22 +38,23 @@
 }
 
 
-- (void)setupUI {
+- (void)makeFetchInfoNodeAndShow:(NSString *)info {
+   [_fetchingInfo.view removeFromSuperview];
    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-       // 1
-       ASTextNode * node = [[ASTextNode alloc] init];
-       NSDictionary * attrsNode = @{
-        NSFontAttributeName : [UIFont systemFontOfSize:32.0f],
-        NSForegroundColorAttributeName : [UIColor blueColor],
-       };
-       node.attributedString = [[NSAttributedString alloc] initWithString:@"Fetching OnlineVideoInfo!"
-                                                               attributes:attrsNode];
-       [node measure:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
-       node.frame = CGRectMake(100, 100, 100, 100);
-       node.backgroundColor = [UIColor whiteColor];
-       node.contentMode = UIViewContentModeRight;
+       _fetchingInfo = [self makeFetchInfoNode:info];
+       // self.view isn't a node, so we can only use it on the main thread
+       dispatch_sync(dispatch_get_main_queue(), ^{
+           [self layoutForFetchInfoNode];
+           [self.view addSubview:_fetchingInfo.view];
+       });
+   });
+}
 
-       // 2
+
+- (void)setupUI {
+//   [self makeFetchInfoNodeAndShow:@"wanghao"];
+
+   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
        // attribute a string
        NSDictionary * attrs = @{
         NSFontAttributeName : [UIFont systemFontOfSize:22.0f],
@@ -78,15 +80,29 @@
         roundf((b.size.height - size.height) / 2.0f));
        _shuffleNode.frame = (CGRect) { origin, size };
 
-
        // self.view isn't a node, so we can only use it on the main thread
        dispatch_sync(dispatch_get_main_queue(), ^{
-           _fetchingInfo = node;
-           [self.view addSubview:node.view];
            [self.view addSubview:_shuffleNode.view];
        });
    });
 
+}
+
+
+- (ASTextNode *)makeFetchInfoNode:(NSString *)info {
+   ASTextNode * node = [[ASTextNode alloc] init];
+   NSDictionary * attrsNode = @{
+    NSFontAttributeName : [UIFont systemFontOfSize:32.0f],
+    NSForegroundColorAttributeName : [UIColor blueColor],
+   };
+   node.attributedString = [[NSAttributedString alloc] initWithString:info
+                                                           attributes:attrsNode];
+   [node measure:CGSizeMake(self.view.frame.size.width - kTextPadding, self.view.frame.size.height)];
+//   node.frame = CGRectMake(100, 100, 100, 100);
+   node.backgroundColor = [UIColor whiteColor];
+   node.contentMode = UIViewContentModeRight;
+
+   return node;
 }
 
 
@@ -97,12 +113,18 @@
 
 - (void)viewDidLayoutSubviews {
    [super viewDidLayoutSubviews];
+
+//   [self layoutForFetchInfoNode];
+}
+
+
+- (void)layoutForFetchInfoNode {
    CGRect rect = self.view.bounds;
-   CGFloat dW = rect.size.width;
-   CGFloat dH = 200;
-   CGFloat dX = (rect.size.width - dW) / 2;
-   CGFloat dY = (rect.size.height - dH) / 2 - 200;
-   _fetchingInfo.frame = CGRectMake(dX, dY, dW, dH);
+   CGFloat dW = rect.size.width - kTextPadding;
+
+   CGSize textNodeSize = _fetchingInfo.calculatedSize;
+   CGFloat dY = (rect.size.height / 2.0f - textNodeSize.height) - 80;
+   _fetchingInfo.frame = CGRectMake(roundf((dW - textNodeSize.width) / 2.0f), dY, textNodeSize.width, textNodeSize.height);
 }
 
 
@@ -119,22 +141,12 @@
 }
 
 
-- (void)showLoadingFailInfo {
-
-}
-
-
 #pragma mark -
 #pragma mark GYoutubeHelperDelegate
 
 
 - (void)showStepInfo:(NSString *)string {
-   NSDictionary * attrsNode = @{
-    NSFontAttributeName : [UIFont systemFontOfSize:32.0f],
-    NSForegroundColorAttributeName : [UIColor blueColor],
-   };
-   _fetchingInfo.attributedString = [[NSAttributedString alloc] initWithString:string
-                                                                    attributes:attrsNode];
+   [self makeFetchInfoNodeAndShow:string];
 }
 
 
