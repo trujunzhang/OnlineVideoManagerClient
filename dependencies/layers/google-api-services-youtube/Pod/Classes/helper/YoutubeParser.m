@@ -108,7 +108,7 @@
 
 
 + (NSString *)getPlayListTitle:(YTYouTubePlayList *)channel {
-   return channel.projectListName;
+   return channel.sqliteObjectName;
 }
 
 

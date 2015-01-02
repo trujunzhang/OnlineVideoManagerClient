@@ -17,7 +17,7 @@
 
    for (NSString * name in projectListNamesArray) {
       ABProjectList * projectList = [[ABProjectList alloc] init];
-      projectList.projectListName = name;
+      projectList.sqliteObjectName = name;
 
       [abProjectListSortArray addObject:projectList];
    }

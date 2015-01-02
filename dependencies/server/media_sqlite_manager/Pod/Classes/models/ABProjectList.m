@@ -23,7 +23,7 @@
    if (self) {
       self.projectListID = [MobileDB uniqueID];
 
-      self.projectListName = @"";
+      self.sqliteObjectName = @"";
       self.projectFileInfos = [[NSMutableArray alloc] init];
    }
 
@@ -34,7 +34,7 @@
 - (instancetype)initWithProjectListName:(NSString *)projectListName {
    self = [self init];
    if (self) {
-      self.projectListName = projectListName;
+      self.sqliteObjectName = projectListName;
    }
 
    return self;
@@ -55,7 +55,7 @@
 - (NSMutableDictionary *)getUpdateDictionary {
    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
 
-   [dictionary setObject:self.projectListName forKey:@"projectListName"];
+   [dictionary setObject:self.sqliteObjectName forKey:@"sqliteObjectName"];
 
    return dictionary;
 }

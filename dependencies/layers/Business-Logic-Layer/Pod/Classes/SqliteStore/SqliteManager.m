@@ -72,7 +72,7 @@ NSMutableArray * _onlineVideoTypeArray;
 
 
 /**
-* Sort object Array by  ABProjectList.projectListName
+* Sort object Array by  ABProjectList.sqliteObjectName
 *
 * @return The object `ABProjectList` array
 *

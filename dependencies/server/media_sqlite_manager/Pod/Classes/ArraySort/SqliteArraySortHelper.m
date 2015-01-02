@@ -13,8 +13,8 @@
 
 + (NSArray *)sortForABProjectList:(NSArray *)projectLists {
    NSArray * sortedEmployees = [projectLists sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
-       NSString * firstDate = [(ABProjectList *) a projectListName];
-       NSString * secondDate = [(ABProjectList *) b projectListName];
+       NSString * firstDate = [(ABSqliteObject *) a sqliteObjectName];
+       NSString * secondDate = [(ABSqliteObject *) b sqliteObjectName];
 
        return [firstDate compare:secondDate];
    }];
