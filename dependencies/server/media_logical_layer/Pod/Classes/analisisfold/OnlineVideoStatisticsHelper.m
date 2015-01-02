@@ -22,14 +22,18 @@
 
       self.projectTypesDictionary = [[NSMutableDictionary alloc] init];
 
-      [self analysisPath:videoScanFold withDictionaryKey:@""];
+      [self searchProjectTypesInFolder:videoScanFold withDictionaryKey:@""];
    }
 
    return self;
 }
 
 
-- (void)analysisPath:(NSString *)appDocDir withDictionaryKey:(NSString *)key {
+#pragma mark -
+#pragma mark Search Project types
+
+
+- (void)searchProjectTypesInFolder:(NSString *)appDocDir withDictionaryKey:(NSString *)key {
    NSArray * contentOfFolder = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:appDocDir error:NULL];
    int count = 1;
    for (NSString * aPath in contentOfFolder) {
@@ -37,29 +41,27 @@
       BOOL isDir = NO;
       if ([[NSFileManager defaultManager] fileExistsAtPath:fullPath isDirectory:&isDir]) {
          if (isDir == YES) {
-            NSLog(@"dir-%d: %@", count, fullPath);
+//            NSLog(@"dir-%d: %@", count, fullPath);
             count++;
             TFOLD_TYPE type = [self checkDirType:aPath];
             switch (type) {
                case TFOLD_CATELOGY: {
                   ABProjectType * projectType = [[ABProjectType alloc] initWithProjectType:aPath];
                   [self.projectTypesDictionary setObject:projectType forKey:aPath];
-                  [self analysisProjectNameListInProjectType:fullPath to:projectType];
+                  [self searchProjectNameListInProjectType:fullPath to:projectType];
                };
                   break;
                default:
-                  [self analysisPath:fullPath withDictionaryKey:key];
+                  [self searchProjectTypesInFolder:fullPath withDictionaryKey:key];
                   break;
             }
-         } else {
-
          }
       }
    }
 }
 
 
-- (void)analysisProjectNameListInProjectType:(NSString *)appDocDir to:(ABProjectType *)projectType {
+- (void)searchProjectNameListInProjectType:(NSString *)appDocDir to:(ABProjectType *)projectType {
    NSArray * contentOfFolder = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:appDocDir error:NULL];
    int count = 1;
    for (NSString * aPath in contentOfFolder) {
@@ -67,16 +69,16 @@
       BOOL isDir = NO;
       if ([[NSFileManager defaultManager] fileExistsAtPath:fullPath isDirectory:&isDir]) {
          if (isDir == YES) {
-            NSLog(@"dir-%d: %@", count, fullPath);
+//            NSLog(@"dir-%d: %@", count, fullPath);
             count++;
             TFOLD_TYPE type = [self checkDirType:aPath];
             switch (type) {
                case TFOLD_PROJECT: {
-                  [self makeProjectListWithProjectType:projectType aPath:aPath fullPath:fullPath];
+                  [self makeProjectListInProjectType:projectType aPath:aPath fullPath:fullPath];
                };
                   break;
                default:
-                  [self analysisProjectNameListInProjectType:fullPath to:projectType];
+                  [self searchProjectNameListInProjectType:fullPath to:projectType];
                   break;
             }
          }
@@ -85,7 +87,11 @@
 }
 
 
-- (void)makeProjectListWithProjectType:(ABProjectType *)projectType aPath:(NSString *)aPath fullPath:(NSString *)fullPath {
+#pragma mark -
+#pragma mark Make Project list in Project type Folder
+
+
+- (void)makeProjectListInProjectType:(ABProjectType *)projectType aPath:(NSString *)aPath fullPath:(NSString *)fullPath {
    OnlineVideoProjectStatisticsHelper * onlineVideoProjectStatisticsHelper =
     [[OnlineVideoProjectStatisticsHelper alloc] initWithOnlinePath:self.videoScanFold
                                                 withCacheDirectory:self.cacheDirectory];

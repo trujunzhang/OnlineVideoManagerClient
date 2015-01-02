@@ -87,7 +87,7 @@
    NSString * thumbnailName = [MobileBaseDatabase getThumbnailName:fileInfoID];
 
    NSString * thumbnailCacheDirectory = [NSString stringWithFormat:@"%@/%@", self.cacheDirectory, thumbnailFolder];
-   [GenerateThumbnailTask appendGenerateThumbnailTask:thumbnailName in:fileAbstractPath to:thumbnailCacheDirectory];
+//   [GenerateThumbnailTask appendGenerateThumbnailTask:thumbnailName in:fileAbstractPath to:thumbnailCacheDirectory];
 }
 
 
