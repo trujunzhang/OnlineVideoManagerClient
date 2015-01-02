@@ -62,6 +62,7 @@ static GYoutubeHelper * instance = nil;
                     downloadCompletionBlock(nil, nil, nil);
                  }
              };
+             // 2
              [self fetchSqliteRemoteFile:downloadCompletion progressBlock:&progress];
 
              // Observe fractionCompleted using KVO
@@ -74,7 +75,6 @@ static GYoutubeHelper * instance = nil;
              [self.delegate showStepInfo:@"Downloading sqlite databse!"];
           } else {
              downloadCompletionBlock(nil, nil, nil);
-//             [self.delegate showStepInfo:@"Cache dictionary already has sqlite file!"];
           }
        }
    };
