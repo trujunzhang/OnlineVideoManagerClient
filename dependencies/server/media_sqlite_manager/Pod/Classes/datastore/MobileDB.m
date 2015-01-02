@@ -104,7 +104,7 @@ static MobileDB * _dbInstance;
 
    //select projectTypeName from ProjectType where projectTypeName ='@Muse'
    sql = [NSString stringWithFormat:@"select onlineVideoTypeName from OnlineVideoType where onlineVideoTypeName ='%@'",
-                                    onlineVideoType.onlineVideoTypeName];
+                                    onlineVideoType.sqliteObjectName];
    id<ABRecordset> results = [db sqlSelect:sql];
 //   if (![results eof])
 //      exists = YES;
@@ -217,7 +217,7 @@ static MobileDB * _dbInstance;
 
    //select projectTypeName from ProjectType where projectTypeName ='@Muse'
    sql = [NSString stringWithFormat:@"select projectTypeName from ProjectType where projectTypeName ='%@'",
-                                    projectType.projectTypeName];
+                                    projectType.sqliteObjectName];
    id<ABRecordset> results = [db sqlSelect:sql];
    if (![results eof])
       exists = YES;
@@ -325,7 +325,7 @@ static MobileDB * _dbInstance;
    BOOL exists = NO;
 
    sql = [NSString stringWithFormat:@"select projectName from ProjectName where projectName = '%@'",
-                                    projectName.projectName];
+                                    projectName.sqliteObjectName];
    id<ABRecordset> results = [db sqlSelect:sql];
    if (![results eof])
       exists = YES;
@@ -419,7 +419,7 @@ static MobileDB * _dbInstance;
       ABProjectName * projectName = [[ABProjectName alloc] init];
 
       projectName.projectNameID = [[results fieldWithName:@"projectNameID"] intValue];
-      projectName.projectName = [[results fieldWithName:@"projectName"] stringValue];
+      projectName.sqliteObjectName = [[results fieldWithName:@"projectName"] stringValue];
       projectName.projectDownloadUrl = [[results fieldWithName:@"projectDownloadUrl"] stringValue];
       projectName.projectAbstractPath = [[results fieldWithName:@"projectAbstractPath"] stringValue];
 
@@ -523,7 +523,7 @@ static MobileDB * _dbInstance;
       ABProjectList * projectName = [[ABProjectList alloc] init];
 
       projectName.projectListID = [[results fieldWithName:@"projectListID"] intValue];
-      projectName.projectListName = [[results fieldWithName:@"projectListName"] stringValue];
+      projectName.sqliteObjectName = [[results fieldWithName:@"projectListName"] stringValue];
 
       [projectNameArray addObject:projectName];
 
@@ -578,7 +578,7 @@ static MobileDB * _dbInstance;
       ABProjectFileInfo * projectName = [[ABProjectFileInfo alloc] init];
 
       projectName.fileInfoID = [[results fieldWithName:@"fileInfoID"] intValue];
-      projectName.fileInforName = [[results fieldWithName:@"fileInforName"] stringValue];
+      projectName.sqliteObjectName = [[results fieldWithName:@"fileInforName"] stringValue];
       projectName.subtitleName = [[results fieldWithName:@"subtitleName"] stringValue];
       projectName.abstractFilePath = [[results fieldWithName:@"abstractFilePath"] stringValue];
 
@@ -677,7 +677,7 @@ static MobileDB * _dbInstance;
 
    LocationResultsBlock LocationResultsBlock = ^(NSArray * locations) {
        for (ABProjectType * projectType in locations) {
-          [dictionary setObject:projectType forKey:projectType.projectTypeName];
+          [dictionary setObject:projectType forKey:projectType.sqliteObjectName];
 
           [self readProjectTypeNames:projectType.projectTypeID withArray:projectType.ProjectNameArray isReadArray:NO];
        }

@@ -9,7 +9,7 @@
 
 @interface ABSqliteObject : NSObject
 
-//@property(copy) NSString * sqliteObjectName123;
+@property(copy) NSString * sqliteObjectName;
 
 @property(copy) NSString * objectName;
 @property(nonatomic, strong) id parentObject;
