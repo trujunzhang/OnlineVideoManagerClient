@@ -27,7 +27,7 @@
 
    // ProjectName+ProjectList
    [db sqlExecute:@"create table ProjectName(projectNameID int, projectName text, projectDownloadUrl text, projectAbstractPath text, primary key(projectNameID));"];
-   [db sqlExecute:@"create table ProjectList(projectListID int, sqliteObjectName text, primary key(projectListID));"];
+   [db sqlExecute:@"create table ProjectList(projectListID int, projectListName text, primary key(projectListID));"];
    [db sqlExecute:@"create table ProjectNameLists(projectNameID int, projectListID int, primary key (projectNameID,projectListID));"];
 
    // ProjectFileInfo+ProjectList
