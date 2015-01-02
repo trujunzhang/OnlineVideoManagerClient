@@ -52,5 +52,9 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/PrepareViewController/*.{h,m}'
   end
 
+  s.subspec 'AsCustomNode' do |sub|
+    sub.source_files = 'Pod/Classes/AsCustomNode/*.{h,m}'
+  end
+
 end
 
