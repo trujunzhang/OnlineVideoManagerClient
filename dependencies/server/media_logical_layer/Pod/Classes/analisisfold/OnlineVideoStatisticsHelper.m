@@ -100,6 +100,8 @@
 }
 
 
+
+
 - (TFOLD_TYPE)checkDirType:(NSString *)path {
    NSUInteger length = [path length];
    if (length >= 2 && [[path substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"@@"]) {

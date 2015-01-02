@@ -42,13 +42,33 @@
          if (isDir == YES) {
             ABProjectList * projectList = [[ABProjectList alloc] initWithProjectListName:aPath];
             NSString * projectListName = projectList.projectListName;
-            NSLog(@"appDocDir = %@", appDocDir);
-            NSLog(@"projectListName = %@", projectListName);
-            [projectName appendProjectList:projectList];
-            [self analysisProjectNames:fullPath to:projectList];
+
+            if ([self checkIgnoureProjectType:projectList] == NO) {
+
+               NSLog(@"appDocDir = %@", appDocDir);
+               NSLog(@"projectListName = %@", projectListName);
+
+               [projectName appendProjectList:projectList];
+               [self analysisProjectNames:fullPath to:projectList];
+            }
          }
       }
    }
+}
+
+
+- (BOOL)checkIgnoureProjectType:(ABProjectList *)projectList {
+   NSArray * ignoreProjectTypeNameArray = @[
+    @"Exercise Files",
+   ];
+
+   for (NSString * ignoreName in ignoreProjectTypeNameArray) {
+      if ([projectList.projectListName isEqualToString:ignoreName]) {
+         return YES;
+      }
+   }
+
+   return NO;
 }
 
 
@@ -90,7 +110,7 @@
    NSString * thumbnailName = [MobileBaseDatabase getThumbnailName:fileInfoID];
 
    NSString * thumbnailCacheDirectory = [NSString stringWithFormat:@"%@/%@", self.cacheDirectory, thumbnailFolder];
-//   [GenerateThumbnailTask appendGenerateThumbnailTask:thumbnailName in:fileAbstractPath to:thumbnailCacheDirectory];
+   [GenerateThumbnailTask appendGenerateThumbnailTask:thumbnailName in:fileAbstractPath to:thumbnailCacheDirectory];
 }
 
 
