@@ -140,7 +140,7 @@ static CGFloat kTextPadding = 100.0f;
    SqliteResponseBlock sqliteResponseBlock = ^(NSObject * respObject) {
        [self.delegate fetchingOnlineClientCompletion];
 
-       [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenu];
+       [[LeftRevealHelper sharedLeftRevealHelper] openLeftMenuAndRearOpen];
        [[MxTabBarManager sharedTabBarManager] callbackUpdateYoutubeChannelCompletion:0];
    };
 
