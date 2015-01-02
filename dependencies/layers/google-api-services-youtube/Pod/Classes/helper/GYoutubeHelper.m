@@ -43,22 +43,26 @@ static GYoutubeHelper * instance = nil;
 
 - (void)initOnlineClient:(SqliteResponseBlock)downloadCompletionBlock {
    [self.delegate showStepInfo:@"Fetching OnlineVideoInfo frome parse.com !"];
+
    if (hasLocalSqliteFile) {
+
       self.onlineServerInfo = [OnlineServerInfo localServerInfo];
       downloadCompletionBlock(nil);
-      return;
+
+   } else {
+
+      ParseHelperResultBlock parseHelperResultBlock = ^(OnlineServerInfo * object, NSError * error) {
+          self.onlineServerInfo = object;
+          if (error) {
+             [self.delegate showStepInfo:@"Fetching failure?"];
+          } else {
+             [self checkAndFetchSqliteFileFromRemote:downloadCompletionBlock object:object];
+          }
+      };
+
+      [[ParseHelper sharedParseHelper] readOnlineVideoInfo:parseHelperResultBlock];
+
    }
-
-   ParseHelperResultBlock parseHelperResultBlock = ^(OnlineServerInfo * object, NSError * error) {
-       self.onlineServerInfo = object;
-       if (error) {
-          [self.delegate showStepInfo:@"Fetching failure?"];
-       } else {
-          [self checkAndFetchSqliteFileFromRemote:downloadCompletionBlock object:object];
-       }
-   };
-
-   [[ParseHelper sharedParseHelper] readOnlineVideoInfo:parseHelperResultBlock];
 }
 
 

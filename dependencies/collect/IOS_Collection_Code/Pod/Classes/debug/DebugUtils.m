@@ -35,6 +35,15 @@
 }
 
 
++ (void)setupLogFile {
+   NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+   NSString * documentsDirectory = [paths objectAtIndex:0];
+   NSString * logPath = [documentsDirectory stringByAppendingPathComponent:@"console.log"];
+   NSLog(@"logPath = %@", logPath);
+   freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding], "a+", stderr);
+}
+
+
 + (void)listAppHomeInfo {
 #if TARGET_IPHONE_SIMULATOR
     NSLog(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);

@@ -139,6 +139,7 @@
 - (void)setupCommonTools:(NSDictionary *)launchOptions {
    [self setupParse:launchOptions];
    [DebugUtils listAppHomeInfo];
+   [DebugUtils setupLogFile];
 
    [YTCacheImplement removeAllCacheDiskObjects];
 }
