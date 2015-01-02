@@ -41,6 +41,9 @@
       if ([[NSFileManager defaultManager] fileExistsAtPath:fullPath isDirectory:&isDir]) {
          if (isDir == YES) {
             ABProjectList * projectList = [[ABProjectList alloc] initWithProjectListName:aPath];
+            NSString * projectListName = projectList.projectListName;
+            NSLog(@"appDocDir = %@", appDocDir);
+            NSLog(@"projectListName = %@", projectListName);
             [projectName appendProjectList:projectList];
             [self analysisProjectNames:fullPath to:projectList];
          }
