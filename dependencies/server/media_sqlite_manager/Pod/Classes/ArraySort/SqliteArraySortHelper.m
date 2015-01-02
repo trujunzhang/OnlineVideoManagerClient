@@ -12,8 +12,6 @@
 }
 
 + (NSArray *)sortForABProjectList:(NSArray *)projectLists {
-
-
    NSArray * sortedEmployees = [projectLists sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
        NSString * firstDate = [(ABProjectList *) a projectListName];
        NSString * secondDate = [(ABProjectList *) b projectListName];
