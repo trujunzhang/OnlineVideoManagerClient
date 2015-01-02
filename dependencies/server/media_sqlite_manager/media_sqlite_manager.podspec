@@ -27,6 +27,10 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/clientmodels/*.{h,m}'
   end
 
+  s.subspec 'ArraySort' do |sub|
+    sub.source_files = 'Pod/Classes/ArraySort/*.{h,m}'
+  end
+
 end
 
 

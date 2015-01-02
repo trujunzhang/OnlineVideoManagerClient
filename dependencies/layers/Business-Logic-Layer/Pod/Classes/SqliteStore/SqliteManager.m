@@ -9,6 +9,7 @@
 #import "AnimatedContentsDisplayLayer.h"
 #import "ABOnlineVideoType.h"
 #import "MultipleTypeHelper.h"
+#import "SqliteArraySortHelper.h"
 
 NSMutableDictionary * _videoDictionary;
 NSMutableDictionary * _onlineVideoTypePathDictionary;
@@ -81,6 +82,7 @@ NSMutableArray * _onlineVideoTypeArray;
    NSMutableArray * projectLists = [[NSMutableArray alloc] init];
    [[MobileDB dbInstance] readProjectNameLists:[projectNameId intValue] withArray:projectLists isReadArray:YES];
 
+   projectLists = [SqliteArraySortHelper sortForABProjectList:projectLists];
    return projectLists;
 }
 
