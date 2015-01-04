@@ -102,10 +102,6 @@ BOOL cleanupCache(NSString * cacheDirectory) {
 
 
 void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineVideoTypePath, NSString * videoScanFold, NSString * dbDirectory) {
-
-//   NSString * videoPath = @"/Volumes/XBMC/ShareAFP/Online Tutorial/Video Training/Lynda.com";
-//   NSString * videoPath = @"/Volumes/macshare/MacPE/Lynda.com";
-
    // 1
    OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:videoScanFold
                                                                                                     withCacheDirectory:dbDirectory];
@@ -123,10 +119,11 @@ int main(int argc, const char * argv[]) {
       // insert code here...
 
       NSString * dbDirectory = RealProjectCacheDirectory();
-      if (cleanupCache(dbDirectory) == NO) {
-         NSLog(@"Remove failed");
-         return 0;
-      }
+
+//      if (cleanupCache(dbDirectory) == NO) {
+//         NSLog(@"Remove failed");
+//         return 0;
+//      }
 
       NSMutableDictionary * onlineTypeDictionary = @{
        @"Youtube.com" : [ServerVideoConfigure youtubeArray],

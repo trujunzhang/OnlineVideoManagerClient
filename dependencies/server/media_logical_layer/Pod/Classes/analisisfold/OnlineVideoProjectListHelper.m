@@ -10,6 +10,7 @@
 #import "NSString+PJR.h"
 #import "MobileBaseDatabase.h"
 #import "GenerateThumbnailTask.h"
+#import "ServerVideoConfigure.h"
 
 
 @implementation OnlineVideoProjectListHelper {
@@ -107,10 +108,15 @@
 
 
 - (void)generateThumbnail:(int)fileInfoID forFile:(NSString *)fileAbstractPath {
-   NSString * thumbnailName = [MobileBaseDatabase getThumbnailName:fileInfoID];
+   if (isGenerateThumbnail == NO)
+      return;
 
-   NSString * thumbnailCacheDirectory = [NSString stringWithFormat:@"%@/%@", self.cacheDirectory, thumbnailFolder];
-//   [GenerateThumbnailTask appendGenerateThumbnailTask:thumbnailName in:fileAbstractPath to:thumbnailCacheDirectory];
+   [GenerateThumbnailTask appendGenerateThumbnailTask:[MobileBaseDatabase getThumbnailName:fileInfoID]
+                                                   in:fileAbstractPath
+                                                   to:[NSString stringWithFormat:@"%@/%@",
+                                                                                 self.cacheDirectory,
+                                                                                 thumbnailFolder]];
+
 }
 
 
