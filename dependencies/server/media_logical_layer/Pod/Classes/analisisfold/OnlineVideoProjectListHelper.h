@@ -4,6 +4,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class ServerVideoConfigure;
+
 
 @interface OnlineVideoProjectListHelper : NSObject
 @property(nonatomic, strong) NSString * onlinePath;

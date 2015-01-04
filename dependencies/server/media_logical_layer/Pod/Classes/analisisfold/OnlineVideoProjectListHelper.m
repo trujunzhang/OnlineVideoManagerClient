@@ -2,20 +2,20 @@
 // Created by djzhang on 12/27/14.
 //
 
+
 #import "OnlineVideoProjectListHelper.h"
 #import "ABProjectType.h"
 #import "ABProjectName.h"
 #import "ABProjectList.h"
 #import "ABProjectFileInfo.h"
-#import "NSString+PJR.h"
 #import "MobileBaseDatabase.h"
 #import "GenerateThumbnailTask.h"
-#import "ServerVideoConfigure.h"
 
 
 @implementation OnlineVideoProjectListHelper {
 
 }
+
 - (instancetype)initWithOnlinePath:(NSString *)onlinePath withCacheDirectory:(NSString *)cacheDirectory {
    self = [super init];
    if (self) {
@@ -108,8 +108,8 @@
 
 
 - (void)generateThumbnail:(int)fileInfoID forFile:(NSString *)fileAbstractPath {
-   if (isGenerateThumbnail == NO)
-      return;
+//   if (needGenerateThumbnail == NO)
+//      return;
 
    [GenerateThumbnailTask appendGenerateThumbnailTask:[MobileBaseDatabase getThumbnailName:fileInfoID]
                                                    in:fileAbstractPath

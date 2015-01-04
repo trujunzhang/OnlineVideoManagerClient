@@ -10,28 +10,9 @@
 #import "OnlineVideoStatisticsHelper.h"
 #import "MobileDB.h"
 
-#include <unistd.h>
-#include <sys/types.h>
-#include <pwd.h>
-#include <assert.h>
-#import "NSString+PJR.h"
-#import "MobileBaseDatabase.h"
+
 #import "ServerVideoConfigure.h"
-
-
-NSString * RealHomeDirectory() {
-   struct passwd * pw = getpwuid(getuid());
-   assert(pw);
-   return [NSString stringWithUTF8String:pw->pw_dir];
-}
-
-
-NSString * RealProjectCacheDirectory() {
-   NSString * homeDirectory = RealHomeDirectory();
-
-   NSString * string = [NSString stringWithFormat:@"%@/%@/%@", homeDirectory, appProfile, appCacheDirectory];
-   return string;
-}
+#import "VideoGenerateSqliteHelper.h"
 
 
 void emptyCacheThumbnailDirectory(NSFileManager * filemgr, NSString * dirToEmpty) {
@@ -101,29 +82,16 @@ BOOL cleanupCache(NSString * cacheDirectory) {
 }
 
 
-void generateSqliteFromSource(NSString * onlineTypeName, NSString * onlineVideoTypePath, NSString * videoScanFold, NSString * dbDirectory) {
-   // 1
-   OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:videoScanFold
-                                                                                                    withCacheDirectory:dbDirectory];
-
-   // 2
-   [[MobileDB dbInstance:dbDirectory] saveForOnlineVideoTypeDictionary:onlineVideoStatisticsHelper.projectTypesDictionary
-                                                              withName:onlineTypeName
-                                              whithOnlineVideoTypePath:onlineVideoTypePath
-   ];
-}
-
-
 int main(int argc, const char * argv[]) {
    @autoreleasepool {
       // insert code here...
 
       NSString * dbDirectory = RealProjectCacheDirectory();
 
-//      if (cleanupCache(dbDirectory) == NO) {
-//         NSLog(@"Remove failed");
-//         return 0;
-//      }
+      if (cleanupCache(dbDirectory) == NO) {
+         NSLog(@"Remove failed");
+         return 0;
+      }
 
       NSMutableDictionary * onlineTypeDictionary = @{
        @"Youtube.com" : [ServerVideoConfigure youtubeArray],
@@ -134,13 +102,12 @@ int main(int argc, const char * argv[]) {
          NSArray * typePathArray = [onlineTypeDictionary valueForKey:onlineTypeName];
 
          for (NSString * videoScanFold in typePathArray) {
-
-            generateSqliteFromSource(
-             onlineTypeName,// Youtube.com
-             [videoScanFold replaceCharcter:htdocs withCharcter:@""],// local path: "/macshare/MacPE/youtubes"
-             videoScanFold,// "/Volumes/macshare/MacPE/youtubes"
-             dbDirectory// "/Volumes/Home/djzhang/.AOnlineTutorial/.cache"+"xxx.db"
-            );
+            [VideoGenerateSqliteHelper generateSqliteFromSourcenWithTypeName:onlineTypeName// Youtube.com
+                                                               withLocalPath:[videoScanFold replaceCharcter:htdocs
+                                                                                               withCharcter:@""]// local path: "/macshare/MacPE/youtubes"
+                                                              withScanFolder:videoScanFold// "/Volumes/macshare/MacPE/youtubes"
+                                                                 saveSqlitTo:dbDirectory// "/Volumes/Home/djzhang/.AOnlineTutorial/.cache"+"xxx.db"
+            ];
 
          }
       }

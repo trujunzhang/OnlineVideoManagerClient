@@ -23,6 +23,10 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/GeneratethumbnailTask/*.{h,m}'
   end
 
+  s.subspec 'AppConsole' do |sub|
+    sub.source_files = 'Pod/Classes/AppConsole/*.{h,m}'
+  end
+
 end
 
 
