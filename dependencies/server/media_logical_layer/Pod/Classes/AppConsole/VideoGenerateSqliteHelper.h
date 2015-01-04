@@ -10,4 +10,5 @@
 
 
 + (void)generateSqliteFromSourcenWithTypeName:(NSString *)name withLocalPath:(NSString *)path withScanFolder:(NSString *)folder saveSqlitTo:(NSString *)to;
++ (void)generateSqliteAndThumbnail;
 @end
