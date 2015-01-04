@@ -8,4 +8,7 @@
 
 @interface UserCacheFolderHelper : NSObject
 
++ (NSString *)RealProjectCacheDirectory;
++ (BOOL)cleanupCache:(NSString *)cacheDirectory;
++ (BOOL)cleanupCache;
 @end
