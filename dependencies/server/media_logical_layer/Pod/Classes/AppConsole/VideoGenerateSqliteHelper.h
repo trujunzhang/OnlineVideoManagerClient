@@ -9,6 +9,6 @@
 @interface VideoGenerateSqliteHelper : NSObject
 
 
-+ (void)generateSqliteFromSourcenWithTypeName:(NSString *)name withLocalPath:(NSString *)path withScanFolder:(NSString *)folder saveSqlitTo:(NSString *)to;
++ (void)generateSqliteFromSourceWithTypeName:(NSString *)name withLocalPath:(NSString *)path withScanFolder:(NSString *)folder saveSqlitTo:(NSString *)to;
 + (void)generateSqliteAndThumbnail;
 @end

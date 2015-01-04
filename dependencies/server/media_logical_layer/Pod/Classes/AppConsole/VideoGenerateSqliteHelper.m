@@ -13,7 +13,7 @@
 @implementation VideoGenerateSqliteHelper {
 
 }
-+ (void)generateSqliteFromSourcenWithTypeName:(NSString *)onlineTypeName withLocalPath:(NSString *)onlineVideoTypePath withScanFolder:(NSString *)videoScanFold saveSqlitTo:(NSString *)dbDirectory {
++ (void)generateSqliteFromSourceWithTypeName:(NSString *)onlineTypeName withLocalPath:(NSString *)onlineVideoTypePath withScanFolder:(NSString *)videoScanFold saveSqlitTo:(NSString *)dbDirectory {
 
    // 1
    OnlineVideoStatisticsHelper * onlineVideoStatisticsHelper = [[OnlineVideoStatisticsHelper alloc] initWithOnlinePath:videoScanFold
@@ -38,11 +38,11 @@
       NSArray * typePathArray = [onlineTypeDictionary valueForKey:onlineTypeName];
 
       for (NSString * videoScanFold in typePathArray) {
-         [VideoGenerateSqliteHelper generateSqliteFromSourcenWithTypeName:onlineTypeName// Youtube.com
-                                                            withLocalPath:[videoScanFold replaceCharcter:htdocs
-                                                                                            withCharcter:@""]// local path: "/macshare/MacPE/youtubes"
-                                                           withScanFolder:videoScanFold// "/Volumes/macshare/MacPE/youtubes"
-                                                              saveSqlitTo:[UserCacheFolderHelper RealProjectCacheDirectory]// "/Volumes/Home/djzhang/.AOnlineTutorial/.cache"+"xxx.db"
+         [VideoGenerateSqliteHelper generateSqliteFromSourceWithTypeName:onlineTypeName// Youtube.com
+                                                           withLocalPath:[videoScanFold replaceCharcter:htdocs
+                                                                                           withCharcter:@""]// local path: "/macshare/MacPE/youtubes"
+                                                          withScanFolder:videoScanFold// "/Volumes/macshare/MacPE/youtubes"
+                                                             saveSqlitTo:[UserCacheFolderHelper RealProjectCacheDirectory]// "/Volumes/Home/djzhang/.AOnlineTutorial/.cache"+"xxx.db"
          ];
 
       }
